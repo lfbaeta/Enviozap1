@@ -652,6 +652,12 @@ ${cfg.offer || 'Cardápio digital próprio, integração com WhatsApp, 30 dias g
         }
       }
 
+      // Segurança: jamais responder por outra instância ou por instância dedicada a disparos.
+      if (!instance || instance.role === 'DISPARO' || (cfg.aiInstanceId && cfg.aiInstanceId !== 'ALL' && cfg.aiInstanceId !== 'AUTO' && instance.id !== cfg.aiInstanceId)) {
+        console.warn('[AI Routing] Mensagem ignorada: instância de origem não autorizada para atendimento IA.');
+        continue;
+      }
+
       // Prioridade 2: Instância configurada explicitamente para a IA
       if (!instance && cfg.aiInstanceId && cfg.aiInstanceId !== 'ALL' && cfg.aiInstanceId !== 'AUTO') {
         instance = db.prepare("SELECT * FROM instances WHERE id = ?").get(cfg.aiInstanceId);
@@ -787,6 +793,10 @@ ${cfg.offer || 'Cardápio digital próprio, integração com WhatsApp, 30 dias g
       });
 
       const sentIso = new Date().toISOString();
+      if (!sendResp.ok) {
+        console.error('[AI Auto-Reply] Evolution recusou o envio:', sendResp.status);
+        continue;
+      }
       try {
         db.prepare("INSERT INTO chat_messages (id, phone, role, content, created_at) VALUES (?, ?, 'model', ?, ?)")
           .run(crypto.randomUUID(), phoneDigits, replyText, sentIso);
