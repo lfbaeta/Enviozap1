@@ -8,7 +8,7 @@
     "prestart": "node scripts/prepare-worker.mjs",
     "start": "node --env-file-if-exists=.env server.mjs",
     "predev": "node scripts/prepare-worker.mjs",
-    "dev": "node --watch --env-file-if-exists=.env server.mjs",
+    "dev": "node --env-file-if-exists=.env server.mjs",
     "check": "node --check server.mjs && node --check worker/api.js",
     "test": "node scripts/prepare-worker.mjs && node test/storage.test.mjs",
     "db:generate": "drizzle-kit generate"
@@ -20,5 +20,8 @@
   "devDependencies": {
     "drizzle-kit": "^0.31.4",
     "drizzle-orm": "^0.44.5"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
   }
 }

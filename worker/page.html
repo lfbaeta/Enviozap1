@@ -5,9 +5,9 @@
 <title>EnvioZap · Delivale.com</title><link rel="icon" href="/favicon.svg">
 <style>
 :root{font-family:Arial,sans-serif;color:#173a30;background:#eef4f0;font-synthesis:none}*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0}header,main{max-width:1280px;margin:auto;padding:24px}header{display:flex;align-items:center;justify-content:space-between;gap:16px}header strong{font-size:22px}header small{display:block;font-size:14px;color:#62766c;margin-top:6px}nav{display:flex;gap:8px}button,a.action{font:inherit;font-size:16px;cursor:pointer;border-radius:10px;padding:13px 18px;border:1px solid #cbdad1;background:white;color:#174b38;text-decoration:none;text-align:center}button.primary,a.primary{background:#11634c;color:white;border-color:#11634c}button:disabled{opacity:.6;cursor:wait}nav button[aria-pressed=true]{background:#11634c;color:white}button:focus-visible,a:focus-visible{outline:3px solid #90c5ab;outline-offset:3px}.card{background:white;border:1px solid #d3e0d8;border-radius:18px;padding:26px;margin-bottom:20px}h1{font-size:28px;margin:0 0 22px}h2{font-size:21px;margin:0 0 18px}p{font-size:16px;line-height:1.6}.help{font-size:14px;color:#62766c;margin:8px 0 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{margin-bottom:18px}label{display:block;font-size:14px;font-weight:700;margin-bottom:9px}input,textarea,select{font:inherit;font-size:16px;width:100%;padding:13px 14px;color:#173a30;border:1px solid #bccfc3;border-radius:9px;background:#fcfdfc}textarea{resize:vertical;line-height:1.6;min-height:160px}input:focus,select:focus,textarea:focus{outline:3px solid #d7ebdf;border-color:#11634c}.message-box{min-height:220px}.actions{display:flex;gap:10px;flex-wrap:wrap}.actions>*{flex:1}.status{min-height:24px;margin:14px 0 0;font-size:14px;line-height:1.5;color:#406958}.error{color:#a32626}.preview{white-space:pre-wrap;overflow-wrap:anywhere;background:#e7f4eb;border-radius:12px;padding:18px;line-height:1.6;font-size:16px}.output{margin-top:20px;border-top:1px solid #e1e9e3;padding-top:20px}.output input{margin-bottom:12px}.check{display:flex;align-items:center;gap:10px;font-weight:400}.check input{width:auto}.key-row{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap}.key-row input{flex:1 1 260px}.key-row input{min-width:0}.key-row button{flex-shrink:0;font-size:14px}.template{margin-bottom:22px}.template textarea{min-height:150px}.settings-note{margin:0 0 20px}.settings-actions{margin-top:24px}@media(max-width:600px){header{align-items:flex-start;padding:20px 16px}main{padding:0 16px 24px}.card{padding:20px}.grid{grid-template-columns:1fr;gap:0}h1{font-size:25px}nav button{font-size:14px;padding:10px}.actions{flex-direction:column}.key-row{flex-wrap:wrap}.key-row button{width:100%}}
-.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:13px 10px;border-bottom:1px solid #d3e0d8;vertical-align:top}th{font-weight:700}td button{font-size:14px;padding:8px 10px}.history-status{margin-top:8px}.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}.metric{background:white;border:1px solid #d3e0d8;border-radius:14px;padding:18px}.metric b{display:block;font-size:28px;margin-top:7px}.interested-row{background:#e7f6ec}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:end}.toolbar .field{flex:1 1 180px}.compact{min-width:90px}@media(max-width:800px){.cards{grid-template-columns:1fr 1fr}}header{flex-wrap:wrap}nav{flex-wrap:wrap}#queue .actions{gap:6px;margin:8px 0;flex-wrap:wrap}#queue button{padding:7px 10px;font-size:13px}#queue .grid{gap:10px} .message-cell{white-space:pre-wrap;min-width:220px;max-width:420px}#agenda-editor{margin:14px 0;padding:16px;border:1px solid #ddd;border-radius:12px}
-.key-indicator{padding:12px 14px;border-radius:9px;background:#f3f5f4;border:1px solid #ccd7d0;font-weight:700;margin:12px 0}.key-indicator.saved{background:#e7f6ec;color:#176537;border-color:#9bccac}.key-indicator.missing{background:#fff5e6;color:#83510d;border-color:#e3c790}
-</style>
+.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:13px 10px;border-bottom:1px solid #d3e0d8;vertical-align:top}th{font-weight:700}td button{font-size:14px;padding:8px 10px}.history-status{margin-top:8px}.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}.metric{background:white;border:1px solid #d3e0d8;border-radius:14px;padding:18px}.metric b{display:block;font-size:28px;margin-top:7px}.interested-row{background:#e7f6ec}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:end}.toolbar .field{flex:1 1 180px}.compact{min-width:90px}@media(max-width:800px){.cards{grid-template-columns:1fr 1fr}}header{flex-wrap:wrap}nav{flex-wrap:wrap}
+.btn-aligned-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.btn-aligned-row button,.btn-aligned-row a.action{height:42px;padding:0 16px;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:14px;border-radius:9px;white-space:nowrap;box-sizing:border-box}.preset-btn{height:36px;padding:0 12px;font-size:13px;border-radius:8px;background:#f0f7f3;border:1px solid #c2ded0;color:#174b38;display:inline-flex;align-items:center;gap:5px;cursor:pointer}.preset-btn:hover{background:#e1f0e7;border-color:#9dc9b2}.status-box{padding:14px 16px;border-radius:12px;border:1px solid #d3e0d8;background:#fff;margin-bottom:14px}.badge-connected{background:#e1f6e8;color:#0d6338;border:1px solid #a8e0bc;padding:3px 9px;border-radius:12px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:5px}.badge-disconnected{background:#fff4e5;color:#a35200;border:1px solid #ffd499;padding:3px 9px;border-radius:12px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:5px}.badge-empty{background:#feebeb;color:#a81c1c;border:1px solid #f8c2c2;padding:3px 9px;border-radius:12px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:5px}.chat-bubble-user{align-self:flex-end;background:#d9fdd3;color:#111b21;padding:8px 12px;border-radius:10px 10px 0 10px;max-width:85%;font-size:13px;line-height:1.45;box-shadow:0 1px 2px rgba(0,0,0,0.08);word-break:break-word}.chat-bubble-ai{align-self:flex-start;background:#ffffff;color:#111b21;padding:8px 12px;border-radius:10px 10px 10px 0;max-width:85%;font-size:13px;line-height:1.45;box-shadow:0 1px 2px rgba(0,0,0,0.08);word-break:break-word}</style>
+<script src="/vendor/xlsx.full.min.js"></script>
 </head>
 <body>
 <header><div><strong>EnvioZap</strong><small>Mensagens da Delivale.com</small></div><nav aria-label="Navegação"><button type="button" id="nav-home" aria-pressed="true">Início</button><button type="button" id="nav-dashboard" aria-pressed="false">Dashboard</button><button type="button" id="nav-agenda" aria-pressed="false">Agenda</button><button type="button" id="nav-queue" aria-pressed="false">A Enviar</button><button type="button" id="nav-history" aria-pressed="false">Enviados</button><button type="button" id="nav-interested" aria-pressed="false">Interessados</button><button type="button" id="nav-instances" aria-pressed="false">Instâncias</button><button type="button" id="nav-messages" aria-pressed="false">Mensagens</button><button type="button" id="nav-settings" aria-pressed="false">Configurações</button></nav></header>
@@ -24,101 +24,1457 @@
 <div class="card"><h2>Prévia da mensagem</h2><div id="preview" class="preview" aria-live="polite"></div><p class="help">O envio é confirmado por você dentro do WhatsApp.</p></div>
 </section>
 <section id="dashboard" hidden><div class="cards"><div class="metric">Agenda<b id="m-agenda">0</b></div><div class="metric">A enviar<b id="m-queued">0</b></div><div class="metric">Enviados<b id="m-sent">0</b></div><div class="metric">Interessados<b id="m-interested">0</b></div><div class="metric">Erros<b id="m-errors">0</b></div></div></section>
-<section id="agenda" hidden><div class="card"><h1>Agenda</h1><div class="toolbar"><div class="field"><label for="import-city">Cidade da importação</label><input id="import-city" placeholder="Ex.: Pariquera-Açu"></div><div class="field"><label for="import-file">Arquivo CSV</label><input id="import-file" type="file" accept=".csv,text/csv"></div><button type="button" id="import-contacts">Importar contatos</button></div><p class="help">CSV: nome/estabelecimento, telefone/whatsapp, responsável e observação. A cidade acima será aplicada a todo o arquivo.</p><hr><div class="toolbar"><div class="field"><label>Cidade</label><select id="agenda-city"><option value="">Todas</option></select></div><div class="field"><label>Buscar</label><input id="agenda-search" placeholder="Estabelecimento, WhatsApp ou cidade"></div><div class="field compact"><label>Quantidade</label><input id="queue-quantity" type="number" min="1" max="500" value="20"></div><button id="add-queue" class="primary" type="button">Adicionar à fila de envio</button></div><p class="help">Marque os contatos ou informe a quantidade para adicionar os primeiros estabelecimentos disponíveis do filtro.</p><p id="agenda-status" class="status" role="status"></p><div class="table-wrap"><table><thead><tr><th><input type="checkbox" id="agenda-select-all" aria-label="Selecionar todos"></th><th>Estabelecimento</th><th>WhatsApp</th><th>Cidade</th><th>Status</th><th>Ações</th></tr></thead><tbody id="agenda-rows"></tbody></table></div></div></section>
-<section id="queue" hidden><div class="card"><div class="toolbar" style="justify-content:space-between;align-items:center"><h1 style="margin:0">A Enviar</h1><button type="button" id="clear-queue">Limpar lista</button></div><div class="actions"><button type="button" id="prepare-queue">Preparar mensagens da fila</button><button type="button" id="start-queue" class="primary">▶ Iniciar envios</button><button type="button" id="pause-queue" hidden>⏸ Pausar</button><button type="button" id="resume-queue" hidden>▶ Continuar</button><button type="button" id="stop-queue" hidden>⏹ Parar</button></div><div class="grid"><div class="field"><label>Mensagem</label><select id="queue-message-type"><option value="initial">Mensagem inicial</option><option value="presentation">Apresentação</option><option value="promotion">Promoção</option><option value="followup">Retornar contato</option><option value="trial">Convidar para teste</option></select></div><div class="field"><label>Forma de envio</label><select id="queue-message-mode"><option value="STANDARD">Mensagem padrão</option><option value="AI">Criar variação com IA</option></select></div></div><p id="queue-run-status" class="status"></p><p id="queue-countdown" role="status"></p><p class="help">Mantenha o sistema aberto para executar a fila. Você pode navegar entre as abas.</p><p class="help">Fluxo: Agenda → A Enviar → escolher mensagem → Padrão ou IA → Enviados.</p><div class="table-wrap"><table><thead><tr><th>#</th><th>Estabelecimento</th><th>WhatsApp</th><th>Cidade</th><th>Status</th><th>Mensagem preparada</th><th>Ação</th></tr></thead><tbody id="queue-rows"></tbody></table></div><p id="queue-status" class="status"></p></div></section>
+<section id="agenda" hidden><div class="card"><h1>Agenda</h1><div class="toolbar" style="flex-wrap:wrap;gap:10px;"><div class="field"><label for="import-city">Cidade (opcional)</label><input id="import-city" placeholder="Opcional — usa a coluna da planilha se existir"></div><div class="field"><label for="import-file">Planilha Excel (.xlsx, .xls) ou CSV</label><input id="import-file" type="file" accept=".xlsx,.xls,.csv,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"></div><button type="button" id="import-contacts" class="primary" style="height:44px;margin-top:auto;">📥 Importar contatos</button></div><p class="help">Suporta arquivos Excel (.xlsx, .xls) e CSV com colunas: <strong>Cidade, Estabelecimento, Categoria, Telefone / WhatsApp, Endereço, Delivery</strong>. Telefones duplicados são acusados e tratados automaticamente.</p><hr><div class="toolbar" style="align-items:flex-end;flex-wrap:wrap;gap:10px;"><div class="field"><label>Filtrar Cidade</label><select id="agenda-city"><option value="">Todas</option></select></div><div class="field"><label>Buscar</label><input id="agenda-search" placeholder="Estabelecimento, WhatsApp, cidade ou categoria"></div><div class="field compact"><label>Qtd Enviar</label><input id="queue-quantity" type="number" min="1" max="500" value="20"></div><button id="add-queue" class="primary" type="button" style="height:44px;margin-top:auto;">Adicionar à fila de envio</button><button id="toggle-duplicates" type="button" style="height:44px;margin-top:auto;font-size:13px;display:inline-flex;align-items:center;gap:6px;" title="Alternar para ver somente contatos com telefones duplicados">⚠️ Duplicados (<span id="dup-badge">0</span>)</button></div><p id="agenda-status" class="status"></p><div class="table-wrap"><table><thead><tr><th><input type="checkbox" id="agenda-select-all" aria-label="Selecionar todos"></th><th>Estabelecimento</th><th>WhatsApp</th><th>Cidade</th><th>Categoria / Info</th><th>Status</th><th>Ações</th></tr></thead><tbody id="agenda-rows"></tbody></table></div></div></section>
+<section id="queue" hidden><div class="card">
+<div class="toolbar" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #e1ebe5;">
+  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+    <h1 style="margin:0;font-size:20px;line-height:1.2;">A Enviar</h1>
+    <span id="queue-count-badge" style="background:#e0ede5;color:#11634c;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;">0 na fila</span>
+    <span id="queue-status-indicator" style="font-size:15px;" title="Status">⏹</span>
+    <span id="queue-run-status" style="font-size:12px;font-weight:600;color:#174b38;">Envios parados</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+    <div style="display:inline-flex;align-items:center;gap:6px;background:#eef6f1;border:1px solid #cce3d6;padding:4px 9px;border-radius:6px;font-size:12px;">
+      <span style="color:#577265;font-weight:600;">Próximo envio:</span>
+      <strong id="queue-countdown" style="color:#11634c;font-family:monospace;font-size:14px;letter-spacing:0.5px;">--:--</strong>
+    </div>
+    <select id="queue-disparo-instance" style="padding:4px 8px;font-size:12px;width:auto;border-radius:6px;height:32px;" title="Selecione a instância dedicada para disparos em massa ou deixe em modo automático">
+      <option value="">Instância Disparo: Automática (todas)</option>
+    </select>
+    <select id="queue-message-type" style="padding:4px 8px;font-size:12px;width:auto;border-radius:6px;height:32px;">
+      <option value="initial">Mensagem inicial</option>
+      <option value="presentation">Apresentação</option>
+      <option value="promotion">Promoção</option>
+      <option value="followup">Retorno</option>
+      <option value="trial">Convidar para teste</option>
+    </select>
+    <select id="queue-message-mode" style="padding:4px 8px;font-size:12px;width:auto;border-radius:6px;height:32px;">
+      <option value="STANDARD">Padrão</option>
+      <option value="AI">Variação IA</option>
+    </select>
+    <button type="button" id="prepare-queue" style="padding:4px 10px;font-size:12px;height:32px;border-radius:6px;" title="Atualizar texto das mensagens na fila">⚙️ Gerar msg</button>
+    <button type="button" id="start-queue" class="primary" style="padding:4px 12px;font-size:12px;font-weight:700;height:32px;border-radius:6px;">▶ Iniciar</button>
+    <button type="button" id="pause-queue" style="padding:4px 12px;font-size:12px;font-weight:700;height:32px;border-radius:6px;background:#fff3cd;color:#856404;border-color:#ffeeba;" hidden>⏸ Pausar</button>
+    <button type="button" id="resume-queue" class="primary" style="padding:4px 12px;font-size:12px;font-weight:700;height:32px;border-radius:6px;" hidden>▶ Retomar</button>
+    <button type="button" id="stop-queue" style="padding:4px 12px;font-size:12px;font-weight:700;height:32px;border-radius:6px;background:#f8d7da;color:#721c24;border-color:#f5c6cb;" hidden>⏹ Parar</button>
+    <button type="button" id="clear-queue" style="padding:4px 8px;font-size:12px;height:32px;border-radius:6px;color:#a32626;" title="Esvaziar fila e retornar para Agenda">🗑️ Limpar</button>
+  </div>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:12px;color:#577265;">
+  <span id="queue-substatus">Clique em "Iniciar" para disparar automaticamente com intervalos seguros.</span>
+  <span id="queue-status" class="status" style="margin:0;font-size:12px;"></span>
+</div>
+
+<div class="table-wrap"><table><thead><tr><th>#</th><th>Estabelecimento</th><th>WhatsApp</th><th>Cidade</th><th>Mensagem Criada / Preparada</th><th>Status</th><th>Ação</th></tr></thead><tbody id="queue-rows"></tbody></table></div></div></section>
 <section id="interested" hidden><div class="card"><h1>Interessados</h1><div class="table-wrap"><table><thead><tr><th>Estabelecimento</th><th>WhatsApp</th><th>Cidade</th><th>Status</th></tr></thead><tbody id="interested-rows"></tbody></table></div></div></section>
-<section id="instances" hidden><div class="card"><h1>Conexão / Instâncias</h1><div class="grid"><div class="field"><label>Serviço</label><select id="instance-provider"><option value="EVOLUTION_API">Evolution API</option><option value="EVOLUTION_GO">Evolution GO</option></select></div><div class="field"><label>Nome da instância</label><input id="instance-name" placeholder="Ex.: Instância 01"></div></div><div class="field"><label>URL do servidor</label><input id="instance-url" placeholder="Ex.: https://evolution.seudominio.com"></div><div class="field"><label>API Key / GLOBAL_API_KEY</label><input id="instance-token" type="password" autocomplete="off" placeholder="Cole a chave administrativa"></div><h2>Regras de disparo desta instância</h2><div class="grid"><div class="field"><label>Tempo mínimo entre mensagens (segundos)</label><input id="instance-min-seconds" type="number" min="1" value="60"></div><div class="field"><label>Tempo máximo entre mensagens (segundos)</label><input id="instance-max-seconds" type="number" min="1" value="180"></div><div class="field"><label>Quantidade de mensagens por ciclo</label><input id="instance-messages-cycle" type="number" min="1" value="10"></div><div class="field"><label>Repouso após o ciclo (minutos)</label><input id="instance-rest-minutes" type="number" min="0" value="20"></div></div><p class="help">O intervalo de cada envio será sorteado entre o mínimo e o máximo. Ao atingir a quantidade do ciclo, esta instância entra em repouso pelo período configurado.</p><p class="help">Na Evolution GO, o token individual da instância é criado automaticamente. As credenciais ficam criptografadas no backend.</p><button id="add-instance" type="button" class="primary">Salvar instância</button><p id="instance-status" class="status"></p><div id="instance-list"></div></div></section>
-<section id="history" hidden><div class="card"><h1>Histórico de envios</h1><p class="help">Ao abrir a conversa, o contato fica registrado aqui. Depois de enviar no WhatsApp, marque como enviado.</p><p class="help">Histórico compartilhado entre as máquinas que acessam este projeto.</p><p id="history-empty">Nenhuma conversa aberta por enquanto.</p><div class="table-wrap" id="history-table" hidden><table><thead><tr><th>Empresa</th><th>Telefone</th><th>Data e hora</th><th>Status</th><th>Confirmação</th><th>Mensagem enviada</th><th>Cadastro / Instância</th></tr></thead><tbody id="history-rows"></tbody></table></div><p id="history-status" class="status" role="status"></p></div></section><section id="messages" hidden><div class="card"><h1>Mensagens</h1><p class="settings-note">Configure os textos usados na prospecção e o comportamento da IA.</p><div class="field"><label for="offer">O que você quer oferecer?</label><textarea id="offer" maxlength="4000"></textarea><p class="help">Base de informações usada pela IA para criar e responder mensagens.</p></div><div class="grid"><div class="field"><label for="tone">Tom das mensagens</label><select id="tone"><option>Natural e amigável</option><option>Profissional</option><option>Direto e objetivo</option><option>Despertar curiosidade</option></select></div><div class="field"><label for="length">Tamanho</label><select id="length"><option>Curta</option><option>Média</option><option>Detalhada</option></select></div></div><label class="check"><input id="emojis" type="checkbox" checked>Usar emojis com moderação</label></div><div class="card"><h2>Atendimento com Inteligência Artificial</h2><label class="check"><input id="ai-enabled" type="checkbox"> <strong>Ligar IA para conversar com os clientes</strong></label><div class="grid"><div class="field"><label for="ai-delay-seconds">Tempo de resposta (segundos)</label><input id="ai-delay-seconds" type="number" min="0" max="10" value="5"></div><div class="field"><label class="check"><input id="ai-random-delay" type="checkbox"> Usar tempo aleatório</label><div class="grid"><div><label for="ai-min-seconds">Mínimo (segundos)</label><input id="ai-min-seconds" type="number" min="0" max="10" value="1"></div><div><label for="ai-max-seconds">Máximo (segundos)</label><input id="ai-max-seconds" type="number" min="0" max="10" value="5"></div></div></div></div><label class="check"><input id="ai-typing" type="checkbox" checked> Mostrar “digitando…” no WhatsApp</label><button id="activate-ai" type="button" class="primary">Ativar atendimento na instância</button><p id="ai-status" class="status" role="status"></p><p class="help">O robô responde quando o cliente enviar uma mensagem. As conversas ficam salvas. Tempo padrão de 5 segundos, com opção aleatória entre mínimo e máximo. A geração da resposta pode acrescentar alguns segundos.</p><div class="field"><label for="ai-instructions">Como a IA deve explicar o serviço</label><textarea id="ai-instructions" maxlength="8000"></textarea></div><div class="field"><label for="ai-registration">Dados que a IA deve solicitar</label><textarea id="ai-registration" maxlength="4000"></textarea></div><div class="field"><label for="ai-handoff">Mensagem ao finalizar o cadastro</label><textarea id="ai-handoff" maxlength="3000"></textarea></div></div><div class="card"><h2>Mensagens padrão editáveis</h2><div id="template-editors"></div><div class="actions settings-actions"><button type="button" id="save-settings" class="primary">Salvar mensagens</button><button type="button" id="restore-defaults">Restaurar padrões</button></div><p id="settings-status" class="status"></p></div></section><section id="settings" hidden><div class="card"><h1>Configurações</h1><p class="settings-note">Credenciais e APIs do sistema.</p><div class="card"><h2>Conexão com Gemini</h2><p id="key-saved-status" class="status key-indicator" role="status" aria-live="polite">Verificando se existe uma chave cadastrada…</p><label for="api-key">Chave da API Gemini</label><div class="key-row"><input id="api-key" type="password" maxlength="2048" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Cole sua chave Gemini"><button type="button" id="save-key" class="primary">Salvar chave API</button><button type="button" id="clear-key">Remover chave salva</button></div></div></section>
+<section id="instances" hidden><div class="card"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px;"><h1 style="margin:0;">Conexão / Instâncias</h1><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><button type="button" id="btn-sync-all-instances" class="preset-btn" style="height:28px;font-size:12px;font-weight:700;color:#0b724f;border-color:#a7f3d0;">🔄 Verificar Status em Tempo Real</button><span style="font-size:12px;color:#577265;">Webhook IA:</span><code id="webhook-url-code" style="background:#eef6f1;padding:3px 8px;border-radius:6px;font-size:12px;color:#11634c;">/api/webhook</code><button type="button" id="btn-copy-webhook" class="preset-btn" style="height:28px;font-size:12px;">📋 Copiar URL</button></div></div><div class="grid"><div class="field"><label>Serviço</label><select id="instance-provider"><option value="EVOLUTION_API">Evolution API</option><option value="EVOLUTION_GO">Evolution GO</option></select></div><div class="field"><label>Nome da instância</label><input id="instance-name" placeholder="Ex.: Instância 01"></div></div><div class="grid"><div class="field"><label>URL do servidor</label><input id="instance-url" placeholder="Ex.: https://evolution.seudominio.com"></div><div class="field"><label>Papel / Finalidade da Instância</label><select id="instance-role"><option value="ALL">Ambos (Disparos em Massa + Atendimento IA)</option><option value="DISPARO">Apenas Disparos em Massa (Prospecção)</option><option value="IA">Apenas Atendimento Automático com IA</option></select></div></div><div class="field"><label>API Key / GLOBAL_API_KEY</label><input id="instance-token" type="password" autocomplete="off" placeholder="Cole a chave administrativa"></div><h2>Regras de disparo desta instância</h2><div class="grid"><div class="field"><label>Tempo mínimo entre mensagens (segundos)</label><input id="instance-min-seconds" type="number" min="1" value="60"></div><div class="field"><label>Tempo máximo entre mensagens (segundos)</label><input id="instance-max-seconds" type="number" min="1" value="180"></div><div class="field"><label>Quantidade de mensagens por ciclo</label><input id="instance-messages-cycle" type="number" min="1" value="10"></div><div class="field"><label>Repouso após o ciclo (minutos)</label><input id="instance-rest-minutes" type="number" min="0" value="20"></div></div><p class="help">O intervalo de cada envio será sorteado entre o mínimo e o máximo. Ao atingir a quantidade do ciclo, esta instância entra em repouso pelo período configurado.</p><p class="help">Na Evolution GO, o token individual da instância é criado automaticamente. As credenciais ficam criptografadas no backend.</p><button id="add-instance" type="button" class="primary">Salvar instância</button><p id="instance-status" class="status"></p><div id="instance-list"></div></div></section>
+<section id="history" hidden><div class="card"><h1>Histórico de envios</h1><p class="help">Mensagens enviadas pelo sistema (automático via fila ou envio individual no WhatsApp).</p><p id="history-empty">Nenhum envio registrado por enquanto.</p><div class="table-wrap" id="history-table" hidden><table><thead><tr><th>Estabelecimento</th><th>WhatsApp</th><th>Mensagem Enviada</th><th>Status</th><th>Data e hora</th><th>Ações</th></tr></thead><tbody id="history-rows"></tbody></table></div><p id="history-status" class="status" role="status"></p></div></section>
+<section id="messages" hidden>
+  <div class="card">
+    <h1>Mensagens & IA</h1>
+    <p class="settings-note">Configure os textos usados na prospecção e o comportamento da IA.</p>
+    <div class="field">
+      <label for="offer">O que você quer oferecer?</label>
+      <textarea id="offer" maxlength="4000"></textarea>
+      <p class="help">Base de informações e regras de negócio usada pela IA para criar e responder mensagens.</p>
+    </div>
+    <div class="grid">
+      <div class="field">
+        <label for="tone">Tom das mensagens</label>
+        <select id="tone">
+          <option>Natural e amigável</option>
+          <option>Profissional</option>
+          <option>Direto e objetivo</option>
+          <option>Despertar curiosidade</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="length">Tamanho</label>
+        <select id="length">
+          <option>Curta</option>
+          <option>Média</option>
+          <option>Detalhada</option>
+        </select>
+      </div>
+    </div>
+    <label class="check"><input id="emojis" type="checkbox" checked> Usar emojis com moderação</label>
+  </div>
+
+  <div class="card">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+      <h2 style="margin:0;">Atendimento com Inteligência Artificial</h2>
+      <span id="ai-status-indicator-badge" class="badge-disconnected">Verificando IA...</span>
+    </div>
+
+    <div style="background:#f4f9f6;border:1px solid #cce2d6;border-radius:12px;padding:14px;margin-bottom:16px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+        <label for="ai-instance-selector" style="margin:0;font-size:14px;color:#0b724f;"><strong>📱 Instância de Atendimento Automático da IA</strong></label>
+        <span id="ai-callout-text" style="font-size:12px;color:#577265;">Carregando status...</span>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+        <select id="ai-instance-selector" style="flex:1 1 260px;height:38px;"></select>
+        <button type="button" id="btn-ai-to-instances" class="preset-btn" style="height:38px;">📱 Gerenciar Instâncias</button>
+      </div>
+      <p class="help" style="margin-top:6px;margin-bottom:0;">Regras separadas: selecione qual instância do WhatsApp responde os clientes pela IA. As instâncias de disparo em lote continuam operando de forma independente.</p>
+    </div>
+
+    <!-- Interruptor Mestre Liga/Desliga da IA -->
+    <div id="ai-master-box" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:#f0fdf4;border:2px solid #86efac;border-radius:14px;padding:16px 20px;margin-bottom:18px;transition:all 0.25s ease;">
+      <div style="flex:1 1 260px;">
+        <div style="font-size:16px;font-weight:700;color:#166534;display:flex;align-items:center;gap:8px;">
+          <span id="ai-master-icon" style="font-size:20px;">🟢</span>
+          <span id="ai-master-title">Atendimento Automático da IA: LIGADO</span>
+        </div>
+        <p id="ai-master-sub" style="margin:4px 0 0;font-size:13px;color:#374151;">A IA está ativa e responderá os clientes no WhatsApp respeitando as regras e limites abaixo.</p>
+      </div>
+      <button type="button" id="btn-toggle-ai-power" style="height:46px;padding:0 24px;font-size:14px;font-weight:700;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;background:#dc2626;color:white;border:none;box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+        <span id="btn-toggle-ai-power-text">🔴 Desligar IA</span>
+      </button>
+      <input id="ai-enabled" type="checkbox" style="display:none;" checked>
+    </div>
+
+    <!-- Controles de Precisão, Temperatura e Limite de Caracteres -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px;margin-bottom:18px;">
+      <!-- Card Temperatura -->
+      <div style="background:#ffffff;border:1px solid #cce2d6;border-radius:12px;padding:14px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px;">
+          <label for="ai-temperature" style="margin:0;font-size:13px;font-weight:700;color:#0b724f;">
+            🌡️ Temperatura da IA: <span id="ai-temp-badge" style="font-family:monospace;background:#e7f5ee;color:#0b724f;padding:2px 8px;border-radius:8px;font-size:12px;">0.3 (Equilibrado)</span>
+          </label>
+        </div>
+        <div class="btn-aligned-row" style="margin:0 0 8px 0;gap:4px;">
+          <button type="button" class="preset-btn btn-temp-preset" data-temp="0.1" style="height:24px;font-size:11px;padding:0 8px;">🎯 Focada (0.1)</button>
+          <button type="button" class="preset-btn btn-temp-preset" data-temp="0.3" style="height:24px;font-size:11px;padding:0 8px;font-weight:700;border-color:#10b981;color:#047857;">⚖️ Equilibrada (0.3)</button>
+          <button type="button" class="preset-btn btn-temp-preset" data-temp="0.7" style="height:24px;font-size:11px;padding:0 8px;">🎨 Criativa (0.7)</button>
+        </div>
+        <input id="ai-temperature" type="range" min="0.0" max="1.0" step="0.05" value="0.3" style="width:100%;accent-color:#0b724f;cursor:pointer;">
+        <p class="help" style="margin:6px 0 0;font-size:11px;line-height:1.35;">
+          Valores baixos (0.1 - 0.3) freiam a IA para <strong>responder apenas o necessário</strong> sem inventar ou falar demais.
+        </p>
+      </div>
+
+      <!-- Card Quantidade de Caracteres -->
+      <div style="background:#ffffff;border:1px solid #cce2d6;border-radius:12px;padding:14px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:6px;">
+          <label for="ai-max-chars" style="margin:0;font-size:13px;font-weight:700;color:#0b724f;">
+            📏 Limite de Caracteres: <span id="ai-chars-badge" style="font-family:monospace;background:#e7f5ee;color:#0b724f;padding:2px 8px;border-radius:8px;font-size:12px;">320 chars</span>
+          </label>
+        </div>
+        <div class="btn-aligned-row" style="margin:0 0 8px 0;gap:4px;">
+          <button type="button" class="preset-btn btn-chars-preset" data-chars="180" style="height:24px;font-size:11px;padding:0 8px;">⚡ Curta (180)</button>
+          <button type="button" class="preset-btn btn-chars-preset" data-chars="320" style="height:24px;font-size:11px;padding:0 8px;font-weight:700;border-color:#10b981;color:#047857;">📱 Ideal Zap (320)</button>
+          <button type="button" class="preset-btn btn-chars-preset" data-chars="500" style="height:24px;font-size:11px;padding:0 8px;">📄 Média (500)</button>
+          <button type="button" class="preset-btn btn-chars-preset" data-chars="800" style="height:24px;font-size:11px;padding:0 8px;">📖 Longa (800)</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <input id="ai-max-chars" type="number" min="80" max="2500" step="10" value="320" style="max-width:120px;height:34px;padding:4px 8px;font-size:13px;">
+          <span style="font-size:12px;color:#577265;">caracteres máx.</span>
+        </div>
+        <p class="help" style="margin:6px 0 0;font-size:11px;line-height:1.35;">
+          Evita blocos gigantescos de texto no celular. A IA fecha a frase suavemente antes do limite.
+        </p>
+      </div>
+    </div>
+
+    <!-- Freio de Diálogo (Anti-Desenfreio) -->
+    <div style="background:#fefce8;border:1px solid #fde047;border-radius:12px;padding:12px 16px;margin-bottom:18px;">
+      <label class="check" style="margin:0;color:#713f12;font-size:13px;">
+        <input id="ai-strict-control" type="checkbox" checked>
+        <strong>🛡️ Freio de Diálogo: Responder apenas o que foi perguntado</strong>
+      </label>
+      <p class="help" style="margin:4px 0 0 24px;color:#854d0e;font-size:12px;">
+        Se o cliente mandar apenas confirmações ("ok", "valeu", "obrigado", "beleza"), a IA não reenvia todo o discurso de vendas e apenas finaliza cordialmente.
+      </p>
+    </div>
+
+    <div class="field" style="margin-bottom:18px;">
+      <label for="ai-model" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
+        <span><strong>🤖 Modelo de Inteligência Artificial</strong> (Google Gemini)</span>
+        <span style="font-size:12px;color:#0b724f;background:#e7f5ee;padding:2px 8px;border-radius:10px;font-weight:700;">Alta Potência</span>
+      </label>
+      <select id="ai-model">
+        <option value="gemini-2.5-flash">⚡ Gemini 2.5 Flash (Recomendado — Ultra Rápido, Inteligente e Econômico)</option>
+        <option value="gemini-flash-latest">✨ Gemini Flash Latest (Versão Mais Recente)</option>
+        <option value="gemini-3.1-pro-preview">🧠 Gemini 3.1 Pro (Potente com Raciocínio Profundo para Vendas)</option>
+        <option value="gemini-3.1-flash-lite">🍃 Gemini 3.1 Flash Lite (Ultraleve)</option>
+      </select>
+      <p class="help">O sistema possui redundância inteligente: se o modelo escolhido sofrer lentidão ou atingir cota, a resposta é entregue automaticamente via Flash sem deixar o cliente esperando.</p>
+    </div>
+
+    <!-- Campo Destaque de Prompt Mestre -->
+    <div class="field" style="background:#f9fbf9;border:1px solid #cce2d6;border-radius:14px;padding:18px;margin-bottom:20px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:6px;">
+        <label for="ai-prompt" style="margin:0;font-size:15px;color:#0c503b;"><strong>🧠 Prompt Mestre da IA de Atendimento & Vendas</strong></label>
+        <span id="ai-prompt-count" style="font-size:12px;color:#577265;font-family:monospace;"></span>
+      </div>
+      <p class="help" style="margin-top:0;margin-bottom:10px;">
+        Define toda a personalidade, regras de negociação, quebra de objeções e diretrizes da IA ao conversar no WhatsApp. Tags disponíveis: <code>{empresa}</code>, <code>{oferta}</code>, <code>{cadastro}</code> e <code>{cidade}</code>.
+      </p>
+      <textarea id="ai-prompt" rows="9" maxlength="15000" style="font-family:monospace;font-size:13px;line-height:1.45;background:#ffffff;border-color:#b5d4c3;"></textarea>
+      
+      <div class="btn-aligned-row" style="margin-top:10px;">
+        <span style="font-size:13px;font-weight:700;color:#577265;">Modelos de Prompt prontos:</span>
+        <button type="button" id="btn-prompt-vendas" class="preset-btn">🎯 Vendas & 30 Dias Grátis</button>
+        <button type="button" id="btn-prompt-delivery" class="preset-btn">🍕 Especialista em Restaurante/Delivery</button>
+        <button type="button" id="btn-prompt-atendimento" class="preset-btn">💬 Atendimento Cordial & Suporte</button>
+        <button type="button" id="btn-prompt-reset" class="preset-btn" style="color:#854d0e;background:#fef9c3;border-color:#fde047;">🔄 Restaurar Padrão</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="ai-instructions">Como a IA deve explicar o serviço e orientações de atendimento</label>
+      <textarea id="ai-instructions" maxlength="8000"></textarea>
+      <p class="help">Instruções comportamentais transmitidas ao Gemini em cada resposta a clientes.</p>
+    </div>
+
+    <div class="field">
+      <label for="ai-registration">Dados que a IA deve solicitar</label>
+      <textarea id="ai-registration" maxlength="4000"></textarea>
+    </div>
+
+    <div class="field">
+      <label for="ai-handoff">Mensagem ao finalizar o cadastro ou concluir atendimento</label>
+      <textarea id="ai-handoff" maxlength="3000"></textarea>
+    </div>
+
+    <h3 style="margin:22px 0 10px;font-size:16px;display:flex;align-items:center;gap:8px;">
+      <span>⏱️</span> Tempo Inteligente & Digitação no WhatsApp
+    </h3>
+    <label class="check" style="margin-bottom:10px;">
+      <input id="ai-smart-timing" type="checkbox" checked>
+      <strong>Ativar Tempo Inteligente conforme o tamanho do texto a enviar</strong>
+    </label>
+    <p class="help" style="margin-top:-6px;margin-bottom:12px;">
+      Calcula dinamicamente o tempo de leitura da pergunta recebida + tempo de digitação proporcional aos caracteres da resposta (média de ~32 a 36 caracteres por segundo no celular), respeitando os limites mínimo e máximo configurados.
+    </p>
+
+    <label class="check" style="margin-bottom:14px;">
+      <input id="ai-send-presence" type="checkbox" checked>
+      <strong>Simular presença "Digitando..." (composing) no WhatsApp durante o cálculo</strong>
+    </label>
+
+    <div class="grid">
+      <div class="field">
+        <label for="ai-min-delay">Tempo mínimo de resposta (segundos)</label>
+        <input id="ai-min-delay" type="number" min="1" max="600" value="3">
+      </div>
+      <div class="field">
+        <label for="ai-max-delay">Tempo máximo de resposta (segundos)</label>
+        <input id="ai-max-delay" type="number" min="1" max="600" value="25">
+      </div>
+    </div>
+
+    <!-- Botões de tempo pré-definidos alinhados -->
+    <div class="btn-aligned-row" style="margin-bottom:14px;">
+      <span style="font-size:13px;font-weight:700;color:#577265;">Ajuste rápido:</span>
+      <button type="button" id="btn-delay-fast" class="preset-btn">⚡ Ágil (2s - 8s)</button>
+      <button type="button" id="btn-delay-natural" class="preset-btn">⏳ Natural (3s - 25s)</button>
+      <button type="button" id="btn-delay-calm" class="preset-btn">🕒 Humano Calmo (5s - 45s)</button>
+      <button type="button" id="btn-test-random-delay" class="preset-btn" style="background:#edf5ff;border-color:#b8d5f7;color:#185abc;">🎲 Testar cálculo de tempo</button>
+    </div>
+    <p id="delay-preview-text" class="status" style="margin:0 0 16px;font-size:13px;"></p>
+
+    <!-- Detecção de Digitação e Intervenção Humana -->
+    <div style="background:#fefce8;border:1px solid #fde047;border-radius:12px;padding:16px;margin:20px 0;">
+      <h3 style="margin:0 0 8px;font-size:15px;color:#854d0e;display:flex;align-items:center;gap:6px;">
+        <span>🛡️</span> Detecção de Digitação e Intervenção Humana
+      </h3>
+      <label class="check" style="margin-bottom:8px;">
+        <input id="ai-human-detection" type="checkbox" checked>
+        <strong>Pausar a IA automaticamente quando atendente humano digitar ou responder</strong>
+      </label>
+      <p class="help" style="margin-top:0;margin-bottom:12px;">
+        Se um operador humano responder a conversa pelo WhatsApp (celular ou WhatsApp Web) ou se o cliente solicitar atendente humano ("falar com atendente", "humano", "pessoa real"), a IA detecta a intervenção e pausa as respostas automáticas para esse contato temporariamente.
+      </p>
+      <div class="field" style="max-width:320px;margin-bottom:10px;">
+        <label for="ai-human-pause-minutes">Tempo de pausa temporária da IA (minutos)</label>
+        <input id="ai-human-pause-minutes" type="number" min="5" max="1440" value="30">
+      </div>
+      <div id="human-interventions-container" style="margin-top:12px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;">
+          <strong style="font-size:13px;color:#713f12;">Contatos com IA pausada por atendimento humano (<span id="human-pause-count">0</span>):</strong>
+          <button type="button" id="btn-refresh-human-pauses" class="preset-btn" style="height:28px;font-size:11px;">🔄 Atualizar lista</button>
+        </div>
+        <div id="human-pauses-list" style="display:flex;flex-direction:column;gap:6px;max-height:160px;overflow-y:auto;background:white;border:1px solid #fde047;border-radius:8px;padding:8px;">
+          <span style="font-size:12px;color:#854d0e;font-style:italic;">Nenhum contato em pausa humana no momento. Todos com IA ativa.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Simulador interativo multi-turn de conversa com a IA -->
+    <div style="background:#f4f9f6;border:1px solid #cfe2d7;border-radius:14px;padding:18px;margin-top:16px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+        <h4 style="margin:0;font-size:15px;color:#11634c;display:flex;align-items:center;gap:6px;">
+          <span>💬</span> <strong>Simulador de Conversa com a IA (Multi-turn & Memória de Chat)</strong>
+        </h4>
+        <button type="button" id="btn-clear-chat-sim" class="preset-btn" style="height:32px;font-size:12px;">🗑️ Limpar conversa de teste</button>
+      </div>
+      <p class="help" style="margin-top:0;margin-bottom:12px;">
+        Converse diretamente com o robô de atendimento. Ele lembra das mensagens anteriores da conversa para testar o contexto e a persuasão em tempo real.
+      </p>
+
+      <!-- Thread visual estilo WhatsApp -->
+      <div id="chat-simulator-thread" style="min-height:140px;max-height:300px;overflow-y:auto;background:#ece5dd;border:1px solid #d4cdc3;border-radius:12px;padding:14px;margin-bottom:12px;display:flex;flex-direction:column;gap:10px;">
+        <div style="text-align:center;font-size:12px;color:#78867f;background:rgba(255,255,255,0.75);padding:4px 12px;border-radius:12px;margin:0 auto;box-shadow:0 1px 1px rgba(0,0,0,0.05);">
+          🟢 Simulador conectado ao Gemini. Digite abaixo para conversar.
+        </div>
+      </div>
+
+      <div class="btn-aligned-row" style="margin-bottom:12px;">
+        <span style="font-size:12px;font-weight:700;color:#577265;">💡 Testes rápidos com 1 clique:</span>
+        <button type="button" class="preset-btn btn-quick-test" data-text="Olá! Gostaria de saber como funciona o cardápio da Delivale? Tem custo de montagem?">❓ Como funciona?</button>
+        <button type="button" class="preset-btn btn-quick-test" data-text="Qual o valor da mensalidade e vocês cobram porcentagem dos pedidos?">💰 Quanto custa?</button>
+        <button type="button" class="preset-btn btn-quick-test" data-text="Eu já utilizo o iFood, por que precisaria da Delivale?">🍔 Já uso iFood</button>
+        <button type="button" class="preset-btn btn-quick-test" data-text="Gostei muito! Quero fazer o teste grátis de 30 dias. O que vocês precisam?">🚀 Quero testar grátis</button>
+      </div>
+
+      <div class="field" style="margin-bottom:10px;">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <input id="ai-test-input" value="Olá! Gostaria de saber como funciona o cardápio da Delivale? Tem custo de montagem?" placeholder="Digite uma mensagem como se fosse o cliente..." style="flex:1 1 280px;height:44px;">
+          <button type="button" id="btn-simulate-ai-reply" class="primary" style="height:44px;padding:0 18px;">💬 Enviar para a IA</button>
+          <button type="button" id="btn-simulate-delay-only" style="height:44px;">⏱️ Sortear tempo</button>
+        </div>
+      </div>
+      <p id="ai-simulate-status" class="status" style="margin:6px 0 0;font-size:13px;"></p>
+      <div id="ai-simulate-result" hidden style="margin-top:10px;background:white;border:1px solid #d3e0d8;border-radius:10px;padding:12px 14px;font-size:13px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+          <strong>Última resposta da IA:</strong>
+          <span id="ai-simulate-delay-badge" style="font-family:monospace;background:#e1f0e7;padding:2px 8px;border-radius:10px;color:#11634c;font-weight:700;"></span>
+        </div>
+        <div id="ai-simulate-text" style="white-space:pre-wrap;line-height:1.5;color:#173a30;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Mensagens padrão editáveis</h2>
+    <div id="template-editors"></div>
+    <div class="actions settings-actions btn-aligned-row">
+      <button type="button" id="save-settings" class="primary" style="height:44px;">Salvar mensagens e IA</button>
+      <button type="button" id="restore-defaults" style="height:44px;">Restaurar padrões</button>
+    </div>
+    <p id="settings-status" class="status"></p>
+  </div>
+</section>
+
+<section id="settings" hidden>
+  <div class="card">
+    <h1>Configurações</h1>
+    <p class="settings-note">Credenciais, inteligência artificial e vinculação com WhatsApp.</p>
+    
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
+        <h2 style="margin:0;display:flex;align-items:center;gap:8px;"><span>🤖</span> Conexão com Gemini</h2>
+        <span id="gemini-badge" class="badge-disconnected">Verificando chave...</span>
+      </div>
+
+      <div class="field">
+        <label for="api-key">Chave da API Gemini</label>
+        <div class="btn-aligned-row" style="margin-bottom:8px;">
+          <input id="api-key" type="password" maxlength="2048" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Cole sua chave Gemini (ex: AIzaSy...)" style="flex:1 1 260px;min-width:0;height:42px;">
+          <button type="button" id="save-key" class="primary" style="height:42px;">Salvar chave API</button>
+          <button type="button" id="test-gemini-btn" style="height:42px;background:#f0f7f4;border-color:#a5cfb7;color:#11634c;">⚡ Testar Gemini</button>
+          <button type="button" id="clear-key" style="height:42px;color:#a32626;border-color:#f1c2c2;">Remover chave</button>
+        </div>
+        <p id="key-saved-status" class="help"></p>
+      </div>
+
+      <hr style="border:none;border-top:1px solid #dce8ef;margin:20px 0;">
+
+      <!-- Verificação se tem instância preenchida -->
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+          <h3 style="margin:0;font-size:16px;display:flex;align-items:center;gap:8px;">
+            <span>📱</span> Instância do WhatsApp / Evolution vinculada
+          </h3>
+          <button type="button" id="btn-goto-instances" class="preset-btn" style="height:34px;">
+            ⚙️ Ir para aba Instâncias
+          </button>
+        </div>
+        <p class="help" style="margin-top:0;margin-bottom:12px;">
+          A IA utiliza a instância WhatsApp conectada para receber as conversas e responder aos clientes automaticamente.
+        </p>
+
+        <div id="gemini-instance-status-box" class="status-box">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;">
+            <span id="gemini-instance-dot" style="font-size:16px;">⚪</span>
+            <strong id="gemini-instance-badge" style="font-size:14px;">Consultando instâncias cadastradas...</strong>
+          </div>
+          <p id="gemini-instance-desc" style="font-size:13px;color:#577265;margin:0 0 10px;"></p>
+          <div id="gemini-instance-selector-wrap" style="margin-top:10px;" hidden>
+            <label for="ai-instance-selector-settings" style="font-size:13px;font-weight:700;">Instância preferencial para respostas da IA:</label>
+            <select id="ai-instance-selector-settings" style="height:42px;margin-top:4px;">
+              <option value="">Automática (qualquer instância conectada)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="btn-aligned-row">
+          <button type="button" id="btn-refresh-gemini-instance" style="height:42px;">🔄 Atualizar status da instância</button>
+          <button type="button" id="btn-save-gemini-settings" class="primary" style="height:42px;">Salvar preferência de instância</button>
+        </div>
+        <p id="gemini-instance-status-msg" class="status" style="margin-top:8px;"></p>
+      </div>
+
+    </div>
+  </div>
+</section>
 </main>
 <script>
-const DEFAULTS={aiEnabled:false,aiInstructions:'Você é a atendente virtual da Delivale.com. Converse de forma natural, simpática, objetiva e profissional. Explique que a Delivale é um portal de pedidos com marketplace da cidade e cardápio digital para estabelecimentos como restaurantes, lanchonetes, pizzarias, hamburguerias, docerias, food trucks e outros deliveries. Explique os benefícios usando apenas as informações cadastradas em Configurações. Informe que a loja pode ser montada sem custo de montagem e que há 30 dias grátis para teste. Não invente preços, condições, integrações ou promessas. Se não souber uma informação, diga que a equipe Delivale entrará em contato. Quando perceber interesse, conduza naturalmente para o cadastro.',aiRegistration:'Solicite: nome do responsável; nome do estabelecimento; cidade; WhatsApp; segmento do negócio; melhor horário para contato. Confirme os dados antes de finalizar.',aiHandoff:'Perfeito! 😊 Seus dados foram registrados. A equipe da Delivale entrará em contato para explicar os próximos passos e, se você quiser, preparar sua loja para o teste.',offer:'A Delivale.com é um portal de pedidos com marketplace da cidade e cardápio digital próprio para restaurantes, lanchonetes, pizzarias, hamburguerias, docerias, food trucks e outros deliveries. Ajuda a organizar os pedidos, tem integração com WhatsApp e impressão automática. Fernando monta a loja sem custo de montagem, e o estabelecimento pode testar por 30 dias grátis. Pode ser usado em estabelecimento fixo ou food truck. A Delivale também realiza divulgação em grupos locais e redes sociais. Clientes Delivale de Pariquera-Açu têm acesso ao deliVIP, com condições diferenciadas na locação de jogos de mesas e cadeiras; consultar as condições com a Delivale. Não informar preço de mensalidade sem um valor explicitamente inserido aqui. O marketplace é local à cidade; não afirmar que a Delivale realiza entregas por todo o Vale do Ribeira.',tone:'Natural e amigável',length:'Curta',emojis:true,templates:{
-initial:'Oi, pessoal da {empresa}! Tudo bem? 😊\nVocês já conhecem a Delivale.com? É um portal de pedidos com marketplace da cidade e cardápio digital para o seu delivery. Posso explicar rapidinho como funciona?',
-presentation:'Olá, pessoal da {empresa}! Sou o Fernando, de Pariquera-Açu, responsável pela Delivale.com. 😊\n\nA gente ajuda você a organizar os pedidos com seu próprio cardápio digital, integração com WhatsApp e impressão automática. Sua loja também pode fazer parte do marketplace da cidade.\n\nEu monto a loja sem custo de montagem e você tem 30 dias grátis para testar. Podemos conversar?',
-promotion:'Oi, pessoal da {empresa}! 😊\nQue tal conhecer a Delivale.com? Eu monto sua loja sem custo de montagem, com cardápio digital e acesso ao marketplace da cidade, e você testa por 30 dias grátis.\n\nPara clientes Delivale de Pariquera-Açu, também temos o deliVIP, com condições diferenciadas na locação de jogos de mesas e cadeiras. Fale comigo para consultar as condições.\n\nQuer saber como participar?',
-followup:'Oi, pessoal da {empresa}! Tudo bem? 😊\nPassando para retomar nossa conversa sobre a Delivale.com. Ficou alguma dúvida sobre o cardápio digital ou o marketplace da cidade?\nSe fizer sentido para vocês, posso montar a loja e liberar os 30 dias grátis para conhecerem a plataforma.',
-trial:'Olá, pessoal da {empresa}! 😊\nQue tal testar a Delivale.com por 30 dias grátis? Você pode usar no seu estabelecimento fixo ou food truck, com cardápio digital e pedidos organizados.\n\nMe envie seu cardápio e eu monto a loja sem custo de montagem. Você conhece com calma e decide se quer continuar. Posso preparar para vocês?'
+const PROMPT_PRESETS={
+  vendas:`Você é a atendente virtual e especialista de vendas da Delivale.com no WhatsApp, conversando diretamente com o proprietário ou responsável pelo estabelecimento ({empresa}).
+
+OBJETIVO PRINCIPAL:
+Atender com extrema cordialidade, tirar dúvidas e demonstrar as vantagens do cardápio digital próprio da Delivale com 30 dias grátis de teste, convertendo o interesse em cadastro.
+
+SOBRE A DELIVALE:
+- Cardápio digital próprio e profissional para delivery e retiradas no balcão.
+- 0% de comissão por pedido (o restaurante não paga porcentagem sobre suas vendas, lucro 100% próprio).
+- Recebimento de pedidos organizado direto no WhatsApp com opção de impressão automática na cozinha.
+- Inclui QR Code para mesas e link pronto para a bio do Instagram.
+- Montagem da loja sem custo e 30 dias grátis para testar sem compromisso e sem fidelidade.
+
+REGRAS DE OURO:
+1. Responda em português do Brasil de forma simpática, clara, empática e profissional.
+2. Mensagens curtas e naturais de WhatsApp (1 a 3 parágrafos curtos). Nunca envie blocos gigantescos de texto difíceis de ler no celular.
+3. Use emojis com moderação para manter a conversa agradável.
+4. Ao final de cada mensagem, faça uma pergunta simples para continuar a conversa.
+5. Quando o cliente tiver interesse, solicite os dados para liberar o acesso: Nome do responsável, Nome do estabelecimento, Cidade e WhatsApp.
+6. Ao receber os dados ou se solicitarem um atendente humano, agradeça cordialmente e informe que a equipe entrará em contato em breve.
+7. Base de regras da oferta: {oferta}.`,
+
+  delivery:`Você é o consultor especialista em delivery da Delivale.com falando com ({empresa}).
+
+Foco: Ajudar o restaurante a se livrar das altas taxas de aplicativos terceiros (como 12% a 27% do iFood) e fidelizar clientes através de um cardápio digital próprio com pedidos pelo WhatsApp.
+- Destaque: 0% de taxas, pedidos organizados, impressão automática e 30 dias grátis.
+- Peça: Nome, Estabelecimento, Cidade e WhatsApp para iniciarmos o teste.
+- Seja ágil, direto e faça perguntas ao final para fechar o teste grátis.`,
+
+  atendimento:`Você é o atendimento receptivo e cordial da Delivale.com atendendo ({empresa}).
+
+Foco: Tirar todas as dúvidas sobre o cardápio digital, funcionamento de pedidos no WhatsApp e período gratuito.
+- Mantenha tom acolhedor, transparente e paciente.
+- Responda objetivamente à dúvida do cliente e pergunte se ele quer testar por 30 dias sem custo.`
+};
+
+const DEFAULTS={aiEnabled:true,aiSmartTiming:true,aiSendPresence:true,aiHumanDetection:true,aiHumanPauseMinutes:30,aiMinDelay:3,aiMaxDelay:25,aiInstanceId:'',disparoInstanceId:'',aiModel:'gemini-2.5-flash',aiPrompt:PROMPT_PRESETS.vendas,aiInstructions:'Você é a atendente virtual da Delivale.com. Converse de forma natural, simpática, objetiva e profissional. Explique que a Delivale é um portal de pedidos com marketplace da cidade e cardápio digital para estabelecimentos como restaurantes, lanchonetes, pizzarias, hamburguerias, docerias, food trucks e outros deliveries. Explique os benefícios usando apenas as informações cadastradas em Configurações. Informe que a loja pode ser montada sem custo de montagem e que há 30 dias grátis para teste. Não invente preços, condições, integrações ou promessas. Se não souber uma informação, diga que a equipe Delivale entrará em contato. Quando perceber interesse, conduza naturalmente para o cadastro.',aiRegistration:'Solicite: nome do responsável; nome do estabelecimento; cidade; WhatsApp; segmento do negócio; melhor horário para contato. Confirme os dados antes de finalizar.',aiHandoff:'Perfeito! 😊 Seus dados foram registrados. A equipe da Delivale entrará em contato para explicar os próximos passos e, se você quiser, preparar sua loja para o teste.',offer:'A Delivale.com é um portal de pedidos com marketplace da cidade e cardápio digital próprio para restaurantes, lanchonetes, pizzarias, hamburguerias, docerias, food trucks e outros deliveries. Ajuda a organizar os pedidos, tem integração com WhatsApp e impressão automática. Fernando monta a loja sem custo de montagem, e o estabelecimento pode testar por 30 dias grátis. Pode ser usado em estabelecimento fixo ou food truck. A Delivale também realiza divulgação em grupos locais e redes sociais. Clientes Delivale de Pariquera-Açu têm acesso ao deliVIP, com condições diferenciadas na locação de jogos de mesas e cadeiras; consultar as condições com a Delivale. Não informar preço de mensalidade sem um valor explicitamente inserido aqui. O marketplace é local à cidade; não afirmar que a Delivale realiza entregas por todo o Vale do Ribeira.',tone:'Natural e amigável',length:'Curta',emojis:true,templates:{
+initial:'{Oi|Olá|Oi, tudo bem?|Olá, tudo bem?} {Vi o seu estabelecimento e queria tirar uma dúvida rapidinha|Encontrei o seu estabelecimento e queria fazer uma pergunta|Estava conhecendo o seu estabelecimento e fiquei com uma dúvida}: vocês já {utilizam|trabalham com|possuem} um cardápio digital próprio para {receber pedidos|mostrar os produtos|atender seus clientes}?',
+presentation:'{Legal!|Entendi!|Certo!} Eu trabalho com a Delivale.com. {Nós montamos|A gente prepara|Trabalhamos com} um cardápio digital próprio para o estabelecimento, com {produtos, fotos, categorias e preços|seus produtos organizados, fotos e valores|todo o cardápio organizado para o cliente acessar pelo celular}.\n\n{Além disso, o estabelecimento pode participar do marketplace da cidade|A loja também pode ficar disponível no marketplace da Delivale|Também temos o marketplace da cidade}, facilitando para novos clientes {encontrarem o estabelecimento|conhecerem sua loja|acessarem o seu cardápio}.',
+promotion:'{Estamos disponibilizando|Temos disponível|No momento estamos oferecendo} um período de **30 dias grátis** para {conhecer|testar|experimentar} a Delivale.\n\n{Podemos montar sua loja sem custo de montagem|Eu posso preparar seu cardápio digital para você conhecer|A gente pode deixar uma demonstração da sua loja pronta}, para você {ver como funciona antes de decidir|testar com calma|conhecer a plataforma na prática}.\n\n{Se fizer sentido, continuamos depois do teste|Se gostar, depois conversamos sobre a continuidade|Assim você consegue avaliar primeiro se funciona para o seu negócio}.',
+followup:'{Oi! Tudo bem?|Olá! Tudo certo?|Oi, passando rapidinho por aqui.} {Nós conversamos há alguns dias sobre o cardápio digital da Delivale|Eu tinha te chamado sobre a Delivale e o cardápio digital|Passamos por aqui anteriormente para apresentar nosso cardápio digital}.\n\n{Conseguiu dar uma olhadinha?|Ficou alguma dúvida?|Você teria interesse em conhecer melhor como funciona?}\n\n{Se quiser, posso te explicar por aqui mesmo|Se tiver interesse, posso te passar mais detalhes|Posso te mostrar como ficaria para o seu estabelecimento}.',
+trial:'{Se você quiser conhecer na prática|Se tiver interesse em testar|Se quiser ver como ficaria no seu estabelecimento}, podemos {preparar|montar|criar} sua loja na Delivale.\n\n{Você terá 30 dias grátis para testar|O teste fica disponível gratuitamente por 30 dias|Você pode conhecer a plataforma por 30 dias sem custo}.\n\n{Eu mesmo posso ajudar na montagem inicial|Podemos deixar o cardápio preparado para você|A equipe pode ajudar a colocar seu cardápio no sistema}.\n\n{Quer que eu te explique o que preciso para começar?|Posso te mostrar como fazemos?|Tem interesse em fazer um teste?}'
 }};
 const LABELS={initial:'Mensagem inicial',presentation:'Apresentação',promotion:'Promoção',followup:'Retornar contato',trial:'Convidar para teste'};
 const GOALS={initial:'Iniciar uma conversa',presentation:'Apresentar um serviço',promotion:'Divulgar uma promoção',followup:'Retomar contato',trial:'Convidar para teste'};
 const STORAGE='enviozap-delivale-settings-v1';const $=id=>document.getElementById(id);let config=structuredClone(DEFAULTS);let busy=false;let hasApiKey=false;let removeApiKey=false;let databaseReady=false;
-try{const saved=JSON.parse(localStorage.getItem(STORAGE)||'null');if(saved&&typeof saved==='object'){if(typeof saved.offer==='string')config.offer=saved.offer;if(typeof saved.tone==='string')config.tone=saved.tone;if(typeof saved.length==='string')config.length=saved.length;if(typeof saved.emojis==='boolean')config.emojis=saved.emojis;for(const key of Object.keys(LABELS))if(typeof saved.templates?.[key]==='string')config.templates[key]=saved.templates[key]}}catch{}
+let instancesList=[];
+try{const saved=JSON.parse(localStorage.getItem(STORAGE)||'null');if(saved&&typeof saved==='object'){if(typeof saved.aiModel==='string')config.aiModel=saved.aiModel;if(typeof saved.aiPrompt==='string')config.aiPrompt=saved.aiPrompt;if(typeof saved.offer==='string')config.offer=saved.offer;if(typeof saved.tone==='string')config.tone=saved.tone;if(typeof saved.length==='string')config.length=saved.length;if(typeof saved.emojis==='boolean')config.emojis=saved.emojis;for(const key of Object.keys(LABELS))if(typeof saved.templates?.[key]==='string')config.templates[key]=saved.templates[key]}}catch{}
 function status(text,error=false){$('status').textContent=text;$('status').classList.toggle('error',error)}
-function showTab(tab){for(const name of ['home','dashboard','agenda','queue','history','interested','instances','messages','settings']){$(name).hidden=name!==tab;$('nav-'+name).setAttribute('aria-pressed',String(name===tab))}if(tab==='history')renderHistory();if(tab==='dashboard')renderDashboard();if(tab==='agenda')renderAgenda();if(tab==='queue'){renderQueue();refreshQueueControls();}if(tab==='interested')renderInterested();if(tab==='instances'){renderInstances();refreshLiveInstances()} ;if(tab==='messages'){renderAiStatus();refreshLiveInstances()}}
+let queuePollInterval=null;
+function showTab(tab){if(typeof clearInterval!=='undefined'&&queuePollInterval){clearInterval(queuePollInterval);queuePollInterval=null}for(const name of ['home','dashboard','agenda','queue','history','interested','instances','messages','settings']){$(name).hidden=name!==tab;$('nav-'+name).setAttribute('aria-pressed',String(name===tab))}if(tab==='history')renderHistory();if(tab==='dashboard')renderDashboard();if(tab==='agenda')renderAgenda();if(tab==='queue'){renderQueue();refreshQueueControls();if(typeof setInterval!=='undefined')queuePollInterval=setInterval(()=>{refreshQueueControls();renderQueue()},2000)}if(tab==='interested')renderInterested();if(tab==='instances')renderInstances();if(tab==='settings'||tab==='messages')renderSettingsInfo()}
 function showSettings(active){showTab(active?'settings':'home')}
-function renderText(){return $('message').value.replace(/\{empresa\}/gi,$('company').value.trim()||'seu estabelecimento').replace(/\{telefone\}/gi,$('phone').value.trim()).trim()}
+function parseSpintax(text){let prev;do{prev=text;text=text.replace(/\{([^{}]+)\}/g,(m,c)=>c.includes('|')?c.split('|')[Math.floor(Math.random()*c.split('|').length)]:m)}while(text!==prev);return text}
+function renderText(){let t=$('message').value.replace(/\{empresa\}/gi,$('company').value.trim()||'seu estabelecimento').replace(/\{telefone\}/gi,$('phone').value.trim());return parseSpintax(t).trim()}
 function normalizedPhone(){const raw=$('phone').value.trim();let digits=raw.replace(/\D/g,'');if(!raw.startsWith('+')&&(digits.length===10||digits.length===11))digits='55'+digits;return digits}
 function link(){return 'https://api.whatsapp.com/send?phone='+normalizedPhone()+'&text='+encodeURIComponent(renderText())}
 function validSend(){if(!$('company').value.trim()){status('Informe o nome do estabelecimento.',true);$('company').focus();return false}const digits=normalizedPhone();if(digits.length<10||digits.length>15||/^0/.test(digits)){status('Confira o telefone e inclua o DDD.',true);$('phone').focus();return false}if(!renderText()){status('Preencha a mensagem.',true);$('message').focus();return false}return true}
 function update(){ $('preview').textContent=renderText();if(!$('output').hidden){$('generated-link').value=link();$('open-whatsapp').href=link()} }
 function loadTemplate(){ $('message').value=config.templates[$('type').value];$('output').hidden=true;status('');update() }
-function fillSettings(){$('ai-delay-seconds').value=config.aiDelaySeconds??5;$('ai-random-delay').checked=config.aiRandomDelay===true;$('ai-min-seconds').value=config.aiMinSeconds??1;$('ai-max-seconds').value=config.aiMaxSeconds??5;$('ai-typing').checked=config.aiTyping!==false; $('ai-enabled').checked=config.aiEnabled===true;$('ai-instructions').value=config.aiInstructions||DEFAULTS.aiInstructions;$('ai-registration').value=config.aiRegistration||DEFAULTS.aiRegistration;$('ai-handoff').value=config.aiHandoff||DEFAULTS.aiHandoff;$('offer').value=config.offer;$('tone').value=config.tone;$('length').value=config.length;$('emojis').checked=config.emojis;const container=$('template-editors');container.replaceChildren();for(const [key,label]of Object.entries(LABELS)){const div=document.createElement('div');div.className='template';const title=document.createElement('label');title.htmlFor='template-'+key;title.textContent=label;const text=document.createElement('textarea');text.id='template-'+key;text.maxLength=10000;text.value=config.templates[key];div.append(title,text);container.append(div)} }
-function readSettings(){return {aiDelaySeconds:Number($('ai-delay-seconds').value),aiRandomDelay:$('ai-random-delay').checked,aiMinSeconds:Number($('ai-min-seconds').value),aiMaxSeconds:Number($('ai-max-seconds').value),aiTyping:$('ai-typing').checked,aiEnabled:$('ai-enabled').checked,aiInstructions:$('ai-instructions').value.trim(),aiRegistration:$('ai-registration').value.trim(),aiHandoff:$('ai-handoff').value.trim(),offer:$('offer').value.trim(),tone:$('tone').value,length:$('length').value,emojis:$('emojis').checked,templates:Object.fromEntries(Object.keys(LABELS).map(key=>[key,$('template-'+key).value]))}}
+function updatePromptCounter(){
+  const len=$('ai-prompt')?.value?.length||0;
+  if($('ai-prompt-count'))$('ai-prompt-count').textContent=len+' / 15.000 caracteres';
+}
+function updateAiPowerUI(isOn){
+  const box=$('ai-master-box');
+  const icon=$('ai-master-icon');
+  const title=$('ai-master-title');
+  const sub=$('ai-master-sub');
+  const btnText=$('btn-toggle-ai-power-text');
+  const btn=$('btn-toggle-ai-power');
+  if(!box)return;
+  if(isOn){
+    if(box.style){box.style.background='#f0fdf4';box.style.borderColor='#86efac';}
+    if(icon)icon.textContent='🟢';
+    if(title){title.textContent='Atendimento Automático da IA: LIGADO';if(title.style)title.style.color='#166534';}
+    if(sub)sub.textContent='A IA está ativa e responderá os clientes no WhatsApp respeitando as regras e limites abaixo.';
+    if(btnText)btnText.textContent='🔴 Desligar IA';
+    if(btn&&btn.style){btn.style.background='#dc2626';btn.style.color='#ffffff';}
+    if($('ai-status-indicator-badge')){
+      $('ai-status-indicator-badge').textContent='🟢 IA Ativa no WhatsApp';
+      if($('ai-status-indicator-badge').className)$('ai-status-indicator-badge').className='badge-connected';
+    }
+  }else{
+    if(box.style){box.style.background='#fef2f2';box.style.borderColor='#fca5a5';}
+    if(icon)icon.textContent='🔴';
+    if(title){title.textContent='Atendimento Automático da IA: DESLIGADO';if(title.style)title.style.color='#991b1b';}
+    if(sub)sub.textContent='A IA está pausada. Nenhuma mensagem recebida no WhatsApp será respondida automaticamente.';
+    if(btnText)btnText.textContent='🟢 Ligar IA';
+    if(btn&&btn.style){btn.style.background='#16a34a';btn.style.color='#ffffff';}
+    if($('ai-status-indicator-badge')){
+      $('ai-status-indicator-badge').textContent='🔴 IA Desligada';
+      if($('ai-status-indicator-badge').className)$('ai-status-indicator-badge').className='badge-disconnected';
+    }
+  }
+}
+
+function updateTempUI(val){
+  const num=Number(val)||0.3;
+  if($('ai-temperature'))$('ai-temperature').value=num;
+  if($('ai-temp-badge')){
+    const label=num<=0.2?' (Focada)':(num>=0.7?' (Criativa)':' (Equilibrada)');
+    $('ai-temp-badge').textContent=num.toFixed(2)+label;
+  }
+}
+
+function updateCharsUI(val){
+  const num=Number(val)||320;
+  if($('ai-max-chars'))$('ai-max-chars').value=num;
+  if($('ai-chars-badge'))$('ai-chars-badge').textContent=num+' chars';
+}
+
+function fillSettings(){
+  const isAiOn = config.aiEnabled !== false;
+  $('ai-enabled').checked = isAiOn;
+  updateAiPowerUI(isAiOn);
+  updateTempUI(config.aiTemperature !== undefined ? config.aiTemperature : 0.3);
+  updateCharsUI(config.aiMaxChars || 320);
+  if($('ai-strict-control'))$('ai-strict-control').checked=config.aiStrictControl!==false;
+
+  if($('ai-model'))$('ai-model').value=config.aiModel||'gemini-2.5-flash';
+  if($('ai-prompt')){
+    $('ai-prompt').value=config.aiPrompt||DEFAULTS.aiPrompt;
+    updatePromptCounter();
+  }
+  if($('ai-smart-timing'))$('ai-smart-timing').checked=config.aiSmartTiming!==false;
+  if($('ai-send-presence'))$('ai-send-presence').checked=config.aiSendPresence!==false;
+  if($('ai-human-detection'))$('ai-human-detection').checked=config.aiHumanDetection!==false;
+  if($('ai-human-pause-minutes'))$('ai-human-pause-minutes').value=config.aiHumanPauseMinutes||30;
+  if($('ai-min-delay'))$('ai-min-delay').value=config.aiMinDelay||3;
+  if($('ai-max-delay'))$('ai-max-delay').value=config.aiMaxDelay||25;
+  if($('ai-instance-selector'))$('ai-instance-selector').value=config.aiInstanceId||'';
+  if($('queue-disparo-instance'))$('queue-disparo-instance').value=config.disparoInstanceId||'';
+  $('ai-instructions').value=config.aiInstructions||DEFAULTS.aiInstructions;
+  $('ai-registration').value=config.aiRegistration||DEFAULTS.aiRegistration;
+  $('ai-handoff').value=config.aiHandoff||DEFAULTS.aiHandoff;
+  $('offer').value=config.offer;$('tone').value=config.tone;$('length').value=config.length;$('emojis').checked=config.emojis;
+  const container=$('template-editors');container.replaceChildren();
+  for(const [key,label]of Object.entries(LABELS)){
+    const div=document.createElement('div');div.className='template';
+    const title=document.createElement('label');title.htmlFor='template-'+key;title.textContent=label;
+    const text=document.createElement('textarea');text.id='template-'+key;text.maxLength=10000;text.value=config.templates[key];
+    div.append(title,text);container.append(div)
+  }
+}
+function readSettings(){
+  const minDelay=Math.max(1,Number($('ai-min-delay')?.value)||3);
+  const maxDelay=Math.max(minDelay,Number($('ai-max-delay')?.value)||25);
+  const temp=Math.min(1.0,Math.max(0.0,Number($('ai-temperature')?.value??0.3)));
+  const maxChars=Math.max(80,Math.min(2500,Number($('ai-max-chars')?.value)||320));
+  return {
+    aiEnabled:$('ai-enabled').checked,
+    aiTemperature:temp,
+    aiMaxChars:maxChars,
+    aiStrictControl:$('ai-strict-control')?$('ai-strict-control').checked:true,
+    aiModel:$('ai-model')?.value||'gemini-2.5-flash',
+    aiPrompt:$('ai-prompt')?.value?.trim()||'',
+    aiSmartTiming:$('ai-smart-timing')?$('ai-smart-timing').checked:true,
+    aiSendPresence:$('ai-send-presence')?$('ai-send-presence').checked:true,
+    aiHumanDetection:$('ai-human-detection')?$('ai-human-detection').checked:true,
+    aiHumanPauseMinutes:Math.max(5,Number($('ai-human-pause-minutes')?.value)||30),
+    aiMinDelay:minDelay,
+    aiMaxDelay:maxDelay,
+    aiInstanceId:$('ai-instance-selector')?.value||'',
+    disparoInstanceId:$('queue-disparo-instance')?.value||config.disparoInstanceId||'',
+    aiInstructions:$('ai-instructions').value.trim(),
+    aiRegistration:$('ai-registration').value.trim(),
+    aiHandoff:$('ai-handoff').value.trim(),
+    offer:$('offer').value.trim(),
+    tone:$('tone').value,
+    length:$('length').value,
+    emojis:$('emojis').checked,
+    templates:Object.fromEntries(Object.keys(LABELS).map(key=>[key,$('template-'+key).value]))
+  }
+}
+async function loadHumanPauses(){
+  const countEl=$('human-pause-count');
+  const listEl=$('human-pauses-list');
+  try{
+    const res=await apiCall('/api/ai/human-interventions');
+    const items=res?.interventions||[];
+    if(countEl)countEl.textContent=String(items.length);
+    if(listEl){
+      if(items.length===0){
+        listEl.innerHTML='<span style="font-size:12px;color:#854d0e;font-style:italic;">Nenhum contato em pausa humana no momento. Todos com IA ativa.</span>';
+      }else{
+        listEl.replaceChildren();
+        for(const item of items){
+          const div=document.createElement('div');
+          div.style='display:flex;align-items:center;justify-content:space-between;gap:8px;background:#fef9c3;border:1px solid #facc15;border-radius:6px;padding:6px 10px;font-size:12px;';
+          const info=document.createElement('div');
+          let timeStr='';
+          try{timeStr=new Date(item.paused_until).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}catch{}
+          info.innerHTML=`<strong>${item.company||item.phone}</strong> (${item.phone})<br><span style="color:#713f12;font-size:11px;">Pausa até ${timeStr||item.paused_until} · ${item.reason}</span>`;
+          const btn=document.createElement('button');
+          btn.type='button';
+          btn.className='preset-btn';
+          btn.style='height:26px;font-size:11px;padding:0 8px;color:#166534;background:#dcfce7;border-color:#86efac;cursor:pointer;';
+          btn.textContent='▶️ Retomar IA';
+          btn.addEventListener('click',async()=>{
+            btn.disabled=true;
+            btn.textContent='Retomando…';
+            try{
+              await apiCall('/api/ai/human-interventions/'+encodeURIComponent(item.phone),{method:'DELETE'});
+              await loadHumanPauses();
+              await renderSettingsInfo();
+            }catch(err){
+              alert('Erro ao retomar IA: '+err.message);
+              btn.disabled=false;
+            }
+          });
+          div.append(info,btn);
+          listEl.append(div);
+        }
+      }
+    }
+  }catch(err){
+    console.warn('Erro ao carregar pausas humanas:',err);
+  }
+}
+
+async function renderSettingsInfo(){
+  try{
+    const data=await apiCall('/api/settings');
+    instancesList=data.instances||[];
+    hasApiKey=data.hasApiKey===true;
+    keyStatus();
+    if($('gemini-badge')){
+      $('gemini-badge').textContent=hasApiKey?'✅ Chave Gemini ativa e pronta':'⚠️ Nenhuma chave salva';
+      $('gemini-badge').className=hasApiKey?'badge-connected':'badge-disconnected';
+    }
+    for(const sel of [$('ai-instance-selector'), $('ai-instance-selector-settings')]){
+      if(!sel)continue;
+      const currentVal=config.aiInstanceId||'';
+      sel.replaceChildren();
+      const defaultOpt=document.createElement('option');
+      defaultOpt.value='';
+      defaultOpt.textContent='Automática (qualquer conectada com IA)';
+      sel.append(defaultOpt);
+      for(const inst of instancesList){
+        const opt=document.createElement('option');
+        opt.value=inst.id;
+        const icon=inst.status==='CONNECTED'?'🟢':'⚪';
+        const roleLabel=inst.role==='IA'?' [🤖 Exclusiva IA]':(inst.role==='DISPARO'?' [🚀 Apenas Disparo]':' [🔄 Disparo + IA]');
+        opt.textContent=`${icon} ${inst.name}${roleLabel}`;
+        if(inst.id===currentVal)opt.selected=true;
+        sel.append(opt);
+      }
+    }
+    const wrap=$('gemini-instance-selector-wrap');
+    if(wrap)wrap.hidden=instancesList.length===0;
+
+    const qSelector=$('queue-disparo-instance');
+    if(qSelector){
+      const currentDisparo=config.disparoInstanceId||'';
+      qSelector.replaceChildren();
+      const defOpt=document.createElement('option');
+      defOpt.value='';
+      defOpt.textContent='Instância Disparo: Automática (todas)';
+      qSelector.append(defOpt);
+      for(const inst of instancesList){
+        if(inst.role==='IA')continue;
+        const opt=document.createElement('option');
+        opt.value=inst.id;
+        const icon=inst.status==='CONNECTED'?'🟢':'⚪';
+        opt.textContent=`${icon} Disparo: ${inst.name}`;
+        if(inst.id===currentDisparo)opt.selected=true;
+        qSelector.append(opt);
+      }
+    }
+    if($('webhook-url-code')&&typeof window!=='undefined'&&window.location?.origin){
+      $('webhook-url-code').textContent=window.location.origin+'/api/webhook';
+    }
+    await loadHumanPauses();
+    const dot=$('gemini-instance-dot'),badge=$('gemini-instance-badge'),desc=$('gemini-instance-desc');
+    const connectedInsts=(instancesList||[]).filter(i=>i&&i.status==='CONNECTED');
+    if(instancesList.length===0){
+      if(dot)dot.textContent='🔴';
+      if(badge){badge.textContent='Nenhuma instância preenchida';badge.style.color='#a81c1c'}
+      if(desc)desc.textContent='Para que a IA responda os clientes automaticamente, cadastre e conecte ao menos uma instância na aba "Instâncias".';
+    }else if(connectedInsts.length>0){
+      if(dot)dot.textContent='🟢';
+      if(badge){badge.textContent=`Instância preenchida e conectada (${connectedInsts.length} ativa${connectedInsts.length>1?'s':''})`;badge.style.color='#0d6338'}
+      const names=connectedInsts.map(i=>i?.name||'Desconhecida').join(', ');
+      if(desc)desc.textContent=`Pronta para responder clientes: ${names}.`;
+    }else{
+      if(dot)dot.textContent='🟡';
+      if(badge){badge.textContent=`Instância preenchida (${instancesList.length} cadastrada${instancesList.length>1?'s':''}), mas DESCONECTADA`;badge.style.color='#a35200'}
+      if(desc)desc.textContent='A instância está salva com URL e token, mas o WhatsApp não está conectado. Vá até a aba "Instâncias" e clique em "Conectar / Gerar QR Code".';
+    }
+    const isAiOn=(config?.aiEnabled!==false);
+    if($('ai-enabled'))$('ai-enabled').checked=isAiOn;
+    if($('ai-status-indicator-badge')){
+      const ok=isAiOn&&hasApiKey&&(connectedInsts.length>0);
+      let badgeLabel='🟢 IA Ativa';
+      if(!isAiOn){
+        badgeLabel='⏸️ IA Desligada (Modo Manual)';
+      }else if(!hasApiKey){
+        badgeLabel='⚠️ Sem chave Gemini salva';
+      }else if(connectedInsts.length===0){
+        badgeLabel='⚠️ Sem instância WhatsApp conectada';
+      }else{
+        badgeLabel=`🟢 IA Ativa (${connectedInsts.map(i=>i.name).join(', ')})`;
+      }
+      $('ai-status-indicator-badge').textContent=badgeLabel;
+      $('ai-status-indicator-badge').className=ok?'badge-connected':'badge-disconnected';
+    }
+    if($('ai-callout-icon')&&$('ai-callout-text')){
+      if(!isAiOn){
+        $('ai-callout-icon').textContent='⏸️';
+        $('ai-callout-text').textContent='A IA está desligada no momento. Marque a opção "Ligar IA para responder os clientes automaticamente" para ativá-la.';
+      }else if(!hasApiKey){
+        $('ai-callout-icon').textContent='⚠️';
+        $('ai-callout-text').textContent='Chave da API Gemini não encontrada. Vá em Configurações e salve sua chave para que a IA possa atender.';
+      }else if((instancesList||[]).length===0){
+        $('ai-callout-icon').textContent='🔴';
+        $('ai-callout-text').textContent='Nenhuma instância preenchida. Cadastre uma instância para que a IA possa responder clientes.';
+      }else if(connectedInsts.length>0){
+        $('ai-callout-icon').textContent='🟢';
+        $('ai-callout-text').textContent=`Instância conectada (${connectedInsts[0]?.name || 'WhatsApp'}). A IA está pronta e ativa respondendo clientes automaticamente!`;
+      }else{
+        $('ai-callout-icon').textContent='🟡';
+        $('ai-callout-text').textContent='Instância preenchida, porém desconectada. Clique em "Ver Instâncias" para escanear o QR Code.';
+      }
+    }
+  }catch(e){console.error('Erro ao renderizar status:',e); console.error('Stack:', e.stack);}
+}
 $('nav-home').addEventListener('click',()=>showSettings(false));for(const n of ['dashboard','agenda','queue','interested','instances','messages'])$('nav-'+n).addEventListener('click',()=>showTab(n));$('nav-settings').addEventListener('click',()=>showSettings(true));$('nav-messages').addEventListener('click',()=>showTab('messages'));$('type').addEventListener('change',loadTemplate);
 for(const id of ['company','phone','message'])$(id).addEventListener('input',()=>{status('');update()});
-let apiBase='';
-const SHARED_BACKEND='https://mensagem-whatsapp-editavel.lfbaeta132673.chatgpt.site';
-async function apiCall(path,options={}){const send=base=>fetch(base+path,{...options,headers:{'Content-Type':'application/json',...(options.headers||{})}});let response;try{response=await send(apiBase)}catch(e){if(apiBase||(options.method&&options.method!=='GET'))throw new Error('Não foi possível conectar ao servidor. Confira a conexão.');apiBase=SHARED_BACKEND;response=await send(apiBase)}let data;try{data=await response.clone().json()}catch{if(!apiBase&&(!options.method||options.method==='GET'||[404,405].includes(response.status))){apiBase=SHARED_BACKEND;response=await send(apiBase);try{data=await response.json()}catch{throw new Error('O backend não retornou dados válidos. Confira o endereço publicado.')}}else throw new Error('A página abriu, mas o backend não respondeu com dados válidos.')}if(!response.ok)throw new Error(data.error||'Não foi possível salvar no banco.');return data}
-
-function keyStatus(){const indicator=$('key-saved-status');indicator.classList.toggle('saved',hasApiKey);indicator.classList.toggle('missing',!hasApiKey);indicator.textContent=hasApiKey?'✅ Chave da API Gemini cadastrada. Está salva e pronta para uso.':'⚠️ Nenhuma chave da API Gemini cadastrada. Cole sua chave e clique em Salvar chave API.'}
+async function apiCall(path,options={}){let response;try{response=await fetch(path,{...options,headers:{'Content-Type':'application/json',...(options.headers||{})}})}catch{throw new Error('Falha de conexão com o servidor. Tente novamente.')}const text=await response.text();let data=null;try{data=JSON.parse(text)}catch{}if(!response.ok)throw new Error(data?.error||(response.status===403?'Acesso não autorizado.':('Erro '+response.status+' no servidor.')));return data||{}}
+function keyStatus(){ $('key-saved-status').textContent=hasApiKey?'Chave Gemini salva no servidor.':'Nenhuma chave Gemini salva.' }
 async function persistSettings(next,preserveKey=false){const data=await apiCall('/api/settings',{method:'PUT',body:JSON.stringify({config:next,...(preserveKey?{}:{apiKey:normalizeApiKey($('api-key').value),removeApiKey})})});config=data.config;hasApiKey=data.hasApiKey;removeApiKey=false;$('api-key').value='';keyStatus();return data}
-$('save-settings').addEventListener('click',async()=>{const next=readSettings();if(!next.offer){$('settings-status').textContent='Descreva o que você quer oferecer.';return}const button=$('save-settings');button.disabled=true;$('settings-status').textContent='Salvando no banco de dados…';try{await persistSettings(next);if(next.aiEnabled)await activateAi();$('settings-status').textContent='Configurações e chave salvas. Disponíveis nas outras máquinas.';loadTemplate()}catch(error){$('settings-status').textContent=error.message+' Seus campos não foram apagados.'}finally{button.disabled=false}});
+$('save-settings').addEventListener('click',async()=>{const next=readSettings();if(!next.offer){$('settings-status').textContent='Descreva o que você quer oferecer.';return}const button=$('save-settings');button.disabled=true;$('settings-status').textContent='Salvando no banco de dados…';try{await persistSettings(next);$('settings-status').textContent='Configurações e chave salvas. Disponíveis nas outras máquinas.';loadTemplate();await renderSettingsInfo()}catch(error){$('settings-status').textContent=error.message+' Seus campos não foram apagados.'}finally{button.disabled=false}});
 $('restore-defaults').addEventListener('click',async()=>{if(!confirm('Restaurar a oferta e as cinco mensagens padrão da Delivale? A chave salva será mantida.'))return;try{await persistSettings(structuredClone(DEFAULTS),true);fillSettings();loadTemplate();$('settings-status').textContent='Padrões restaurados no banco de dados.'}catch(error){$('settings-status').textContent=error.message}});
-$('save-key').addEventListener('click',async()=>{const key=normalizeApiKey($('api-key').value);if(!key){$('key-saved-status').textContent='Insira sua chave Gemini antes de salvar.';$('api-key').focus();return}const button=$('save-key');button.disabled=true;button.textContent='Salvando…';$('key-saved-status').textContent='Guardando a chave no banco…';try{const data=await apiCall('/api/settings/key',{method:'PUT',body:JSON.stringify({apiKey:key})});hasApiKey=data.hasApiKey;removeApiKey=false;$('api-key').value='';keyStatus()}catch(error){$('key-saved-status').textContent=error.message+' A chave foi mantida no campo para tentar novamente.'}finally{button.disabled=false;button.textContent='Salvar chave API'}});
+$('save-key').addEventListener('click',async()=>{const key=normalizeApiKey($('api-key').value);if(!key){$('key-saved-status').textContent='Insira sua chave Gemini antes de salvar.';$('api-key').focus();return}const button=$('save-key');button.disabled=true;button.textContent='Salvando…';$('key-saved-status').textContent='Guardando a chave no banco…';try{const data=await apiCall('/api/settings/key',{method:'PUT',body:JSON.stringify({apiKey:key})});hasApiKey=data.hasApiKey;removeApiKey=false;$('api-key').value='';$('key-saved-status').textContent='Chave API salva! Disponível no computador e no celular.'}catch(error){$('key-saved-status').textContent=error.message+' A chave foi mantida no campo para tentar novamente.'}finally{button.disabled=false;button.textContent='Salvar chave API'}});
 $('clear-key').addEventListener('click',()=>{$('api-key').value='';removeApiKey=true;$('key-saved-status').textContent='Chave marcada para remoção. Clique em Salvar configurações para confirmar.'});
 $('generate-link').addEventListener('click',()=>{if(!validSend())return;$('generated-link').value=link();$('open-whatsapp').href=link();$('output').hidden=false;status('Link pronto. Abra a conversa para confirmar o envio.')});
 $('open-whatsapp').addEventListener('click',event=>{if(!validSend()){event.preventDefault();return}event.currentTarget.href=link();recordOpening()});
 $('copy-link').addEventListener('click',async()=>{if(!validSend())return;$('generated-link').value=link();try{await navigator.clipboard.writeText(link());status('Link copiado!')}catch{$('generated-link').focus();$('generated-link').select();$('generated-link').setSelectionRange(0,$('generated-link').value.length);status('Selecione Copiar no link destacado.')}});
-$('generate-ai').addEventListener('click',async()=>{if(busy)return;const choices=readSettings();if(!choices.offer){showSettings(true);$('offer').focus();$('settings-status').textContent='Preencha o que você quer oferecer.';return}if(!$('niche').value.trim()){status('Informe o nicho do estabelecimento.',true);$('niche').focus();return}const key=normalizeApiKey($('api-key').value);$('api-key').value=key;if(!key&&!hasApiKey){showSettings(true);$('api-key').focus();$('settings-status').textContent='Insira sua chave Gemini para criar uma nova versão com IA.';return}busy=true;$('generate-ai').disabled=true;$('generate-ai').textContent='Criando mensagem…';status('Aguarde a IA preparar a mensagem.');try{const data=await apiCall('/api/generate-message',{method:'POST',headers:{'Content-Type':'application/json','X-Gemini-Key':key},body:JSON.stringify({company:$('company').value.trim(),niche:$('niche').value.trim(),goal:GOALS[$('type').value],tone:choices.tone,length:choices.length,emojis:choices.emojis,details:choices.offer,current:$('message').value})});if(!data.message)throw new Error('A IA não retornou texto. Tente novamente.');$('message').value=data.message;update();status('Mensagem criada. Revise antes de enviar.');$('message').focus()}catch(error){status(error.message||'Falha de conexão com a IA.',true)}finally{busy=false;$('generate-ai').disabled=false;$('generate-ai').textContent='Criar nova versão com IA'}});
+$('generate-ai').addEventListener('click',async()=>{if(busy)return;const choices=readSettings();if(!choices.offer){showSettings(true);$('offer').focus();$('settings-status').textContent='Preencha o que você quer oferecer.';return}if(!$('niche').value.trim()){status('Informe o nicho do estabelecimento.',true);$('niche').focus();return}const key=normalizeApiKey($('api-key').value);$('api-key').value=key;if(!key&&!hasApiKey){showSettings(true);$('api-key').focus();$('settings-status').textContent='Insira sua chave Gemini para criar uma nova versão com IA.';return}busy=true;$('generate-ai').disabled=true;$('generate-ai').textContent='Criando mensagem…';status('Aguarde a IA preparar a mensagem.');try{const response=await fetch('/api/generate-message',{method:'POST',headers:{'Content-Type':'application/json','X-Gemini-Key':key},body:JSON.stringify({company:$('company').value.trim(),niche:$('niche').value.trim(),goal:GOALS[$('type').value],tone:choices.tone,length:choices.length,emojis:choices.emojis,details:choices.offer,current:$('message').value})});const data=await response.json();if(!response.ok)throw new Error(data.error||'Não foi possível gerar a mensagem.');if(!data.message)throw new Error('A IA não retornou texto. Tente novamente.');$('message').value=data.message;update();status('Mensagem criada. Revise antes de enviar.');$('message').focus()}catch(error){status(error.message||'Falha de conexão com a IA.',true)}finally{busy=false;$('generate-ai').disabled=false;$('generate-ai').textContent='Criar nova versão com IA'}});
 
 
 async function renderDashboard(){try{const d=await apiCall('/api/dashboard');for(const k of ['agenda','queued','sent','interested','errors'])$('m-'+k).textContent=d[k]||0}catch{}}
-function parseCsv(text){const lines=text.replace(/^\uFEFF/,'').split(/\r?\n/).filter(Boolean);if(lines.length<2)return[];const sep=lines[0].includes(';')?';':',';const h=lines[0].split(sep).map(x=>x.trim().toLowerCase());return lines.slice(1).map(line=>{const v=line.split(sep).map(x=>x.trim().replace(/^"|"$/g,''));const get=(...names)=>{const i=h.findIndex(x=>names.some(n=>x.includes(n)));return i>=0?v[i]:''};return{company:get('estabelecimento','empresa','nome'),phone:get('whatsapp','telefone','celular'),responsible:get('responsável','responsavel'),notes:get('observa')}}).filter(x=>x.company&&x.phone)}
-$('import-contacts').addEventListener('click',async()=>{const city=$('import-city').value.trim(),file=$('import-file').files[0];if(!city||!file){$('agenda-status').textContent='Informe a cidade e selecione o CSV.';return}try{const contacts=parseCsv(await file.text());const r=await apiCall('/api/contacts/import',{method:'POST',body:JSON.stringify({city,contacts})});$('agenda-status').textContent=r.imported+' importado(s), '+r.skipped+' ignorado(s).';await renderAgenda();await renderDashboard()}catch(e){$('agenda-status').textContent=e.message}})
-async function renderAgenda(){try{const params=new URLSearchParams();if($('agenda-city').value)params.set('city',$('agenda-city').value);if($('agenda-search').value.trim())params.set('q',$('agenda-search').value.trim());const d=await apiCall('/api/contacts?'+params);const selected=$('agenda-city').value;$('agenda-city').innerHTML='<option value="">Todas</option>'+d.cities.map(x=>'<option></option>').join('');[...$('agenda-city').options].slice(1).forEach((o,i)=>{o.value=d.cities[i];o.textContent=d.cities[i]});$('agenda-city').value=selected;const rows=$('agenda-rows');rows.replaceChildren();for(const x of d.contacts){const tr=document.createElement('tr');if(x.interested)tr.className='interested-row';const pick=document.createElement('td');const cb=document.createElement('input');cb.type='checkbox';cb.className='agenda-pick';cb.value=x.id;cb.disabled=x.status!=='AGENDA';pick.append(cb);tr.append(pick);for(const val of [x.company,x.phone,x.city,x.error?x.status+' — '+x.error:x.status]){const td=document.createElement('td');td.textContent=val;tr.append(td)}const a=document.createElement('td');const edit=document.createElement('button');edit.type='button';edit.textContent='Editar';edit.onclick=()=>openAgendaEditor(x);a.append(edit);tr.append(a);rows.append(tr)}}catch(e){$('agenda-status').textContent=e.message}}
+let showingOnlyDuplicates=false;
+async function parseSpreadsheet(file,defaultCity){
+  const name=file.name.toLowerCase();
+  const isExcel=name.endsWith('.xlsx')||name.endsWith('.xls')||file.type.includes('spreadsheet')||file.type.includes('excel');
+  let contacts=[];
+  if(isExcel&&typeof XLSX!=='undefined'){
+    const buffer=await file.arrayBuffer();
+    const wb=XLSX.read(buffer,{type:'array'});
+    const sheetName=wb.SheetNames[0];
+    const data=XLSX.utils.sheet_to_json(wb.Sheets[sheetName],{header:1,defval:''});
+    if(!data||data.length<2)return[];
+    const headers=data[0].map(h=>String(h||'').trim().toLowerCase());
+    const findCol=(...names)=>headers.findIndex(h=>names.some(n=>h.includes(n)));
+    const colCity=findCol('cidade','município','municipio');
+    const colCompany=findCol('estabelecimento','empresa','nome','fantasia','razão','razao');
+    const colCategory=findCol('categoria','nicho','segmento','tipo');
+    const colPhone=findCol('whatsapp','telefone','celular','fone','tel','contato');
+    const colAddress=findCol('endereço','endereco','rua','bairro','logradouro');
+    const colDelivery=findCol('delivery','entrega');
+    const colNotes=findCol('observa','obs','fonte','verificação','verificacao','responsável','responsavel');
+    for(let i=1;i<data.length;i++){
+      const row=data[i];
+      if(!row||!row.length)continue;
+      const get=idx=>(idx>=0&&row[idx]!==undefined)?String(row[idx]).trim():'';
+      const company=get(colCompany);
+      const phone=get(colPhone);
+      const rowCity=get(colCity)||defaultCity||'';
+      const category=get(colCategory);
+      const address=get(colAddress);
+      const delivery=get(colDelivery);
+      const notes=get(colNotes);
+      if(!company&&!phone)continue;
+      const fullNotes=[category?('Categoria: '+category):'',address?('Endereço: '+address):'',delivery?('Delivery: '+delivery):'',notes].filter(Boolean).join(' | ');
+      contacts.push({company,phone,city:rowCity,responsible:category||'',notes:fullNotes});
+    }
+  }else{
+    const text=await file.text();
+    const lines=text.replace(/^\uFEFF/,'').split(/\r?\n/).filter(Boolean);
+    if(lines.length<2)return[];
+    const sep=lines[0].includes(';')?';':',';
+    const h=lines[0].split(sep).map(x=>x.trim().toLowerCase());
+    const findCol=(...names)=>h.findIndex(col=>names.some(n=>col.includes(n)));
+    const colCity=findCol('cidade','município','municipio');
+    const colCompany=findCol('estabelecimento','empresa','nome','fantasia');
+    const colCategory=findCol('categoria','nicho','segmento');
+    const colPhone=findCol('whatsapp','telefone','celular','fone','tel');
+    const colAddress=findCol('endereço','endereco');
+    const colDelivery=findCol('delivery');
+    const colNotes=findCol('observa','obs','fonte','responsável','responsavel');
+    for(let i=1;i<lines.length;i++){
+      const row=lines[i].split(sep).map(x=>x.trim().replace(/^"|"$/g,''));
+      const get=idx=>(idx>=0&&row[idx])?row[idx]:'';
+      const company=get(colCompany);
+      const phone=get(colPhone);
+      const rowCity=get(colCity)||defaultCity||'';
+      const category=get(colCategory);
+      const address=get(colAddress);
+      const delivery=get(colDelivery);
+      const notes=get(colNotes);
+      if(!company&&!phone)continue;
+      const fullNotes=[category?('Categoria: '+category):'',address?('Endereço: '+address):'',delivery?('Delivery: '+delivery):'',notes].filter(Boolean).join(' | ');
+      contacts.push({company,phone,city:rowCity,responsible:category||'',notes:fullNotes});
+    }
+  }
+  return contacts.filter(x=>x.company&&x.phone);
+}
+$('import-contacts').addEventListener('click',async()=>{
+  const city=$('import-city').value.trim(),file=$('import-file').files[0];
+  if(!file){$('agenda-status').textContent='Selecione uma planilha Excel (.xlsx, .xls) ou arquivo CSV.';return}
+  $('agenda-status').textContent='Lendo e analisando a planilha…';
+  try{
+    const contacts=await parseSpreadsheet(file,city);
+    if(!contacts.length){$('agenda-status').textContent='Nenhum contato encontrado. Verifique se o arquivo possui colunas com Estabelecimento e WhatsApp/Telefone.';return}
+    const r=await apiCall('/api/contacts/import',{method:'POST',body:JSON.stringify({city,contacts})});
+    let msg=`${r.imported} contato(s) adicionado(s) à Agenda.`;
+    if(r.duplicates>0)msg+=` ⚠️ ${r.duplicates} telefone(s) duplicado(s) identificado(s) e ignorado(s).`;
+    if(r.skipped>r.duplicates)msg+=` (${r.skipped-r.duplicates} registros inválidos ignorados).`;
+    $('agenda-status').textContent=msg;
+    $('import-file').value='';
+    await renderAgenda();
+    await renderDashboard();
+  }catch(e){$('agenda-status').textContent=e.message}
+});
+async function renderAgenda(){
+  try{
+    const params=new URLSearchParams();
+    params.set('status','AGENDA');
+    if($('agenda-city').value)params.set('city',$('agenda-city').value);
+    if($('agenda-search').value.trim())params.set('q',$('agenda-search').value.trim());
+    const d=await apiCall('/api/contacts?'+params);
+    const selected=$('agenda-city').value;
+    $('agenda-city').innerHTML='<option value="">Todas</option>'+d.cities.map(x=>'<option></option>').join('');
+    [...$('agenda-city').options].slice(1).forEach((o,i)=>{o.value=d.cities[i];o.textContent=d.cities[i]});
+    $('agenda-city').value=selected;
+    if($('dup-badge'))$('dup-badge').textContent=d.duplicateCount||0;
+    let list=d.contacts||[];
+    if(showingOnlyDuplicates)list=list.filter(x=>x.phone_count>1);
+    const rows=$('agenda-rows');
+    rows.replaceChildren();
+    for(const x of list){
+      const tr=document.createElement('tr');
+      if(x.interested)tr.className='interested-row';
+      if(x.phone_count>1)tr.style.background='#fffbf0';
+      const pick=document.createElement('td');
+      const cb=document.createElement('input');
+      cb.type='checkbox';cb.className='agenda-pick';cb.value=x.id;cb.disabled=x.status!=='AGENDA';
+      pick.append(cb);tr.append(pick);
+      const tdComp=document.createElement('td');
+      tdComp.innerHTML='<strong>'+(x.company||'')+'</strong>';
+      tr.append(tdComp);
+      const tdPhone=document.createElement('td');
+      tdPhone.style.whiteSpace='nowrap';
+      tdPhone.textContent=x.phone||'';
+      if(x.phone_count>1){
+        const badge=document.createElement('span');
+        badge.style='background:#fee2e2;color:#991b1b;border:1px solid #fecaca;font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:6px;display:inline-block;';
+        badge.title='Telefone repetido em '+x.phone_count+' cadastros!';
+        badge.textContent='⚠️ Duplicado ('+x.phone_count+')';
+        tdPhone.append(badge);
+      }
+      tr.append(tdPhone);
+      const tdCity=document.createElement('td');
+      tdCity.textContent=x.city||'';
+      tr.append(tdCity);
+      const tdNotes=document.createElement('td');
+      tdNotes.style='font-size:12px;color:#556b60;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;';
+      tdNotes.title=x.notes||x.responsible||'';
+      tdNotes.textContent=x.notes||x.responsible||'—';
+      tr.append(tdNotes);
+      const tdStatus=document.createElement('td');
+      tdStatus.textContent=x.status||'';
+      tr.append(tdStatus);
+      const a=document.createElement('td');
+      const edit=document.createElement('button');
+      edit.style='padding:5px 9px;font-size:12px;';
+      edit.textContent='Editar';
+      edit.onclick=async()=>{
+        const company=prompt('Estabelecimento',x.company);if(company===null)return;
+        const phone=prompt('WhatsApp',x.phone);if(phone===null)return;
+        const city=prompt('Cidade',x.city);if(city===null)return;
+        try{
+          await apiCall('/api/contacts/'+encodeURIComponent(x.id),{method:'PATCH',body:JSON.stringify({company,phone,city,responsible:x.responsible||'',notes:x.notes||''})});
+          renderAgenda();
+        }catch(e){alert(e.message)}
+      };
+      a.append(edit);tr.append(a);
+      rows.append(tr);
+    }
+    if(showingOnlyDuplicates){
+      $('agenda-status').textContent=`Exibindo ${list.length} contato(s) com telefone duplicado.`;
+    }
+  }catch(e){$('agenda-status').textContent=e.message}
+}
+$('toggle-duplicates')?.addEventListener('click',()=>{
+  showingOnlyDuplicates=!showingOnlyDuplicates;
+  const btn=$('toggle-duplicates');
+  if(btn){
+    if(showingOnlyDuplicates){
+      btn.style.background='#fef2f2';btn.style.borderColor='#f87171';btn.style.color='#991b1b';
+    }else{
+      btn.style.background='';btn.style.borderColor='';btn.style.color='';
+    }
+  }
+  renderAgenda();
+});
 $('agenda-city').addEventListener('change',renderAgenda);$('agenda-search').addEventListener('input',()=>{clearTimeout(window.agendaTimer);window.agendaTimer=setTimeout(renderAgenda,250)});
-$('add-queue').addEventListener('click',async()=>{const button=$('add-queue');button.disabled=true;try{const contactIds=[...document.querySelectorAll('.agenda-pick:checked:not(:disabled)')].map(x=>x.value);const quantity=Number($('queue-quantity').value);if(!contactIds.length&&(!Number.isInteger(quantity)||quantity<1||quantity>500))throw new Error('Informe uma quantidade entre 1 e 500 ou selecione os contatos.');const body=contactIds.length?{contactIds}:{quantity,city:$('agenda-city').value,q:$('agenda-search').value.trim()};const r=await apiCall('/api/queue',{method:'POST',body:JSON.stringify(body)});$('agenda-status').textContent=r.added>0?r.added+' contato(s) adicionado(s) à fila.':'Nenhum contato disponível neste filtro. Os contatos já enviados ou na fila não são adicionados novamente.';if(r.added>0){$('agenda-select-all').checked=false;await renderAgenda();await renderDashboard();showTab('queue')}}catch(e){$('agenda-status').textContent=e.message}finally{button.disabled=false}});
+$('add-queue').addEventListener('click',async()=>{try{const contactIds=[...document.querySelectorAll('.agenda-pick:checked')].map(x=>x.value);const quantity=Math.max(1,Number($('queue-quantity')?.value)||20);const type=$('queue-message-type')?.value||'initial';const mode=$('queue-message-mode')?.value||'STANDARD';const payload=contactIds.length>0?{contactIds,type,mode}:{quantity,city:$('agenda-city')?.value||'',q:$('agenda-search')?.value.trim()||'',type,mode};const r=await apiCall('/api/queue',{method:'POST',body:JSON.stringify(payload)});$('agenda-status').textContent=r.added+' contato(s) adicionado(s) à fila com mensagens preparadas.';await renderAgenda();await renderDashboard();await renderQueue()}catch(e){$('agenda-status').textContent=e.message}});
 $('agenda-select-all').addEventListener('change',e=>document.querySelectorAll('.agenda-pick:not(:disabled)').forEach(x=>x.checked=e.target.checked));
 $('prepare-queue').addEventListener('click',async()=>{try{const r=await apiCall('/api/queue/prepare',{method:'POST',body:JSON.stringify({type:$('queue-message-type').value,mode:$('queue-message-mode').value})});$('queue-status').textContent=r.prepared+' mensagem(ns) preparada(s) com '+(r.mode==='AI'?'IA':'modelo padrão')+'.';await renderQueue()}catch(e){$('queue-status').textContent=e.message}});
-async function setQueueState(action){try{const r=await apiCall('/api/queue/control',{method:'POST',body:JSON.stringify({action})});$('queue-run-status').textContent=r.message;await refreshQueueControls();if(action==='START'||action==='RESUME')await queueTick()}catch(e){$('queue-run-status').textContent=e.message}}
-async function refreshQueueControls(){try{const r=await apiCall('/api/send-rules'),state=r.rules?.queue_state||'PAUSED';queueRunning=state==='RUNNING';queueNext=r.nextSendAt;queueProcessing=r.processing;updateCountdown();$('start-queue').hidden=state==='RUNNING';$('pause-queue').hidden=state!=='RUNNING';$('resume-queue').hidden=state!=='PAUSED';$('stop-queue').hidden=state==='STOPPED';$('queue-run-status').textContent=state==='RUNNING'?'Envios em execução.':state==='PAUSED'?'Envios pausados.':'Envios parados.'}catch{}}
+let countdownSecs=null;
+function updateCountdownUI(){const cd=$('queue-countdown');if(!cd)return;if(countdownSecs===null){cd.textContent='--:--';return}if(countdownSecs<=0){cd.textContent='00:00';$('queue-substatus').textContent='🚀 Transmitindo próxima mensagem agora…'}else{const m=Math.floor(countdownSecs/60),s=countdownSecs%60;cd.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}}
+if(typeof setInterval!=='undefined'){setInterval(()=>{if(countdownSecs!==null&&countdownSecs>0){countdownSecs--;updateCountdownUI()}},1000);setInterval(()=>{if(!document.getElementById('queue').hidden){refreshQueueControls();renderQueue();renderDashboard()}},3000)}
+async function setQueueState(action){try{const r=await apiCall('/api/queue/control',{method:'POST',body:JSON.stringify({action})});$('queue-run-status').textContent=r.message;await refreshQueueControls();await renderQueue();await renderDashboard()}catch(e){$('queue-run-status').textContent=e.message}}
+async function refreshQueueControls(){try{const r=await apiCall('/api/send-rules'),rules=r.rules||{};const state=rules.queue_state||'PAUSED';$('start-queue').hidden=state==='RUNNING';$('pause-queue').hidden=state!=='RUNNING';$('resume-queue').hidden=state!=='PAUSED';$('stop-queue').hidden=state==='STOPPED';const indicator=$('queue-status-indicator'),runStatus=$('queue-run-status'),subStatus=$('queue-substatus');if(state==='RUNNING'){indicator.textContent='🟢';runStatus.textContent='Envios em execução';subStatus.textContent=rules.last_error?('Aviso: '+rules.last_error):'Transmitindo contatos conforme o intervalo configurado.';if(rules.remainingSeconds!==null&&rules.remainingSeconds!==undefined)countdownSecs=rules.remainingSeconds}else if(state==='PAUSED'){indicator.textContent='⏸';runStatus.textContent='Envios pausados';subStatus.textContent=rules.last_error||'Clique em "Retomar" para continuar os envios.';countdownSecs=null}else{indicator.textContent='⏹';runStatus.textContent='Envios parados';subStatus.textContent=rules.last_error||'Clique em "Iniciar" para começar.';countdownSecs=null}updateCountdownUI()}catch{}}
 $('start-queue').addEventListener('click',()=>setQueueState('START'));
 $('pause-queue').addEventListener('click',()=>setQueueState('PAUSE'));
 $('resume-queue').addEventListener('click',()=>setQueueState('RESUME'));
 $('stop-queue').addEventListener('click',()=>setQueueState('STOP'));
-$('clear-queue').addEventListener('click',async()=>{if(!confirm('Deseja realmente limpar toda a lista A Enviar? Os contatos voltarão para a Agenda.'))return;try{const r=await apiCall('/api/queue',{method:'DELETE'});$('queue-status').textContent=r.cleared+' item(ns) removido(s).';await renderQueue();await renderDashboard()}catch(e){$('queue-status').textContent=e.message}});
-async function renderQueue(){try{const d=await apiCall('/api/queue'),rows=$('queue-rows');rows.replaceChildren();for(const x of d.entries){const tr=document.createElement('tr');for(const v of [x.position,x.company,x.phone,x.city,x.error?x.status+' — '+x.error:x.status]){const td=document.createElement('td');td.textContent=v;tr.append(td)}const msg=document.createElement('td');msg.className='message-cell';let prepared;try{prepared=JSON.parse(x.message)}catch{}msg.textContent=prepared?.text||'Aguardando preparação';tr.append(msg);if(x.error)tr.title=x.error;const a=document.createElement('td');if(x.status==='QUEUED'){const b=document.createElement('button');b.textContent='Retirar';b.onclick=async()=>{await apiCall('/api/queue/'+encodeURIComponent(x.id),{method:'DELETE'});renderQueue();renderDashboard()};a.append(b)}tr.append(a);rows.append(tr)}$('queue-status').textContent=d.entries.length+' item(ns) na fila/erro.'}catch(e){$('queue-status').textContent=e.message}}
+$('clear-queue').addEventListener('click',async()=>{if(!confirm('Deseja realmente limpar toda a lista A Enviar? Os contatos voltarão para a Agenda.'))return;try{const r=await apiCall('/api/queue',{method:'DELETE'});$('queue-status').textContent=r.cleared+' item(ns) removido(s).';await renderQueue();await renderDashboard();await renderAgenda()}catch(e){$('queue-status').textContent=e.message}});
+async function renderQueue(){try{const d=await apiCall('/api/queue'),rows=$('queue-rows');rows.replaceChildren();$('queue-count-badge').textContent=(d.entries?.length||0)+' na fila';for(const x of (d.entries||[])){const tr=document.createElement('tr');for(const v of [x.position,x.company,x.phone,x.city]){const td=document.createElement('td');td.textContent=v;tr.append(td)}const msgTd=document.createElement('td');let msgText='';if(x.message){try{const parsed=JSON.parse(x.message);msgText=parsed.text||x.message}catch{msgText=x.message}}if(msgText){const box=document.createElement('div');box.style='max-width:280px;font-size:13px;line-height:1.4;color:#173a30;background:#f3f8f5;border:1px solid #d3e5dc;border-radius:8px;padding:6px 10px;white-space:pre-wrap;max-height:80px;overflow-y:auto;word-break:break-word;';box.title=msgText;box.textContent=msgText;msgTd.append(box)}else{const notPrep=document.createElement('span');notPrep.style='color:#8c9b93;font-size:12px;font-style:italic;';notPrep.textContent='Pendente de preparação';msgTd.append(notPrep)}tr.append(msgTd);const statusTd=document.createElement('td');const stMap={QUEUED:'⏳ Aguardando',PROCESSING:'🔄 Transmitindo…',SENT:'✅ Enviado',ERROR:'❌ '+(x.error||'Erro')};statusTd.textContent=stMap[x.status]||x.status;if(x.status==='ERROR')statusTd.style.color='#a32626';tr.append(statusTd);const a=document.createElement('td');if(x.status==='QUEUED'||x.status==='ERROR'){const b=document.createElement('button');b.style='padding:5px 9px;font-size:12px;';b.textContent='Retirar';b.onclick=async()=>{await apiCall('/api/queue/'+encodeURIComponent(x.id),{method:'DELETE'});renderQueue();renderDashboard();renderAgenda()};a.append(b)}tr.append(a);rows.append(tr)}$('queue-status').textContent=(d.entries?.length||0)+' contato(s) na lista.'}catch(e){$('queue-status').textContent=e.message}}
 async function renderInterested(){try{const d=await apiCall('/api/contacts?status=INTERESTED'),rows=$('interested-rows');rows.replaceChildren();for(const x of d.contacts){const tr=document.createElement('tr');tr.className='interested-row';for(const v of [x.company,x.phone,x.city,'Interessado']){const td=document.createElement('td');td.textContent=v;tr.append(td)}rows.append(tr)}}catch{}}
-async function renderInstances(){try{const d=await apiCall('/api/instances'),box=$('instance-list');box.replaceChildren();for(const x of d.instances){const card=document.createElement('div');card.className='card';card.style.marginTop='14px';const title=document.createElement('h2');title.dataset.instanceTitle=x.id;title.textContent=x.name+' · '+(x.provider==='EVOLUTION_GO'?'Evolution GO':'Evolution API')+' — '+instanceStatusLabel(x);card.append(title);const info=document.createElement('p');info.className='help';info.textContent=(x.apiUrl||'URL não configurada')+' · intervalo aleatório '+x.minSeconds+'–'+x.maxSeconds+'s · '+x.messagesPerCycle+' mensagens/ciclo · repouso '+x.restMinutes+' min';card.append(info);
-const editor=document.createElement('div');editor.hidden=true;editor.style.margin='16px 0';editor.innerHTML='<div class="grid"><div class="field"><label>Serviço</label><select data-f="provider"><option value="EVOLUTION_API">Evolution API</option><option value="EVOLUTION_GO">Evolution GO</option></select></div><div class="field"><label>Nome da instância</label><input data-f="name"></div></div><div class="field"><label>URL do servidor</label><input data-f="apiUrl"></div><div class="field"><label>Nova API Key / GLOBAL_API_KEY</label><input data-f="token" type="password" placeholder="Deixe em branco para manter a atual"></div><h3>Regras de disparo</h3><div class="grid"><div class="field"><label>Tempo mínimo (segundos)</label><input data-f="minSeconds" type="number" min="1"></div><div class="field"><label>Tempo máximo (segundos)</label><input data-f="maxSeconds" type="number" min="1"></div><div class="field"><label>Mensagens por ciclo</label><input data-f="messagesPerCycle" type="number" min="1"></div><div class="field"><label>Tempo de repouso (minutos)</label><input data-f="restMinutes" type="number" min="0"></div></div><p class="help">A cada disparo o sistema sorteia um novo intervalo entre o tempo mínimo e máximo. Ao atingir a quantidade do ciclo, a instância entra em repouso.</p><div class="actions"><button type="button" data-a="save" class="primary">Salvar alterações</button><button type="button" data-a="cancel">Cancelar</button></div>';card.append(editor);
-const f=n=>editor.querySelector('[data-f="'+n+'"]');f('provider').value=x.provider||'EVOLUTION_API';f('name').value=x.name;f('apiUrl').value=x.apiUrl||'';f('minSeconds').value=x.minSeconds||60;f('maxSeconds').value=x.maxSeconds||180;f('messagesPerCycle').value=x.messagesPerCycle||10;f('restMinutes').value=x.restMinutes??20;
-const actions=document.createElement('div');actions.className='actions';const edit=document.createElement('button');edit.type='button';edit.textContent='✏️ Editar configurações';edit.onclick=()=>{editor.hidden=false;actions.hidden=true};actions.append(edit);
-editor.querySelector('[data-a="cancel"]').onclick=()=>{editor.hidden=true;actions.hidden=false};
-editor.querySelector('[data-a="save"]').onclick=async()=>{const min=Number(f('minSeconds').value),max=Number(f('maxSeconds').value);if(min<1||max<min){$('instance-status').textContent='Confira os tempos: o máximo deve ser igual ou maior que o mínimo.';return}try{await apiCall('/api/instances/'+encodeURIComponent(x.id),{method:'PATCH',body:JSON.stringify({provider:f('provider').value,name:f('name').value,apiUrl:f('apiUrl').value,token:f('token').value,minSeconds:min,maxSeconds:max,messagesPerCycle:f('messagesPerCycle').value,restMinutes:f('restMinutes').value})});$('instance-status').textContent='Configurações da instância atualizadas.';await renderInstances()}catch(e){$('instance-status').textContent=e.message}};
-const connect=document.createElement('button');connect.type='button';connect.className='primary';connect.textContent='Conectar / Gerar QR Code';connect.onclick=async()=>{connect.disabled=true;$('instance-status').textContent='Solicitando QR Code…';try{const r=await apiCall('/api/instances/'+encodeURIComponent(x.id)+'/connect',{method:'POST',body:'{}'});$('instance-status').textContent=r.connected?'WhatsApp conectado.':'Escaneie o QR Code com o WhatsApp.';await renderInstances();if(r.qr){const img=document.createElement('img');img.alt='QR Code para conectar WhatsApp';img.style='display:block;max-width:300px;width:100%;margin:18px auto;border:12px solid white';img.src=r.qr.startsWith('data:')?r.qr:'data:image/png;base64,'+r.qr;const current=document.querySelector('[data-qr="'+x.id+'"]');if(current)current.replaceChildren(img)}}catch(e){$('instance-status').textContent=e.message}finally{connect.disabled=false}};actions.append(connect);const refresh=document.createElement('button');refresh.type='button';refresh.textContent='Atualizar status';refresh.onclick=async()=>{try{await apiCall('/api/instances/'+encodeURIComponent(x.id)+'/status',{method:'POST',body:'{}'});await renderInstances()}catch(e){$('instance-status').textContent=e.message}};actions.append(refresh);const bot=document.createElement('button');bot.type='button';bot.textContent=x.webhookStatus==='READY'?'Atualizar atendimento IA':'Ativar atendimento IA';bot.onclick=async()=>{try{await apiCall('/api/instances/'+encodeURIComponent(x.id)+'/bot',{method:'POST',body:'{}'});$('instance-status').textContent='Recebimento de mensagens ativado.';renderInstances()}catch(e){$('instance-status').textContent=e.message}};actions.append(bot);const remove=document.createElement('button');remove.type='button';remove.textContent='Excluir instância';remove.onclick=async()=>{if(!confirm('Excluir o cadastro da instância '+x.name+' deste sistema? A sessão no provedor será preservada.'))return;remove.disabled=true;try{await apiCall('/api/instances/'+encodeURIComponent(x.id),{method:'DELETE'});$('instance-status').textContent='Cadastro da instância excluído.';await renderInstances();await renderAiStatus()}catch(e){$('instance-status').textContent=e.message;remove.disabled=false}};actions.append(remove);card.append(actions);const qr=document.createElement('div');qr.dataset.qr=x.id;card.append(qr);box.append(card)}}catch(e){$('instance-status').textContent=e.message}}
-$('add-instance').addEventListener('click',async()=>{try{await apiCall('/api/instances',{method:'POST',body:JSON.stringify({provider:$('instance-provider').value,name:$('instance-name').value,apiUrl:$('instance-url').value,token:$('instance-token').value,minSeconds:$('instance-min-seconds').value,maxSeconds:$('instance-max-seconds').value,messagesPerCycle:$('instance-messages-cycle').value,restMinutes:$('instance-rest-minutes').value})});$('instance-name').value='';$('instance-url').value='';$('instance-token').value='';$('instance-status').textContent='Instância salva. Agora clique em Conectar / Gerar QR Code.';renderInstances()}catch(e){$('instance-status').textContent=e.message}});
+async function renderInstances(liveCheck=false){
+  try{
+    const endpoint=liveCheck?'/api/instances/live':'/api/instances';
+    const d=await apiCall(endpoint);
+    const box=$('instance-list');
+    box.replaceChildren();
+    instancesList=d.instances||[];
+    if(!instancesList.length){
+      const empty=document.createElement('div');
+      empty.style='margin-top:16px;padding:20px;text-align:center;background:#f9fafb;border:1px dashed #d1d5db;border-radius:10px;color:#577265;font-size:14px;';
+      empty.textContent='Nenhuma instância do WhatsApp cadastrada. Adicione uma instância acima para conectar.';
+      box.append(empty);
+      return;
+    }
+    for(const x of instancesList){
+      const card=document.createElement('div');
+      card.className='card';
+      card.style.marginTop='14px';
+
+      const headerRow=document.createElement('div');
+      headerRow.style='display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:8px;';
+      
+      const titleWrap=document.createElement('div');
+      const title=document.createElement('h2');
+      title.style='margin:0 0 4px 0;font-size:16px;';
+      const roleBadge=x.role==='IA'?' · 🤖 Apenas IA':(x.role==='DISPARO'?' · 🚀 Apenas Disparo':' · 🔄 Disparos e IA');
+      title.textContent=x.name+' · '+(x.provider==='EVOLUTION_GO'?'Evolution GO':'Evolution API')+roleBadge;
+      titleWrap.append(title);
+      
+      const timeInfo=document.createElement('div');
+      timeInfo.style='font-size:12px;color:#577265;';
+      const lastCheck=x.lastCheckedAt?new Date(x.lastCheckedAt).toLocaleTimeString('pt-BR'):'recente';
+      timeInfo.textContent='Verificação em tempo real: '+lastCheck;
+      titleWrap.append(timeInfo);
+      headerRow.append(titleWrap);
+
+      const statusBadge=document.createElement('span');
+      if(x.status==='CONNECTED'){
+        statusBadge.style='display:inline-flex;align-items:center;gap:5px;background:#e6f8ef;color:#0b724f;border:1px solid #a7f3d0;padding:5px 12px;border-radius:14px;font-size:12px;font-weight:700;';
+        statusBadge.innerHTML='🟢 Conectada (Em Tempo Real)';
+      }else{
+        statusBadge.style='display:inline-flex;align-items:center;gap:5px;background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;padding:5px 12px;border-radius:14px;font-size:12px;font-weight:700;';
+        statusBadge.innerHTML='🔴 Desconectada';
+      }
+      headerRow.append(statusBadge);
+      card.append(headerRow);
+
+      const info=document.createElement('p');
+      info.className='help';
+      info.textContent=(x.apiUrl||'URL não configurada')+' · intervalo aleatório '+x.minSeconds+'–'+x.maxSeconds+'s · '+x.messagesPerCycle+' mensagens/ciclo · repouso '+x.restMinutes+' min';
+      card.append(info);
+
+      const editor=document.createElement('div');
+      editor.hidden=true;
+      editor.style.margin='16px 0';
+      editor.innerHTML='<div class="grid"><div class="field"><label>Serviço</label><select data-f="provider"><option value="EVOLUTION_API">Evolution API</option><option value="EVOLUTION_GO">Evolution GO</option></select></div><div class="field"><label>Nome da instância</label><input data-f="name"></div></div><div class="grid"><div class="field"><label>URL do servidor</label><input data-f="apiUrl"></div><div class="field"><label>Papel / Finalidade da Instância</label><select data-f="role"><option value="ALL">Ambos (Disparos em Massa + Atendimento IA)</option><option value="DISPARO">Apenas Disparos em Massa (Prospecção)</option><option value="IA">Apenas Atendimento Automático com IA</option></select></div></div><div class="field"><label>Nova API Key / GLOBAL_API_KEY</label><input data-f="token" type="password" placeholder="Deixe em branco para manter a atual"></div><h3>Regras de disparo</h3><div class="grid"><div class="field"><label>Tempo mínimo (segundos)</label><input data-f="minSeconds" type="number" min="1"></div><div class="field"><label>Tempo máximo (segundos)</label><input data-f="maxSeconds" type="number" min="1"></div><div class="field"><label>Mensagens por ciclo</label><input data-f="messagesPerCycle" type="number" min="1"></div><div class="field"><label>Tempo de repouso (minutos)</label><input data-f="restMinutes" type="number" min="0"></div></div><p class="help">A cada disparo o sistema sorteia um novo intervalo entre o tempo mínimo e máximo. Ao atingir a quantidade do ciclo, a instância entra em repouso.</p><div class="actions"><button type="button" data-a="save" class="primary">Salvar alterações</button><button type="button" data-a="cancel">Cancelar</button></div>';
+      card.append(editor);
+
+      const f=n=>editor.querySelector('[data-f="'+n+'"]');
+      f('provider').value=x.provider||'EVOLUTION_API';
+      f('name').value=x.name;
+      f('apiUrl').value=x.apiUrl||'';
+      f('role').value=x.role||'ALL';
+      f('minSeconds').value=x.minSeconds||60;
+      f('maxSeconds').value=x.maxSeconds||180;
+      f('messagesPerCycle').value=x.messagesPerCycle||10;
+      f('restMinutes').value=x.restMinutes??20;
+
+      const actions=document.createElement('div');
+      actions.className='actions';
+      actions.style.flexWrap='wrap';
+
+      const edit=document.createElement('button');
+      edit.type='button';
+      edit.textContent='✏️ Editar';
+      edit.onclick=()=>{editor.hidden=false;actions.hidden=true};
+      actions.append(edit);
+
+      editor.querySelector('[data-a="cancel"]').onclick=()=>{editor.hidden=true;actions.hidden=false};
+      editor.querySelector('[data-a="save"]').onclick=async()=>{
+        const name=f('name').value.trim(),apiUrl=f('apiUrl').value.trim();
+        if(!name){$('instance-status').textContent='Informe o nome da instância.';f('name').focus();return}
+        if(!apiUrl){$('instance-status').textContent='Informe a URL do servidor.';f('apiUrl').focus();return}
+        const min=Number(f('minSeconds').value)||60,max=Number(f('maxSeconds').value)||180;
+        if(min<1||max<min){$('instance-status').textContent='Confira os tempos: o máximo deve ser igual ou maior que o mínimo.';return}
+        const btn=editor.querySelector('[data-a="save"]');
+        btn.disabled=true;
+        $('instance-status').textContent='Salvando alterações…';
+        try{
+          await apiCall('/api/instances/'+encodeURIComponent(x.id),{
+            method:'PATCH',
+            body:JSON.stringify({provider:f('provider').value,name,apiUrl,role:f('role').value,token:f('token').value,minSeconds:min,maxSeconds:max,messagesPerCycle:f('messagesPerCycle').value,restMinutes:f('restMinutes').value})
+          });
+          $('instance-status').textContent='Configurações da instância atualizadas.';
+          await renderInstances(true);
+          await renderSettingsInfo();
+        }catch(e){
+          $('instance-status').textContent=e.message;
+        }finally{
+          btn.disabled=false;
+        }
+      };
+
+      const connect=document.createElement('button');
+      connect.type='button';
+      connect.className='primary';
+      connect.textContent='Conectar / Gerar QR Code';
+      connect.onclick=async()=>{
+        connect.disabled=true;
+        $('instance-status').textContent='Solicitando QR Code…';
+        try{
+          const r=await apiCall('/api/instances/'+encodeURIComponent(x.id)+'/connect',{method:'POST',body:'{}'});
+          $('instance-status').textContent=r.connected?'WhatsApp conectado.':'Escaneie o QR Code com o WhatsApp.';
+          await renderInstances(true);
+          if(r.qr){
+            const img=document.createElement('img');
+            img.alt='QR Code para conectar WhatsApp';
+            img.style='display:block;max-width:300px;width:100%;margin:18px auto;border:12px solid white';
+            img.src=r.qr.startsWith('data:')?r.qr:'data:image/png;base64,'+r.qr;
+            const current=document.querySelector('[data-qr="'+x.id+'"]');
+            if(current)current.replaceChildren(img);
+          }
+        }catch(e){
+          $('instance-status').textContent=e.message;
+        }finally{
+          connect.disabled=false;
+        }
+      };
+      actions.append(connect);
+
+      const btnWebhook=document.createElement('button');
+      btnWebhook.type='button';
+      btnWebhook.textContent='⚡ Configurar Webhook';
+      btnWebhook.title='Ativa o webhook nesta instância na Evolution API para a IA responder clientes';
+      btnWebhook.onclick=async()=>{
+        btnWebhook.disabled=true;
+        $('instance-status').textContent='Configurando Webhook na Evolution API…';
+        try{
+          await apiCall('/api/instances/'+encodeURIComponent(x.id)+'/webhook',{method:'POST',body:'{}'});
+          $('instance-status').textContent='✅ Webhook Evolution configurado! A IA já recebe e responde mensagens desta instância.';
+        }catch(e){
+          $('instance-status').textContent='Aviso webhook: '+e.message;
+        }finally{
+          btnWebhook.disabled=false;
+        }
+      };
+      actions.append(btnWebhook);
+
+      const refresh=document.createElement('button');
+      refresh.type='button';
+      refresh.textContent='🔄 Checar Status';
+      refresh.title='Verifica conexão com a Evolution API em tempo real';
+      refresh.onclick=async()=>{
+        refresh.disabled=true;
+        refresh.textContent='🔄 Checando…';
+        try{
+          await apiCall('/api/instances/'+encodeURIComponent(x.id)+'/status',{method:'POST',body:'{}'});
+          await renderInstances(true);
+          await renderSettingsInfo();
+          $('instance-status').textContent='Status atualizado com sucesso.';
+        }catch(e){
+          $('instance-status').textContent=e.message;
+        }finally{
+          refresh.disabled=false;
+          refresh.textContent='🔄 Checar Status';
+        }
+      };
+      actions.append(refresh);
+
+      // BOTÃO DE EXCLUIR INSTÂNCIA (Destacado em vermelho com confirmação de segurança)
+      const btnDelete=document.createElement('button');
+      btnDelete.type='button';
+      btnDelete.style='color:#b91c1c;background:#fff5f5;border:1px solid #fca5a5;font-weight:700;';
+      btnDelete.textContent='🗑️ Excluir instância';
+      btnDelete.title='Remove permanentemente esta instância do sistema';
+      btnDelete.onclick=async()=>{
+        if(!confirm(`Tem certeza que deseja excluir a instância "${x.name}"? Esta ação removerá a instância do sistema.`))return;
+        btnDelete.disabled=true;
+        btnDelete.textContent='Excluindo…';
+        $('instance-status').textContent='Excluindo instância…';
+        try{
+          await apiCall('/api/instances/'+encodeURIComponent(x.id),{method:'DELETE'});
+          $('instance-status').textContent=`Instância "${x.name}" excluída com sucesso!`;
+          await renderInstances(true);
+          await renderSettingsInfo();
+        }catch(e){
+          $('instance-status').textContent='Erro ao excluir instância: '+e.message;
+        }finally{
+          btnDelete.disabled=false;
+          btnDelete.textContent='🗑️ Excluir instância';
+        }
+      };
+      actions.append(btnDelete);
+
+      card.append(actions);
+      const qr=document.createElement('div');
+      qr.dataset.qr=x.id;
+      card.append(qr);
+      box.append(card);
+    }
+  }catch(e){
+    $('instance-status').textContent=e.message;
+  }
+}
+$('add-instance').addEventListener('click',async()=>{const name=$('instance-name').value.trim(),apiUrl=$('instance-url').value.trim(),token=$('instance-token').value.trim();if(!name){$('instance-status').textContent='Informe o nome da instância.';$('instance-name').focus();return}if(!apiUrl){$('instance-status').textContent='Informe a URL do servidor.';$('instance-url').focus();return}if(!token){$('instance-status').textContent='Informe a API Key / GLOBAL_API_KEY da instância.';$('instance-token').focus();return}const min=Number($('instance-min-seconds').value)||60,max=Number($('instance-max-seconds').value)||180;if(min<1||max<min){$('instance-status').textContent='Confira os tempos: o máximo deve ser igual ou maior que o mínimo.';return}const btn=$('add-instance');btn.disabled=true;$('instance-status').textContent='Salvando instância…';try{await apiCall('/api/instances',{method:'POST',body:JSON.stringify({provider:$('instance-provider').value,name,apiUrl,token,role:$('instance-role')?.value||'ALL',minSeconds:min,maxSeconds:max,messagesPerCycle:$('instance-messages-cycle').value,restMinutes:$('instance-rest-minutes').value})});$('instance-name').value='';$('instance-url').value='';$('instance-token').value='';$('instance-status').textContent='Instância salva com sucesso! Agora clique em Conectar / Gerar QR Code.';await renderInstances(true);await renderSettingsInfo()}catch(e){$('instance-status').textContent=e.message}finally{btn.disabled=false}});
+$('btn-sync-all-instances')?.addEventListener('click',async()=>{
+  const btn=$('btn-sync-all-instances');
+  if(btn){btn.disabled=true;btn.textContent='🔄 Sincronizando…';}
+  $('instance-status').textContent='Verificando conexão de todas as instâncias em tempo real…';
+  try{
+    await renderInstances(true);
+    await renderSettingsInfo();
+    $('instance-status').textContent='Todas as instâncias sincronizadas em tempo real com sucesso!';
+  }catch(e){
+    $('instance-status').textContent='Erro na sincronização: '+e.message;
+  }finally{
+    if(btn){btn.disabled=false;btn.textContent='🔄 Verificar Status em Tempo Real';}
+  }
+});
+
+$('btn-delay-fast')?.addEventListener('click',()=>{
+  if($('ai-min-delay'))$('ai-min-delay').value=5;
+  if($('ai-max-delay'))$('ai-max-delay').value=15;
+  if($('delay-preview-text'))$('delay-preview-text').textContent='Configurado: Resposta rápida (5s a 15s). Clique em "Salvar mensagens e IA" para confirmar.';
+});
+$('btn-delay-natural')?.addEventListener('click',()=>{
+  if($('ai-min-delay'))$('ai-min-delay').value=15;
+  if($('ai-max-delay'))$('ai-max-delay').value=45;
+  if($('delay-preview-text'))$('delay-preview-text').textContent='Configurado: Resposta natural humana (15s a 45s). Clique em "Salvar mensagens e IA" para confirmar.';
+});
+$('btn-delay-calm')?.addEventListener('click',()=>{
+  if($('ai-min-delay'))$('ai-min-delay').value=30;
+  if($('ai-max-delay'))$('ai-max-delay').value=90;
+  if($('delay-preview-text'))$('delay-preview-text').textContent='Configurado: Resposta calma (30s a 90s). Clique em "Salvar mensagens e IA" para confirmar.';
+});
+$('btn-test-random-delay')?.addEventListener('click',()=>{
+  const min=Math.max(1,Number($('ai-min-delay')?.value)||15);
+  const max=Math.max(min,Number($('ai-max-delay')?.value)||45);
+  const rnd=Math.floor(Math.random()*(max-min+1))+min;
+  if($('delay-preview-text'))$('delay-preview-text').textContent=`⏱️ Sorteio simulado: resposta será enviada em ${rnd} segundos (faixa entre ${min}s e ${max}s).`;
+});
+$('ai-prompt')?.addEventListener('input',updatePromptCounter);
+$('btn-prompt-vendas')?.addEventListener('click',()=>{
+  if($('ai-prompt'))$('ai-prompt').value=PROMPT_PRESETS.vendas;
+  updatePromptCounter();
+});
+$('btn-prompt-delivery')?.addEventListener('click',()=>{
+  if($('ai-prompt'))$('ai-prompt').value=PROMPT_PRESETS.delivery;
+  updatePromptCounter();
+});
+$('btn-prompt-atendimento')?.addEventListener('click',()=>{
+  if($('ai-prompt'))$('ai-prompt').value=PROMPT_PRESETS.atendimento;
+  updatePromptCounter();
+});
+$('btn-prompt-reset')?.addEventListener('click',()=>{
+  if($('ai-prompt'))$('ai-prompt').value=DEFAULTS.aiPrompt;
+  updatePromptCounter();
+});
+
+let chatSimulatorHistory=[];
+function appendChatBubble(role,text,meta=''){
+  const thread=$('chat-simulator-thread');
+  if(!thread)return;
+  const bubble=document.createElement('div');
+  bubble.className=role==='user'?'chat-bubble-user':'chat-bubble-ai';
+  if(role==='user'){
+    bubble.innerHTML='<div style="font-size:11px;font-weight:700;color:#0b724f;margin-bottom:3px;">👤 Você (Cliente)</div>'+text.replace(/\n/g,'<br>');
+  }else{
+    bubble.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:11px;color:#577265;margin-bottom:3px;"><span style="font-weight:700;color:#11634c;">🤖 IA Delivale</span><span>'+(meta||'')+'</span></div>'+text.replace(/\n/g,'<br>');
+  }
+  thread.append(bubble);
+  thread.scrollTop=thread.scrollHeight;
+}
+
+$('btn-clear-chat-sim')?.addEventListener('click',()=>{
+  chatSimulatorHistory=[];
+  const thread=$('chat-simulator-thread');
+  if(thread){
+    thread.innerHTML='<div style="text-align:center;font-size:12px;color:#78867f;background:rgba(255,255,255,0.75);padding:4px 12px;border-radius:12px;margin:0 auto;box-shadow:0 1px 1px rgba(0,0,0,0.05);">🟢 Conversa reiniciada. Digite uma mensagem abaixo para testar.</div>';
+  }
+  if($('ai-simulate-status'))$('ai-simulate-status').textContent='Histórico de teste limpo.';
+  if($('ai-simulate-result'))$('ai-simulate-result').hidden=true;
+});
+
+$('ai-test-input')?.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&!e.shiftKey){
+    e.preventDefault();
+    $('btn-simulate-ai-reply')?.click();
+  }
+});
+
+if(typeof document.querySelectorAll==='function'){
+  document.querySelectorAll('.btn-quick-test').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const txt=btn.getAttribute('data-text');
+      if(txt&&$('ai-test-input')){$('ai-test-input').value=txt;$('btn-simulate-ai-reply')?.click()}
+    });
+  });
+}
+
+$('btn-simulate-ai-reply')?.addEventListener('click',async()=>{
+  const userMsg=$('ai-test-input')?.value.trim();
+  if(!userMsg){if($('ai-simulate-status'))$('ai-simulate-status').textContent='Digite uma mensagem para simular o cliente.';return}
+  const min=Math.max(1,Number($('ai-min-delay')?.value)||15);
+  const max=Math.max(min,Number($('ai-max-delay')?.value)||45);
+  const rnd=Math.floor(Math.random()*(max-min+1))+min;
+  const btn=$('btn-simulate-ai-reply');
+  if(btn)btn.disabled=true;
+
+  appendChatBubble('user',userMsg);
+  chatSimulatorHistory.push({role:'user',text:userMsg});
+  if($('ai-test-input'))$('ai-test-input').value='';
+
+  if($('ai-simulate-status'))$('ai-simulate-status').textContent=`Consultando Gemini com o prompt mestre e histórico (${chatSimulatorHistory.length} msgs)…`;
+  try{
+    const res=await apiCall('/api/ai/test',{
+      method:'POST',
+      body:JSON.stringify({
+        message:userMsg,
+        history:chatSimulatorHistory.slice(0,-1),
+        customPrompt:$('ai-prompt')?.value||'',
+        model:$('ai-model')?.value||''
+      })
+    });
+    chatSimulatorHistory.push({role:'model',text:res.reply||''});
+    const delayInfo=`⏱️ ${res.simulatedDelaySeconds||rnd}s · ${res.model||'Gemini'}`;
+    appendChatBubble('model',res.reply||'Nenhuma resposta retornada.',delayInfo);
+
+    if($('ai-simulate-result'))$('ai-simulate-result').hidden=false;
+    if($('ai-simulate-delay-badge'))$('ai-simulate-delay-badge').textContent=delayInfo;
+    if($('ai-simulate-text'))$('ai-simulate-text').textContent=res.reply||'';
+    if($('ai-simulate-status'))$('ai-simulate-status').textContent=`✅ Resposta gerada via ${res.model||'Gemini'} com memória multi-turn!`;
+  }catch(err){
+    if($('ai-simulate-status'))$('ai-simulate-status').textContent='Erro na simulação: '+err.message;
+    appendChatBubble('model','[Erro ao consultar a IA: '+err.message+']');
+  }finally{
+    if(btn)btn.disabled=false;
+  }
+});
+$('btn-simulate-delay-only')?.addEventListener('click',()=>{
+  const min=Math.max(1,Number($('ai-min-delay')?.value)||15);
+  const max=Math.max(min,Number($('ai-max-delay')?.value)||45);
+  const rnd=Math.floor(Math.random()*(max-min+1))+min;
+  if($('ai-simulate-result'))$('ai-simulate-result').hidden=false;
+  if($('ai-simulate-delay-badge'))$('ai-simulate-delay-badge').textContent=`⏱️ Tempo sorteado: ${rnd}s`;
+  if($('ai-simulate-text'))$('ai-simulate-text').textContent=`Simulação de espera: a IA aguardaria exatamente ${rnd} segundos antes de disparar o WhatsApp para o cliente.`;
+  if($('ai-simulate-status'))$('ai-simulate-status').textContent=`Sorteio realizado: ${rnd}s (entre ${min}s e ${max}s).`;
+});
+$('test-gemini-btn')?.addEventListener('click',async()=>{
+  const btn=$('test-gemini-btn');
+  if(btn)btn.disabled=true;
+  $('key-saved-status').textContent='Testando conexão com Gemini e instâncias…';
+  try{
+    const res=await apiCall('/api/gemini/test',{method:'POST'});
+    $('key-saved-status').textContent=`✅ Conexão Gemini ativa! Modelo: ${res.model} (${res.durationMs}ms). ${res.connectedCount>0?`Instância conectada: ${res.connectedCount}.`:'Atenção: Nenhuma instância WhatsApp conectada.'}`;
+    await renderSettingsInfo();
+  }catch(err){
+    $('key-saved-status').textContent='❌ '+err.message;
+  }finally{
+    if(btn)btn.disabled=false;
+  }
+});
+$('btn-goto-instances')?.addEventListener('click',()=>showTab('instances'));
+$('btn-ai-to-instances')?.addEventListener('click',()=>showTab('instances'));
+$('btn-refresh-gemini-instance')?.addEventListener('click',async()=>{
+  if($('gemini-instance-status-msg'))$('gemini-instance-status-msg').textContent='Atualizando status das instâncias…';
+  await renderSettingsInfo();
+  if($('gemini-instance-status-msg'))$('gemini-instance-status-msg').textContent='Status atualizado com sucesso.';
+});
+$('btn-save-gemini-settings')?.addEventListener('click',async()=>{
+  const next=readSettings();
+  if($('gemini-instance-status-msg'))$('gemini-instance-status-msg').textContent='Salvando preferência…';
+  try{
+    await persistSettings(next);
+    await renderSettingsInfo();
+    if($('gemini-instance-status-msg'))$('gemini-instance-status-msg').textContent='Preferência de instância salva no banco de dados!';
+  }catch(err){
+    if($('gemini-instance-status-msg'))$('gemini-instance-status-msg').textContent='Erro ao salvar: '+err.message;
+  }
+});
+$('btn-toggle-ai-power')?.addEventListener('click',async()=>{
+  const current=$('ai-enabled').checked;
+  const next=!current;
+  $('ai-enabled').checked=next;
+  updateAiPowerUI(next);
+  config.aiEnabled=next;
+  try{
+    const s=readSettings();
+    await persistSettings(s,true);
+    await renderSettingsInfo();
+    status(next?'✅ Atendimento da IA LIGADO com sucesso!':'⏸️ Atendimento da IA DESLIGADO.');
+  }catch(err){
+    status('Erro ao alternar IA: '+err.message,true);
+  }
+});
+
+$('ai-enabled')?.addEventListener('change',async()=>{
+  const isEnabled=$('ai-enabled').checked;
+  config.aiEnabled=isEnabled;
+  updateAiPowerUI(isEnabled);
+  try{
+    const next=readSettings();
+    next.aiEnabled=isEnabled;
+    await persistSettings(next,true);
+    await renderSettingsInfo();
+    status(isEnabled?'✅ IA ativada e pronta para responder no WhatsApp!':'⏸️ Respostas automáticas da IA desligadas.');
+  }catch(err){
+    status('Erro ao salvar status da IA: '+err.message,true);
+  }
+});
+
+$('ai-temperature')?.addEventListener('input',e=>updateTempUI(e.target.value));
+$('ai-temperature')?.addEventListener('change',async e=>{
+  updateTempUI(e.target.value);
+  try{await persistSettings(readSettings(),true);status('Temperatura da IA salva: '+e.target.value)}catch{}
+});
+if(typeof document.querySelectorAll==='function'){
+  document.querySelectorAll('.btn-temp-preset').forEach(btn=>{
+    btn.addEventListener('click',async()=>{
+      const val=Number(btn.dataset.temp)||0.3;
+      updateTempUI(val);
+      try{await persistSettings(readSettings(),true);status('Temperatura ajustada para: '+val)}catch{}
+    });
+  });
+}
+
+$('ai-max-chars')?.addEventListener('input',e=>updateCharsUI(e.target.value));
+$('ai-max-chars')?.addEventListener('change',async e=>{
+  updateCharsUI(e.target.value);
+  try{await persistSettings(readSettings(),true);status('Limite de caracteres salvo: '+e.target.value)}catch{}
+});
+if(typeof document.querySelectorAll==='function'){
+  document.querySelectorAll('.btn-chars-preset').forEach(btn=>{
+    btn.addEventListener('click',async()=>{
+      const val=Number(btn.dataset.chars)||320;
+      updateCharsUI(val);
+      try{await persistSettings(readSettings(),true);status('Limite ajustado para: '+val+' caracteres')}catch{}
+    });
+  });
+}
+
+$('ai-strict-control')?.addEventListener('change',async()=>{
+  try{await persistSettings(readSettings(),true);status('Freio de diálogo atualizado.')}catch{}
+});
+$('ai-model')?.addEventListener('change',async()=>{
+  const m=$('ai-model').value;
+  config.aiModel=m;
+  try{
+    const next=readSettings();
+    next.aiModel=m;
+    await persistSettings(next,true);
+    status('Modelo de IA atualizado: '+m);
+  }catch(err){
+    status('Erro ao atualizar modelo: '+err.message,true);
+  }
+});
+$('ai-instance-selector')?.addEventListener('change',async(e)=>{
+  const val=e.target.value;
+  config.aiInstanceId=val;
+  if($('ai-instance-selector-settings'))$('ai-instance-selector-settings').value=val;
+  try{
+    const next=readSettings();
+    next.aiInstanceId=val;
+    await persistSettings(next,true);
+    await renderSettingsInfo();
+  }catch(err){console.warn('Erro ao salvar:',err)}
+});
+$('ai-instance-selector-settings')?.addEventListener('change',async(e)=>{
+  const val=e.target.value;
+  config.aiInstanceId=val;
+  if($('ai-instance-selector'))$('ai-instance-selector').value=val;
+  try{
+    const next=readSettings();
+    next.aiInstanceId=val;
+    await persistSettings(next,true);
+    await renderSettingsInfo();
+  }catch(err){console.warn('Erro ao salvar:',err)}
+});
+$('btn-refresh-human-pauses')?.addEventListener('click',async()=>{
+  const btn=$('btn-refresh-human-pauses');
+  if(btn){btn.disabled=true;btn.textContent='🔄 Atualizando…'}
+  await loadHumanPauses();
+  if(btn){btn.disabled=false;btn.textContent='🔄 Atualizar lista'}
+});
 
 function normalizeApiKey(value){return value.trim().replace(/[\u200B-\u200D\uFEFF]/g,'').replace(/^(?:export\s+)?(?:GEMINI_API_KEY|GOOGLE_API_KEY|API_KEY)\s*=\s*/i,'').replace(/^Bearer\s+/i,'').replace(/[\s\u200B-\u200D\uFEFF]/g,'').replace(/^["'“”‘’`]+|["'“”‘’`;]+$/g,'')}
 $('api-key').addEventListener('blur',()=>{$('api-key').value=normalizeApiKey($('api-key').value)});
 const HISTORY_STORAGE='enviozap-delivale-history-v1';let entries=[];
 async function recordOpening(){const entry={id:crypto.randomUUID(),company:$('company').value.trim(),phone:normalizedPhone(),date:new Date().toISOString(),status:'opened',type:LABELS[$('type').value],message:renderText()};try{await apiCall('/api/history',{method:'POST',body:JSON.stringify(entry)});status('Conversa registrada no banco. Após enviar no WhatsApp, confirme na aba Envios.')}catch(error){status('A conversa foi aberta, mas o histórico não foi salvo: '+error.message,true)}}
-async function renderHistory(){const rows=$('history-rows');$('history-status').textContent='Carregando registros…';try{entries=(await apiCall('/api/history')).entries;rows.replaceChildren();$('history-empty').hidden=entries.length>0;$('history-table').hidden=entries.length===0;for(const entry of entries){const tr=document.createElement('tr');for(const text of [entry.company,entry.phone,new Date(entry.date).toLocaleString('pt-BR'),entry.status==='sent'?(entry.instanceName?'Enviado pela integração':'Enviado (confirmado por você)'):'Conversa aberta']){const td=document.createElement('td');td.textContent=text;tr.append(td)}const action=document.createElement('td');if(entry.status!=='sent'){const button=document.createElement('button');button.type='button';button.textContent='Marcar como enviado';button.addEventListener('click',async()=>{button.disabled=true;try{await apiCall('/api/history/'+encodeURIComponent(entry.id),{method:'PATCH',body:'{}'});await renderHistory()}catch(error){$('history-status').textContent=error.message;button.disabled=false}});action.append(button)}else action.textContent='Confirmado';if(entry.contactId){const bot=document.createElement('button');bot.type='button';bot.textContent=entry.aiPaused?'Ligar IA':'Pausar IA';bot.onclick=async()=>{try{await apiCall('/api/contacts/'+encodeURIComponent(entry.contactId)+'/ai',{method:'PATCH',body:JSON.stringify({paused:!entry.aiPaused})});renderHistory()}catch(e){$('history-status').textContent=e.message}};action.append(bot)}tr.append(action);const message=document.createElement('td');message.className='message-cell';message.textContent=entry.message;tr.append(message);const details=document.createElement('td');details.textContent=[entry.city,entry.responsible,entry.notes,entry.instanceName].filter(Boolean).join(' · ');tr.append(details);rows.append(tr)}$('history-status').textContent=entries.length+' registro(s) no banco.'}catch(error){$('history-status').textContent=error.message}}
+async function renderHistory(){const rows=$('history-rows');$('history-status').textContent='Carregando registros…';try{entries=(await apiCall('/api/history')).entries||[];rows.replaceChildren();$('history-empty').hidden=entries.length>0;$('history-table').hidden=entries.length===0;for(const entry of entries){const tr=document.createElement('tr');const tdComp=document.createElement('td');tdComp.innerHTML='<strong>'+(entry.company||'')+'</strong>';tr.append(tdComp);const tdPhone=document.createElement('td');tdPhone.textContent=entry.phone||'';tr.append(tdPhone);const tdMsg=document.createElement('td');const msgBox=document.createElement('div');msgBox.style='max-width:320px;max-height:85px;overflow-y:auto;white-space:pre-wrap;font-size:13px;line-height:1.4;background:#f5f8f6;border:1px solid #d4e3dc;border-radius:8px;padding:6px 10px;color:#173a30;word-break:break-word;';msgBox.textContent=entry.message||'';tdMsg.append(msgBox);tr.append(tdMsg);const tdStatus=document.createElement('td');tdStatus.textContent=entry.status==='sent'?'Enviado':'Conversa aberta';tr.append(tdStatus);const tdDate=document.createElement('td');tdDate.style='font-size:13px;white-space:nowrap;';tdDate.textContent=new Date(entry.date).toLocaleString('pt-BR');tr.append(tdDate);const action=document.createElement('td');if(entry.status!=='sent'){const button=document.createElement('button');button.type='button';button.style='padding:6px 10px;font-size:13px;';button.textContent='Marcar como enviado';button.addEventListener('click',async()=>{button.disabled=true;try{await apiCall('/api/history/'+encodeURIComponent(entry.id),{method:'PATCH',body:'{}'});await renderHistory();await renderDashboard();await renderAgenda()}catch(error){$('history-status').textContent=error.message;button.disabled=false}});action.append(button)}else{action.textContent='✅ Confirmado'}tr.append(action);rows.append(tr)}$('history-status').textContent=entries.length+' registro(s) no banco.'}catch(error){$('history-status').textContent=error.message}}
 $('nav-history').addEventListener('click',()=>showTab('history'));
-async function initializeDatabase(){try{let data=await apiCall('/api/settings');if(!data.config)data=await apiCall('/api/settings',{method:'PUT',body:JSON.stringify({config,initializeOnly:true})});config=data.config;hasApiKey=data.hasApiKey;databaseReady=true;fillSettings();loadTemplate();keyStatus();const legacy=JSON.parse(localStorage.getItem(HISTORY_STORAGE)||'[]');if(Array.isArray(legacy)){for(const e of legacy){if(e&&e.company&&e.phone)await apiCall('/api/history',{method:'POST',body:JSON.stringify({...e,imported:true})})}localStorage.removeItem(HISTORY_STORAGE);localStorage.removeItem(STORAGE)}status('Configurações carregadas do banco.')}catch(error){status(error.message+' Você ainda pode preparar o texto e abrir o WhatsApp.',true)}}
+$('nav-instances')?.addEventListener('click',()=>{showTab('instances');renderInstances(true);});
+$('nav-messages')?.addEventListener('click',()=>{showTab('messages');renderSettingsInfo();});
+$('nav-settings')?.addEventListener('click',()=>{showTab('settings');renderSettingsInfo();});
+
+if(typeof setInterval!=='undefined'){
+  setInterval(()=>{
+    if($('instances')&&!$('instances').hidden){
+      renderInstances(true);
+    }else if(($('settings')&&!$('settings').hidden)||($('messages')&&!$('messages').hidden)){
+      renderSettingsInfo();
+    }
+  },4000);
+}
+
+async function initializeDatabase(){
+  try{
+    let data=await apiCall('/api/settings');
+    if(!data.config)data=await apiCall('/api/settings',{method:'PUT',body:JSON.stringify({config,initializeOnly:true})});
+    config=data.config;
+    hasApiKey=data.hasApiKey;
+    databaseReady=true;
+    fillSettings();
+    loadTemplate();
+    keyStatus();
+    await renderSettingsInfo();
+    // Consulta status das instâncias em tempo real ao carregar
+    renderInstances(true).catch(()=>{});
+    const legacy=JSON.parse(localStorage.getItem(HISTORY_STORAGE)||'[]');
+    if(Array.isArray(legacy)){
+      for(const e of legacy){
+        if(e&&e.company&&e.phone)await apiCall('/api/history',{method:'POST',body:JSON.stringify({...e,imported:true})});
+      }
+      localStorage.removeItem(HISTORY_STORAGE);
+      localStorage.removeItem(STORAGE);
+    }
+    status('Configurações carregadas do banco.');
+  }catch(error){
+    console.error('initializeDatabase error:',error);
+    status(error.message+' Você ainda pode preparar o texto e abrir o WhatsApp.',true);
+  }
+}
 fillSettings();loadTemplate();initializeDatabase();
-
-let queueRunning=false,queueNext=null,queueProcessing=false,queueBusy=false;
-function updateCountdown(){const seconds=Math.max(0,Math.ceil((Date.parse(queueNext||'')-Date.now())/1000));$('queue-countdown').textContent=!queueRunning?'':queueProcessing?'Enviando mensagem…':!queueNext?'Aguardando instância conectada.':seconds>0?'Próximo envio em '+Math.floor(seconds/60)+'min '+seconds%60+'s':'Próxima mensagem pronta para envio.'}
-async function queueTick(){if(queueBusy)return;queueBusy=true;try{await refreshQueueControls();if(queueRunning){const r=await apiCall('/api/queue/tick',{method:'POST',body:'{}'});if(r.error)$('queue-status').textContent=r.error;await refreshQueueControls();if(!$('queue').hidden)await renderQueue();if(!$('history').hidden)await renderHistory();if(!$('agenda').hidden)await renderAgenda();if(!$('dashboard').hidden)await renderDashboard()}}catch(e){$('queue-status').textContent=e.message}finally{queueBusy=false}}
-if(typeof setInterval==='function'){setInterval(queueTick,2000);setInterval(updateCountdown,1000)}
-function openAgendaEditor(contact){let box=$('agenda-editor');if(box)box.remove();box=document.createElement('form');box.id='agenda-editor';box.noValidate=true;const feedback=document.createElement('p');feedback.className='status';feedback.setAttribute('role','status');const title=document.createElement('h2');title.textContent='Editar estabelecimento';box.append(title);const inputs={};for(const [key,label] of [['company','Estabelecimento'],['phone','WhatsApp'],['city','Cidade'],['responsible','Responsável'],['notes','Observações']]){const field=document.createElement('label');field.textContent=label;const input=document.createElement('input');input.value=contact[key]||'';input.required=['company','phone','city'].includes(key);inputs[key]=input;field.append(input);box.append(field)}const save=document.createElement('button');save.type='submit';save.className='primary';save.textContent='Salvar alterações';const cancel=document.createElement('button');cancel.type='button';cancel.textContent='Cancelar';cancel.onclick=()=>box.remove();box.append(save,cancel);box.append(feedback);box.onsubmit=async e=>{e.preventDefault();save.disabled=true;feedback.textContent='Salvando cadastro…';try{const data=Object.fromEntries(Object.entries(inputs).map(([k,input])=>[k,input.value.trim()]));if(!data.company||!data.city||!/^[0-9]{10,15}$/.test(data.phone.replace(/\D/g,'')))throw new Error('Preencha estabelecimento, cidade e WhatsApp com DDD.');await apiCall('/api/contacts/'+encodeURIComponent(contact.id),{method:'PATCH',body:JSON.stringify(data)});box.remove();$('agenda-status').textContent='Cadastro atualizado.';await renderAgenda()}catch(error){feedback.textContent=error.message;feedback.classList.add('error');$('agenda-status').textContent=error.message}finally{save.disabled=false}};$('agenda').querySelector('.card').append(box);inputs.company.focus();box.scrollIntoView({behavior:'smooth',block:'center'})}
-
-async function renderAiStatus(){try{const d=await apiCall('/api/ai/status');$('ai-status').textContent=!d.hasApiKey?'Salve a chave Gemini para o robô responder.':!d.enabled?'Atendimento IA desligado.':!d.instances.length?'Nenhuma instância foi encontrada no banco compartilhado desta versão. Confira se o projeto usa o mesmo backend do cadastro.':!d.instances.some(i=>i.status==='CONNECTED')?'Aguardando confirmação de conexão com o WhatsApp. O status é consultado automaticamente.':d.instances.some(i=>i.webhookStatus==='READY')?'Atendimento pronto para receber mensagens dos clientes.':'Ative o atendimento na instância para receber respostas.';if(d.errors.length)$('ai-status').textContent+=' Última falha: '+d.errors[0].error}catch(e){$('ai-status').textContent=e.message}}
-async function activateAi(){const d=await apiCall('/api/ai/setup',{method:'POST',body:'{}'});$('ai-status').textContent=!d.hasApiKey?'Mensagens salvas. Falta salvar a chave Gemini.':d.total===0?'Mensagens salvas. Falta cadastrar e conectar uma instância.':d.configured===d.total?'Atendimento ativado nas instâncias.':'Atendimento configurado em '+d.configured+' de '+d.total+' instância(s). Confira as conexões.';return d}
-$('activate-ai').addEventListener('click',async()=>{const button=$('activate-ai');button.disabled=true;try{const next=readSettings();next.aiEnabled=true;await persistSettings(next,true);$('ai-enabled').checked=true;await activateAi()}catch(e){$('ai-status').textContent=e.message}finally{button.disabled=false}});
-$('ai-enabled').addEventListener('change',async()=>{try{const next=readSettings();await persistSettings(next,true);if(next.aiEnabled)await activateAi();else await renderAiStatus()}catch(e){$('ai-status').textContent=e.message}});
-
-function instanceStatusLabel(x){const label=x.status==='CONNECTED'?'🟢 Online':x.status==='DISCONNECTED'?'🔴 Offline':'🟠 Verificação indisponível';return label+(x.lastCheckedAt?' · conferido às '+new Date(x.lastCheckedAt).toLocaleTimeString('pt-BR'):' · aguardando consulta')}
-let liveInstancesBusy=false;
-async function refreshLiveInstances(){if(liveInstancesBusy)return;liveInstancesBusy=true;try{const d=await apiCall('/api/instances/refresh',{method:'POST',body:'{}'});for(const x of d.instances){const title=document.querySelector('[data-instance-title="'+x.id+'"]');if(title)title.textContent=x.name+' · '+(x.provider==='EVOLUTION_GO'?'Evolution GO':'Evolution API')+' — '+instanceStatusLabel(x)}if(!$('messages').hidden)await renderAiStatus()}catch(e){$('instance-status').textContent='Não foi possível verificar a conexão agora: '+e.message}finally{liveInstancesBusy=false}}
-if(typeof setInterval==='function')setInterval(()=>{if(!$('instances').hidden||!$('messages').hidden||queueRunning)refreshLiveInstances()},5000);
 </script></body></html>

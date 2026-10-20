@@ -33,22 +33,3 @@ Use AI_STUDIO_PROMPT.md. A interface e a API são as mesmas do Site; o servidor 
 
 ## Validação
 Banco, criptografia, fluxo entre sessões e histórico verificados com SQLite e resposta Gemini simulada, sem chave real. Execute npm test (Node com node:sqlite). A chamada real depende de uma chave válida e quota disponível. O servidor apresenta erros separados de chave, permissão, API desativada, modelo e quota.
-
-## Fila automática
-Em A enviar, prepare e revise as mensagens antes de iniciar. A fila executa chamadas à Evolution API / Evolution GO, respeitando intervalos e repouso de cada instância. Mantenha o sistema aberto; pode navegar entre abas. A contagem regressiva mostra o próximo envio. Falhas pausam a fila e exigem conferência antes de repetir. Aceitação pela API é registrada como enviada, sem afirmar entrega ou leitura.
-
-O histórico preserva o texto exato e o vínculo com o cadastro, cidade, responsável, observações e instância. Após sucesso, a empresa sai da Agenda ativa e de A enviar; seu cadastro continua no banco. Editar abre formulário completo na página (empresa, WhatsApp, cidade, responsável e observações).
-
-Todas as rotas /api no Node são encaminhadas ao mesmo backend SITE_BACKEND_URL. O backend também precisa executar a versão atual do worker; sincronizar somente o frontend no AI Studio não atualiza o backend publicado.
-
-## Atendimento automático da IA
-As cinco mensagens e os textos de orientação são preenchidos e salvos automaticamente no banco quando faltarem. Textos personalizados existentes são preservados. Tempo padrão: 5 segundos, ou intervalo aleatório configurável de 0 a 10 segundos; a geração pode acrescentar tempo. A opção digitando usa o endpoint de presença de cada provedor.
-
-A IA responde a novos textos de conversas privadas recebidos via webhook autenticado por instância, usando a oferta, as instruções e o histórico recente. Eventos próprios, grupos, sincronizações antigas e mensagens duplicadas são ignorados. Entradas e respostas ficam salvas no servidor e as respostas aparecem em Enviados. É possível desligar globalmente em Mensagens ou pausar por contato em Enviados. Pedidos explícitos de parar mensagens pausam o contato.
-
-Cadastre a instância e use Ativar atendimento. Na Evolution API, o sistema configura /webhook/set/{instância}; na Evolution GO, /instance/connect com webhookUrl e subscribe MESSAGE. O webhook funciona no servidor mesmo com a página fechada, usando waitUntil. Falhas ficam visíveis em Mensagens; não há reenvio automático após um erro de resultado incerto. É necessária uma chave Gemini válida, com quota, e uma instância conectada.
-
-## Status das instâncias
-Instâncias e Mensagens consultam a conexão real a cada 5 segundos, sem recriar os formulários de edição. Eventos de conexão autenticados também atualizam o status, mesmo com a IA desligada. Online exige confirmação do provedor; na Evolution GO, connected e loggedIn precisam estar verdadeiros. Falha de rede, autenticação ou resposta desconhecida aparece como verificação indisponível.
-
-Excluir instância remove apenas o cadastro do sistema e suas credenciais locais, mantendo a sessão externa e o histórico. A exclusão é bloqueada enquanto houver um envio sendo processado nesta instância.
