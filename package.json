@@ -1,0 +1,24 @@
+{
+  "name": "enviozap",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bash scripts/build.sh",
+    "validate": "node scripts/validate-artifact.mjs",
+    "prestart": "node scripts/prepare-worker.mjs",
+    "start": "node --env-file-if-exists=.env server.mjs",
+    "predev": "node scripts/prepare-worker.mjs",
+    "dev": "node --watch --env-file-if-exists=.env server.mjs",
+    "check": "node --check server.mjs && node --check worker/api.js",
+    "test": "node scripts/prepare-worker.mjs && node test/storage.test.mjs",
+    "db:generate": "drizzle-kit generate"
+  },
+  "version": "1.2.0",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.4",
+    "drizzle-orm": "^0.44.5"
+  }
+}
