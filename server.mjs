@@ -443,6 +443,27 @@ async function handleIncomingWhatsAppMessage(payload, db, env, reqOrigin = '') {
                        '';
       if (!userText || typeof userText !== 'string' || !userText.trim()) continue;
 
+      // Deduplicação atômica e persistente entre webhook e polling Evolution.
+      // O mesmo ID de mensagem só pode iniciar uma resposta, mesmo em requisições concorrentes.
+      const incomingId = String(key.id || data.id || data.messageId || '').trim();
+      if (!incomingId) {
+        console.warn('[AI Dedup] Mensagem sem ID único ignorada para evitar respostas repetidas.');
+        continue;
+      }
+      const instanceName = String(payload.instance || data.instance || payload.sender || '').trim();
+      if (!instanceName) {
+        console.warn('[AI Dedup] Mensagem sem identificação de instância ignorada.');
+        continue;
+      }
+      const dedupKey = JSON.stringify([instanceName, incomingId]);
+      const claimed = db.prepare(
+        'INSERT OR IGNORE INTO processed_evolution_messages (id, processed_at) VALUES (?, ?)'
+      ).run(dedupKey, new Date().toISOString());
+      if (!claimed.changes) {
+        console.log('[AI Dedup] Evento repetido ignorado:', instanceName, incomingId);
+        continue;
+      }
+
       console.log(`[AI Auto-Reply] 📩 Mensagem recebida de ${phoneDigits}: "${userText.trim().slice(0, 60)}"`);
 
       // 4. Verifica se este contato está em período de pausa por intervenção humana
