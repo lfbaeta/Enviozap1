@@ -372,7 +372,7 @@ async function handleIncomingWhatsAppMessage(payload, db, env, reqOrigin = '') {
     const settingsRow = db.prepare('SELECT config_json, key_cipher FROM settings WHERE id = 1').get();
     if (!settingsRow) return;
     const cfg = JSON.parse(settingsRow.config_json);
-    const isAiActive = cfg.aiEnabled === true || (cfg.aiEnabled !== false && cfg.aiEnabled !== 'false');
+    const isAiActive = cfg.aiEnabled === true || cfg.aiEnabled === 'true';
     if (!isAiActive) {
       console.log('[AI Auto-Reply] ⏸️ IA desligada nas configurações. Mensagem ignorada.');
       return;
@@ -783,6 +783,14 @@ ${cfg.offer || 'Cardápio digital próprio, integração com WhatsApp, 30 dias g
         };
       }
 
+      // Última barreira: o operador pode desligar a IA durante a espera de digitação.
+      const latestSettings = db.prepare('SELECT config_json FROM settings WHERE id = 1').get();
+      let latestCfg = {};
+      try { latestCfg = JSON.parse(latestSettings?.config_json || '{}'); } catch {}
+      if (!(latestCfg.aiEnabled === true || latestCfg.aiEnabled === 'true') || isAiPausedForContact(db, phoneDigits)) {
+        console.log('[AI Send Guard] Envio cancelado: IA desligada ou conversa assumida por humano.');
+        continue;
+      }
       recordBotSent(phoneDigits);
 
       const sendResp = await fetch(endpoint, {
