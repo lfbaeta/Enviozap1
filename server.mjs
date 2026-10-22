@@ -527,7 +527,10 @@ async function handleIncomingWhatsAppMessage(payload, db, env, reqOrigin = '') {
       const normalizedShort = userText.toLowerCase().trim().replace(/[.,!?:;]/g, '');
       const shortAcks = ['ok', 'blz', 'beleza', 'obrigado', 'obrigada', 'valeu', 'vlw', 'entendi', 'ta bom', 'tá bom', 'combinado', 'show', 'otimo', 'ótimo', 'perfeito', 'certo', 'legal', 'tmj', 'obg', 'joia', 'jóia', 'muito bom', 'bom dia', 'boa tarde', 'boa noite'];
 
-      const isShortAck = shortAcks.some(ack => normalizedShort === ack || (normalizedShort.length <= 20 && normalizedShort.includes(ack)));
+      // Apenas confirmações EXATAS encerram brevemente a interação. Saudações devem passar pela IA
+      // para iniciar ou continuar o diálogo; correspondência parcial classificava perguntas como 'ok'.
+      const greetingOnly = ['bom dia', 'boa tarde', 'boa noite', 'oi', 'olá', 'ola', 'e aí', 'e ai'];
+      const isShortAck = !greetingOnly.includes(normalizedShort) && shortAcks.some(ack => normalizedShort === ack);
 
       if (isHandoffRequest) {
         replyText = `Com certeza! Já notifiquei nossa equipe e um atendente humano assumirá o atendimento por aqui em instantes. 🤝 Pode me adiantar qual seria sua principal dúvida?`;
