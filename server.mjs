@@ -761,6 +761,23 @@ ${cfg.offer || 'Cardápio digital próprio, integração com WhatsApp, 30 dias g
 
       if (!replyText) continue;
 
+      // Resposta de boas-vindas somente na primeira interação.
+      // O histórico é consultado antes de qualquer envio, inclusive no modo de teste.
+      const hasAnsweredBefore = historyRows.some(row => row.role === 'model');
+      const isGreetingReply = /^\\s*(?:ol[áa][!,. ]*)?(?:bom dia|boa tarde|boa noite|tudo bem|como posso (?:te )?ajudar)/i.test(replyText);
+      if (hasAnsweredBefore && isGreetingReply) {
+        const isQuestion = /como funciona|quanto custa|preço|valor|cardápio|pedido|impressão|integração|taxa|mensalidade/i.test(userText);
+        replyText = isQuestion
+          ? generateSmartDelivaleReply(userText, historyRows, '', cfg, companyName).replace(/^\\s*ol[áa][!,. ]*/i, '').trim()
+          : 'Estou aqui para continuar o atendimento. O que você gostaria de saber?';
+      }
+      const lastModelReply = db.prepare("SELECT content, created_at FROM chat_messages WHERE phone = ? AND role = 'model' ORDER BY created_at DESC LIMIT 1").get(phoneDigits);
+      if (lastModelReply && lastModelReply.content.trim() === replyText.trim() &&
+          Date.now() - Date.parse(lastModelReply.created_at) < 60000) {
+        console.log('[AI Send Guard] Resposta idêntica recente bloqueada:', instanceName, phoneDigits);
+        continue;
+      }
+
       if (payload.isTest) {
         try {
           db.prepare("INSERT INTO chat_messages (id, phone, role, content, created_at) VALUES (?, ?, 'model', ?, ?)")
