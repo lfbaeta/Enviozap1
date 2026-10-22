@@ -475,6 +475,22 @@ async function handleIncomingWhatsAppMessage(payload, db, env, reqOrigin = '') {
         continue;
       }
 
+      // Webhook e polling podem entregar o mesmo texto com IDs diferentes.
+      // Evita respostas duplicadas para a mesma mensagem em uma janela curta,
+      // sem bloquear perguntas diferentes enviadas em sequência.
+      const fingerprint = JSON.stringify([instanceName, phoneDigits, userText.trim().toLowerCase()]);
+      const nowMs = Date.now();
+      const previousFingerprint = recentMessageFingerprints.get(fingerprint);
+      if (previousFingerprint && nowMs - previousFingerprint < 10000) {
+        console.log('[AI Dedup] Mensagem repetida em 10s ignorada:', instanceName, phoneDigits);
+        continue;
+      }
+      recentMessageFingerprints.set(fingerprint, nowMs);
+      if (recentMessageFingerprints.size > 3000) {
+        for (const [key, timestamp] of recentMessageFingerprints) {
+          if (nowMs - timestamp > 30000) recentMessageFingerprints.delete(key);
+        }
+      }
       console.log(`[AI Auto-Reply] 📩 Mensagem recebida de ${phoneDigits}: "${userText.trim().slice(0, 60)}"`);
 
       // 4. Verifica se este contato está em período de pausa por intervenção humana
@@ -1076,12 +1092,8 @@ async function syncEvolutionMessagesAndStatus() {
             continue;
           }
 
-          // Se o robô respondeu a este número nos últimos 6 segundos, evita rajada
-          const targetJid = key.remoteJidAlt && key.remoteJidAlt.includes('@s.whatsapp.net') ? key.remoteJidAlt : (key.remoteJid || '');
-          const phone = targetJid.split('@')[0].replace(/\D/g, '');
-          if (phone && wasRecentlySentByBot(phone, sqlite)) {
-            continue;
-          }
+          // Não bloquear mensagens recebidas só porque o robô respondeu recentemente.
+          // Esse bloqueio impedia o cliente de continuar a conversa por até 3 minutos.
 
           // Mensagem recebida de cliente no WhatsApp!
           console.log(`[Evolution Sync] 📩 Nova mensagem recebida de cliente na instância "${inst.name}"!`);
