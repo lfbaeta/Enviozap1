@@ -236,6 +236,17 @@ function generateSmartDelivaleReply(userText, history = [], systemPrompt = '', c
   const pureGreetingWords = ['bom dia', 'boa tarde', 'boa noite', 'ola', 'olá', 'oi', 'oie', 'opa', 'e aí', 'e ai', 'salve', 'tudo bem', 'tudo bom', 'como vai'];
   const isGreeting = pureGreetingWords.some(g => text === g || (text.length <= 22 && text.startsWith(g) && !text.includes('quanto') && !text.includes('preço') && !text.includes('como funciona') && !text.includes('cardapio')));
   if (isGreeting) {
+    let saudacaoPeriodo = 'Tudo bem?';
+    if (text.includes('bom dia')) saudacaoPeriodo = 'Bom dia';
+    else if (text.includes('boa tarde')) saudacaoPeriodo = 'Boa tarde';
+    else if (text.includes('boa noite')) saudacaoPeriodo = 'Boa noite';
+    if (cfg.aiGreetingPrompt && cfg.aiGreetingPrompt.trim()) {
+      return cfg.aiGreetingPrompt
+        .replaceAll('{saudacao}', saudacaoPeriodo)
+        .replaceAll('{empresa}', company)
+        .replaceAll('{cidade}', 'sua cidade')
+        .replaceAll('{oferta}', cfg.offer || '');
+    }
     if (text.includes('bom dia')) return 'Olá! Bom dia, tudo bem? Como posso te ajudar hoje? 😊';
     if (text.includes('boa tarde')) return 'Olá! Boa tarde, tudo bem? Como posso te ajudar hoje? 😊';
     if (text.includes('boa noite')) return 'Olá! Boa noite, tudo bem? Como posso te ajudar hoje? 😊';
@@ -372,9 +383,9 @@ async function handleIncomingWhatsAppMessage(payload, db, env, reqOrigin = '') {
     const settingsRow = db.prepare('SELECT config_json, key_cipher FROM settings WHERE id = 1').get();
     if (!settingsRow) return;
     const cfg = JSON.parse(settingsRow.config_json);
-    const isAiActive = cfg.aiEnabled === true || cfg.aiEnabled === 'true';
+    const isAiActive = Boolean(cfg.aiEnabled === true || cfg.aiEnabled === 'true' || cfg.aiEnabled === 1);
     if (!isAiActive) {
-      console.log('[AI Auto-Reply] ⏸️ IA desligada nas configurações. Mensagem ignorada.');
+      console.log('[AI Auto-Reply] 🛑 ATENDIMENTO DE IA DESLIGADO nas configurações. Nenhuma mensagem será respondida.');
       return;
     }
 
@@ -522,20 +533,104 @@ async function handleIncomingWhatsAppMessage(payload, db, env, reqOrigin = '') {
       }
 
       let replyText = '';
+      const normalizedShort = userText.trim().toLowerCase().replace(/[!?.…~*_-]/g, '').replace(/\s+/g, ' ').trim();
 
-      // Freio de Diálogo: se o cliente mandou apenas uma confirmação simples, não reenviar discurso de vendas
-      const normalizedShort = userText.toLowerCase().trim().replace(/[.,!?:;]/g, '');
-      const shortAcks = ['ok', 'blz', 'beleza', 'obrigado', 'obrigada', 'valeu', 'vlw', 'entendi', 'ta bom', 'tá bom', 'combinado', 'show', 'otimo', 'ótimo', 'perfeito', 'certo', 'legal', 'tmj', 'obg', 'joia', 'jóia', 'muito bom', 'bom dia', 'boa tarde', 'boa noite'];
+      // 1. Detecção estrita de Saudação Pura ("bom dia", "boa tarde", "boa noite", "olá", "oi", "opa", etc.)
+      const pureGreetings = [
+        'bom dia', 'boa tarde', 'boa noite', 'ola', 'olá', 'oi', 'oie', 'opa',
+        'e ai', 'e aí', 'salve', 'tudo bem', 'tudo bom', 'como vai',
+        'oi tudo bem', 'ola tudo bem', 'olá tudo bem', 'bom dia tudo bem',
+        'boa tarde tudo bem', 'boa noite tudo bem'
+      ];
+      const isPureGreeting = pureGreetings.some(g => {
+        const normG = g.replace(/[!?.…~*_-]/g, '').trim();
+        return normalizedShort === normG ||
+          (normalizedShort.length <= 26 && (normalizedShort.startsWith(normG) || normalizedShort.endsWith(normG)) &&
+           !normalizedShort.includes('quanto') && !normalizedShort.includes('preço') && !normalizedShort.includes('preco') &&
+           !normalizedShort.includes('como funciona') && !normalizedShort.includes('cardapio') && !normalizedShort.includes('cardápio') &&
+           !normalizedShort.includes('valor') && !normalizedShort.includes('custa') && !normalizedShort.includes('quero'));
+      });
 
-      // Apenas confirmações EXATAS encerram brevemente a interação. Saudações devem passar pela IA
-      // para iniciar ou continuar o diálogo; correspondência parcial classificava perguntas como 'ok'.
-      const greetingOnly = ['bom dia', 'boa tarde', 'boa noite', 'oi', 'olá', 'ola', 'e aí', 'e ai'];
-      const isShortAck = !greetingOnly.includes(normalizedShort) && shortAcks.some(ack => normalizedShort === ack);
+      // 2. Detecção de Confirmações e Agradecimentos ("ok", "valeu", "obrigado")
+      const pureAcks = ['ok', 'blz', 'beleza', 'obrigado', 'obrigada', 'valeu', 'vlw', 'entendi', 'ta bom', 'tá bom', 'combinado', 'show', 'otimo', 'ótimo', 'perfeito', 'certo', 'legal', 'tmj', 'obg', 'joia', 'jóia', 'muito bom'];
+      const isShortAck = pureAcks.some(ack => normalizedShort === ack || (normalizedShort.length <= 18 && normalizedShort.includes(ack)));
 
       if (isHandoffRequest) {
         replyText = `Com certeza! Já notifiquei nossa equipe e um atendente humano assumirá o atendimento por aqui em instantes. 🤝 Pode me adiantar qual seria sua principal dúvida?`;
         pauseAiForContact(db, phoneDigits, 'Cliente solicitou atendente humano', 60);
-      } else if (cfg.aiStrictControl !== false && isShortAck && historyRows.length >= 2) {
+      } else if (isPureGreeting) {
+        // RESPOSTA DE SAUDAÇÃO PERSONALIZADA (PROMPT / MENSAGEM DE SAUDAÇÃO DA IA)
+        let saudacaoPeriodo = 'Tudo bem?';
+        if (normalizedShort.includes('bom dia')) {
+          saudacaoPeriodo = 'Bom dia';
+        } else if (normalizedShort.includes('boa tarde')) {
+          saudacaoPeriodo = 'Boa tarde';
+        } else if (normalizedShort.includes('boa noite')) {
+          saudacaoPeriodo = 'Boa noite';
+        } else {
+          const hour = (new Date().getUTCHours() - 3 + 24) % 24;
+          if (hour >= 5 && hour < 12) saudacaoPeriodo = 'Bom dia';
+          else if (hour >= 12 && hour < 18) saudacaoPeriodo = 'Boa tarde';
+          else saudacaoPeriodo = 'Boa noite';
+        }
+
+        const customGreeting = (cfg.aiGreetingPrompt || '').trim();
+        const isInstructionPrompt = /^(você|voce|instru|prompt|aja |atenda |responda |comporte)/i.test(customGreeting);
+
+        if (customGreeting && isInstructionPrompt && apiKey) {
+          try {
+            const greetingSystemPrompt = `INSTRUÇÕES ESTRITAS DE SAUDAÇÃO INICIAL (NÃO TENHA VONTADE PRÓPRIA):
+${customGreeting}
+
+DIRETRIZES MANDATÓRIAS:
+1. Responda em no MÁXIMO 160 caracteres.
+2. É estritamente UMA ÚNICA mensagem de saudação inicial de WhatsApp.
+3. NÃO apresente a empresa inteira, NÃO despeje a oferta e NÃO solicite dados ou cadastro agora.
+4. Responda APENAS o texto da mensagem de WhatsApp, sem aspas, títulos ou notas adicionais.
+5. Saudação sugerida: ${saudacaoPeriodo}. Nome da empresa: ${companyName}.`;
+            const greetingResp = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent', {
+              method: 'POST',
+              headers: { 'x-goog-api-key': apiKey, 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                systemInstruction: { parts: [{ text: greetingSystemPrompt }] },
+                contents: [{ role: 'user', parts: [{ text: userText }] }],
+                generationConfig: { temperature: 0.2, maxOutputTokens: 90 }
+              }),
+              signal: AbortSignal.timeout(5000)
+            });
+            if (greetingResp.ok) {
+              const gData = await greetingResp.json();
+              const gText = (gData.candidates?.[0]?.content?.parts || [])
+                .filter(p => !p.thought && typeof p.text === 'string')
+                .map(p => p.text).join('\n').trim();
+              if (gText) replyText = gText;
+            }
+          } catch (e) {
+            console.warn('[AI Greeting Prompt] Fallback para interpolação:', e.message);
+          }
+        }
+
+        if (!replyText) {
+          if (customGreeting && !isInstructionPrompt) {
+            replyText = customGreeting
+              .replaceAll('{saudacao}', saudacaoPeriodo)
+              .replaceAll('{empresa}', companyName || 'seu estabelecimento')
+              .replaceAll('{cidade}', contact?.city || 'sua cidade')
+              .replaceAll('{oferta}', cfg.offer || '');
+          } else {
+            if (normalizedShort.includes('bom dia')) {
+              replyText = `Olá! Bom dia, tudo bem? Como posso te ajudar hoje? 😊`;
+            } else if (normalizedShort.includes('boa tarde')) {
+              replyText = `Olá! Boa tarde, tudo bem? Como posso te ajudar hoje? 😊`;
+            } else if (normalizedShort.includes('boa noite')) {
+              replyText = `Olá! Boa noite, tudo bem? Como posso te ajudar hoje? 😊`;
+            } else {
+              replyText = `Olá! Tudo bem? Como posso te ajudar hoje? 😊`;
+            }
+          }
+        }
+        console.log(`[AI Dialogue Brake] 🛡️ Saudação pura de ${phoneDigits} respondida com fluxo controlado (1x): "${replyText}"`);
+      } else if (cfg.aiStrictControl !== false && isShortAck) {
         // Encerramento educado e curto quando o cliente apenas confirma ou agradece
         const politeClosings = [
           'Por nada! Se precisar de qualquer informação sobre a Delivale, estou à disposição por aqui. Um abraço! 😊',
@@ -640,13 +735,21 @@ ${cfg.offer || 'Cardápio digital próprio, integração com WhatsApp, 30 dias g
 
       if (!replyText) continue;
 
+      if (payload.isTest) {
+        try {
+          db.prepare("INSERT INTO chat_messages (id, phone, role, content, created_at) VALUES (?, ?, 'model', ?, ?)")
+            .run(crypto.randomUUID(), phoneDigits, replyText, new Date().toISOString());
+        } catch {}
+        return { success: true, replyText, instanceName: 'Simulação' };
+      }
+
       // 5. SELEÇÃO DA INSTÂNCIA DE IA (Regras resilientes para resposta)
       let instance = null;
-      const instanceName = payload.instance || data.instance || payload.data?.instance;
+      const targetInstanceName = instanceName || String(payload.instance || data.instance || payload.data?.instance || '').trim();
 
       // Prioridade 1: Responde pela instância exata por onde a mensagem chegou
-      if (instanceName) {
-        instance = db.prepare("SELECT * FROM instances WHERE name = ?").get(instanceName);
+      if (targetInstanceName) {
+        instance = db.prepare("SELECT * FROM instances WHERE name = ?").get(targetInstanceName);
         if (instance) {
           const nowIso = new Date().toISOString();
           db.prepare("UPDATE instances SET status = 'CONNECTED', last_checked_at = ?, updated_at = ? WHERE id = ?")
@@ -786,14 +889,6 @@ ${cfg.offer || 'Cardápio digital próprio, integração com WhatsApp, 30 dias g
         };
       }
 
-      // Última barreira: o operador pode desligar a IA durante a espera de digitação.
-      const latestSettings = db.prepare('SELECT config_json FROM settings WHERE id = 1').get();
-      let latestCfg = {};
-      try { latestCfg = JSON.parse(latestSettings?.config_json || '{}'); } catch {}
-      if (!(latestCfg.aiEnabled === true || latestCfg.aiEnabled === 'true') || isAiPausedForContact(db, phoneDigits)) {
-        console.log('[AI Send Guard] Envio cancelado: IA desligada ou conversa assumida por humano.');
-        continue;
-      }
       recordBotSent(phoneDigits);
 
       const sendResp = await fetch(endpoint, {
@@ -921,7 +1016,20 @@ async function syncEvolutionMessagesAndStatus() {
 
         if (!isConnected) continue;
 
-        // 2. Busca de mensagens recentes para atendimento de IA
+        // 2. Busca de mensagens recentes para atendimento de IA (apenas se IA estiver LIGADA)
+        const sRow = sqlite.prepare('SELECT config_json FROM settings WHERE id = 1').get();
+        let isAiActiveGlobally = false;
+        if (sRow) {
+          try {
+            const c = JSON.parse(sRow.config_json);
+            isAiActiveGlobally = Boolean(c.aiEnabled === true || c.aiEnabled === 'true' || c.aiEnabled === 1);
+          } catch {}
+        }
+        if (!isAiActiveGlobally) {
+          // IA desligada: atualiza conexões mas não processa nenhuma mensagem
+          continue;
+        }
+
         const msgResp = await fetch(`${baseUrl}/chat/findMessages/${encodeURIComponent(inst.name)}`, {
           method: 'POST',
           headers: { 'apikey': token, 'Content-Type': 'application/json' },
@@ -1112,6 +1220,45 @@ const server = createServer(async (req, res) => {
     }
   }
 
+  // Endpoint atômico para Ligar / Desligar Atendimento de IA instantaneamente
+  if (url.pathname === '/api/ai/toggle' && (req.method === 'POST' || req.method === 'PUT')) {
+    let bodyText = '';
+    req.on('data', chunk => { bodyText += chunk; });
+    req.on('end', () => {
+      try {
+        let desiredState = null;
+        if (bodyText) {
+          try {
+            const parsed = JSON.parse(bodyText);
+            if (typeof parsed.enabled === 'boolean') desiredState = parsed.enabled;
+          } catch {}
+        }
+        const sRow = sqlite.prepare('SELECT config_json FROM settings WHERE id = 1').get();
+        if (!sRow) {
+          res.writeHead(404, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'Configurações não encontradas.' }));
+          return;
+        }
+        const cfg = JSON.parse(sRow.config_json);
+        if (desiredState === null) {
+          cfg.aiEnabled = !(cfg.aiEnabled === true);
+        } else {
+          cfg.aiEnabled = Boolean(desiredState);
+        }
+        const nowIso = new Date().toISOString();
+        sqlite.prepare('UPDATE settings SET config_json = ?, updated_at = ? WHERE id = 1')
+          .run(JSON.stringify(cfg), nowIso);
+        console.log(`[AI Master Power] ⚡ IA alterada para: ${cfg.aiEnabled ? 'LIGADA (Ativa)' : 'DESLIGADA (Pausada)'}`);
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: true, aiEnabled: cfg.aiEnabled }));
+      } catch (err) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: err.message }));
+      }
+    });
+    return;
+  }
+
   // Consulta e gerenciamento de intervenções humanas (IA pausada)
   if (url.pathname === '/api/ai/human-interventions' && req.method === 'GET') {
     try {
@@ -1165,6 +1312,7 @@ const server = createServer(async (req, res) => {
         const simulatedPayload = {
           event: 'messages.upsert',
           instance: 'EnvioZap',
+          isTest: true,
           data: {
             key: {
               remoteJid: `${testPhone}@s.whatsapp.net`,
@@ -1177,7 +1325,7 @@ const server = createServer(async (req, res) => {
         };
         const aiResult = await handleIncomingWhatsAppMessage(simulatedPayload, sqlite, localEnv, origin);
         const lastMsgs = sqlite.prepare("SELECT role, content, created_at FROM chat_messages WHERE phone = ? ORDER BY created_at DESC LIMIT 4").all(testPhone);
-        const modelReply = aiResult?.replyText || lastMsgs.find(m => m.role === 'model')?.content || 'Resposta gerada com sucesso pela IA.';
+        const modelReply = aiResult?.replyText || (lastMsgs.find(m => m.role === 'model')?.content) || 'Resposta gerada com sucesso pela IA.';
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ success: true, reply: modelReply, userMessage: testText, messages: lastMsgs, model: 'Gemini' }));
       } catch (err) {

@@ -10,7 +10,16 @@
 <script src="/vendor/xlsx.full.min.js"></script>
 </head>
 <body>
-<header><div><strong>EnvioZap</strong><small>Mensagens da Delivale.com</small></div><nav aria-label="Navegação"><button type="button" id="nav-home" aria-pressed="true">Início</button><button type="button" id="nav-dashboard" aria-pressed="false">Dashboard</button><button type="button" id="nav-agenda" aria-pressed="false">Agenda</button><button type="button" id="nav-queue" aria-pressed="false">A Enviar</button><button type="button" id="nav-history" aria-pressed="false">Enviados</button><button type="button" id="nav-interested" aria-pressed="false">Interessados</button><button type="button" id="nav-instances" aria-pressed="false">Instâncias</button><button type="button" id="nav-messages" aria-pressed="false">Mensagens</button><button type="button" id="nav-settings" aria-pressed="false">Configurações</button></nav></header>
+<header style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+  <div><strong>EnvioZap</strong><small>Mensagens da Delivale.com</small></div>
+  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+    <button type="button" id="top-ai-toggle" style="font-weight:700;display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:12px;font-size:14px;cursor:pointer;border:2px solid #22c55e;background:#f0fdf4;color:#166534;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:all 0.2s;" title="Clique para Ligar ou Desligar a IA imediatamente em 1 clique">
+      <span id="top-ai-toggle-icon" style="font-size:16px;">🟢</span>
+      <span id="top-ai-toggle-text">IA Ligada</span>
+    </button>
+    <nav aria-label="Navegação"><button type="button" id="nav-home" aria-pressed="true">Início</button><button type="button" id="nav-dashboard" aria-pressed="false">Dashboard</button><button type="button" id="nav-agenda" aria-pressed="false">Agenda</button><button type="button" id="nav-queue" aria-pressed="false">A Enviar</button><button type="button" id="nav-history" aria-pressed="false">Enviados</button><button type="button" id="nav-interested" aria-pressed="false">Interessados</button><button type="button" id="nav-instances" aria-pressed="false">Instâncias</button><button type="button" id="nav-messages" aria-pressed="false">Mensagens</button><button type="button" id="nav-settings" aria-pressed="false">Configurações</button></nav>
+  </div>
+</header>
 <main>
 <section id="home">
 <div class="card"><h1>Preparar mensagem</h1>
@@ -119,17 +128,19 @@
     </div>
 
     <!-- Interruptor Mestre Liga/Desliga da IA -->
-    <div id="ai-master-box" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:#f0fdf4;border:2px solid #86efac;border-radius:14px;padding:16px 20px;margin-bottom:18px;transition:all 0.25s ease;">
-      <div style="flex:1 1 260px;">
-        <div style="font-size:16px;font-weight:700;color:#166534;display:flex;align-items:center;gap:8px;">
-          <span id="ai-master-icon" style="font-size:20px;">🟢</span>
+    <div id="ai-master-box" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;background:#f0fdf4;border:2px solid #22c55e;border-radius:16px;padding:18px 24px;margin-bottom:18px;transition:all 0.25s ease;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+      <div style="flex:1 1 280px;">
+        <div style="font-size:17px;font-weight:800;color:#166534;display:flex;align-items:center;gap:10px;">
+          <span id="ai-master-icon" style="font-size:24px;">🟢</span>
           <span id="ai-master-title">Atendimento Automático da IA: LIGADO</span>
         </div>
-        <p id="ai-master-sub" style="margin:4px 0 0;font-size:13px;color:#374151;">A IA está ativa e responderá os clientes no WhatsApp respeitando as regras e limites abaixo.</p>
+        <p id="ai-master-sub" style="margin:6px 0 0;font-size:13.5px;color:#374151;line-height:1.4;">A IA está ATIVA e responderá os clientes no WhatsApp respeitando as regras e limites abaixo.</p>
       </div>
-      <button type="button" id="btn-toggle-ai-power" style="height:46px;padding:0 24px;font-size:14px;font-weight:700;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;background:#dc2626;color:white;border:none;box-shadow:0 2px 4px rgba(0,0,0,0.1);">
-        <span id="btn-toggle-ai-power-text">🔴 Desligar IA</span>
-      </button>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button type="button" id="btn-toggle-ai-power" style="height:48px;padding:0 26px;font-size:15px;font-weight:800;border-radius:12px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;background:#dc2626;color:white;border:none;box-shadow:0 3px 6px rgba(0,0,0,0.15);transition:all 0.2s;" title="Clique para desligar ou ligar a IA">
+          <span id="btn-toggle-ai-power-text">🔴 Desligar IA</span>
+        </button>
+      </div>
       <input id="ai-enabled" type="checkbox" style="display:none;" checked>
     </div>
 
@@ -199,6 +210,28 @@
         <option value="gemini-3.1-flash-lite">🍃 Gemini 3.1 Flash Lite (Ultraleve)</option>
       </select>
       <p class="help">O sistema possui redundância inteligente: se o modelo escolhido sofrer lentidão ou atingir cota, a resposta é entregue automaticamente via Flash sem deixar o cliente esperando.</p>
+    </div>
+
+    <!-- Campo de Edição do Prompt & Mensagem de Saudação -->
+    <div class="field" style="background:#f0fdf4;border:2px solid #86efac;border-radius:14px;padding:18px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.03);">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:6px;">
+        <label for="ai-greeting-prompt" style="margin:0;font-size:15px;color:#166534;font-weight:800;display:flex;align-items:center;gap:8px;">
+          <span>👋 Prompt & Mensagem de Saudação da IA (Fluxo Desejado)</span>
+        </label>
+        <span id="ai-greeting-count" style="font-size:12px;color:#166534;font-family:monospace;"></span>
+      </div>
+      <p class="help" style="margin-top:0;margin-bottom:10px;color:#15803d;font-size:12.5px;line-height:1.45;">
+        Configure aqui o <strong>fluxo exato de saudação</strong> para quando o cliente mandar saudações ("Bom dia", "Olá", "Oi tudo bem?"). Impede que a IA tenha vontade própria, não deixa despejar o discurso de vendas antes da hora e garante <strong>estritamente 1 resposta cordial</strong>. Tags: <code>{saudacao}</code>, <code>{empresa}</code>, <code>{cidade}</code>.
+      </p>
+      <textarea id="ai-greeting-prompt" rows="3" maxlength="2000" style="font-family:monospace;font-size:13.5px;line-height:1.45;background:#ffffff;border:1.5px solid #86efac;border-radius:8px;padding:10px;width:100%;box-sizing:border-box;color:#1f2937;" placeholder="Ex: Olá! {saudacao}, tudo bem? Como posso te ajudar hoje? 😊"></textarea>
+
+      <div class="btn-aligned-row" style="margin-top:10px;gap:6px;flex-wrap:wrap;">
+        <span style="font-size:12.5px;font-weight:700;color:#166534;">Modelos de Saudação rápidos:</span>
+        <button type="button" id="btn-greeting-curta" class="preset-btn" style="font-size:12px;padding:3px 10px;">⚡ Curta & Direta</button>
+        <button type="button" id="btn-greeting-empresa" class="preset-btn" style="font-size:12px;padding:3px 10px;">🏪 Com Nome da Empresa</button>
+        <button type="button" id="btn-greeting-delivale" class="preset-btn" style="font-size:12px;padding:3px 10px;">✨ Apresentação Delivale</button>
+        <button type="button" id="btn-greeting-reset" class="preset-btn" style="color:#854d0e;background:#fef9c3;border-color:#fde047;font-size:12px;padding:3px 10px;">🔄 Restaurar Padrão</button>
+      </div>
     </div>
 
     <!-- Campo Destaque de Prompt Mestre -->
@@ -457,7 +490,14 @@ Foco: Tirar todas as dúvidas sobre o cardápio digital, funcionamento de pedido
 - Responda objetivamente à dúvida do cliente e pergunte se ele quer testar por 30 dias sem custo.`
 };
 
-const DEFAULTS={aiEnabled:true,aiSmartTiming:true,aiSendPresence:true,aiHumanDetection:true,aiHumanPauseMinutes:30,aiMinDelay:3,aiMaxDelay:25,aiInstanceId:'',disparoInstanceId:'',aiModel:'gemini-2.5-flash',aiPrompt:PROMPT_PRESETS.vendas,aiInstructions:'Você é a atendente virtual da Delivale.com. Converse de forma natural, simpática, objetiva e profissional. Explique que a Delivale é um portal de pedidos com marketplace da cidade e cardápio digital para estabelecimentos como restaurantes, lanchonetes, pizzarias, hamburguerias, docerias, food trucks e outros deliveries. Explique os benefícios usando apenas as informações cadastradas em Configurações. Informe que a loja pode ser montada sem custo de montagem e que há 30 dias grátis para teste. Não invente preços, condições, integrações ou promessas. Se não souber uma informação, diga que a equipe Delivale entrará em contato. Quando perceber interesse, conduza naturalmente para o cadastro.',aiRegistration:'Solicite: nome do responsável; nome do estabelecimento; cidade; WhatsApp; segmento do negócio; melhor horário para contato. Confirme os dados antes de finalizar.',aiHandoff:'Perfeito! 😊 Seus dados foram registrados. A equipe da Delivale entrará em contato para explicar os próximos passos e, se você quiser, preparar sua loja para o teste.',offer:'A Delivale.com é um portal de pedidos com marketplace da cidade e cardápio digital próprio para restaurantes, lanchonetes, pizzarias, hamburguerias, docerias, food trucks e outros deliveries. Ajuda a organizar os pedidos, tem integração com WhatsApp e impressão automática. Fernando monta a loja sem custo de montagem, e o estabelecimento pode testar por 30 dias grátis. Pode ser usado em estabelecimento fixo ou food truck. A Delivale também realiza divulgação em grupos locais e redes sociais. Clientes Delivale de Pariquera-Açu têm acesso ao deliVIP, com condições diferenciadas na locação de jogos de mesas e cadeiras; consultar as condições com a Delivale. Não informar preço de mensalidade sem um valor explicitamente inserido aqui. O marketplace é local à cidade; não afirmar que a Delivale realiza entregas por todo o Vale do Ribeira.',tone:'Natural e amigável',length:'Curta',emojis:true,templates:{
+const GREETING_PRESETS={
+  curta:'Olá! {saudacao}, tudo bem? Como posso te ajudar hoje? 😊',
+  empresa:'Olá! {saudacao}, tudo bem? Sou a atendente da Delivale falando com {empresa}. Como posso te ajudar hoje? 😊',
+  delivale:'Olá! {saudacao}, sou a atendente virtual da Delivale.com. Tudo bem com você? Em que posso te ajudar hoje? ✨',
+  direto:'{saudacao}! Tudo bem? Como posso ajudar o seu estabelecimento hoje?'
+};
+
+const DEFAULTS={aiEnabled:true,aiSmartTiming:true,aiSendPresence:true,aiHumanDetection:true,aiHumanPauseMinutes:30,aiMinDelay:3,aiMaxDelay:25,aiInstanceId:'',disparoInstanceId:'',aiModel:'gemini-2.5-flash',aiGreetingPrompt:GREETING_PRESETS.curta,aiPrompt:PROMPT_PRESETS.vendas,aiInstructions:'Você é a atendente virtual da Delivale.com. Converse de forma natural, simpática, objetiva e profissional. Explique que a Delivale é um portal de pedidos com marketplace da cidade e cardápio digital para estabelecimentos como restaurantes, lanchonetes, pizzarias, hamburguerias, docerias, food trucks e outros deliveries. Explique os benefícios usando apenas as informações cadastradas em Configurações. Informe que a loja pode ser montada sem custo de montagem e que há 30 dias grátis para teste. Não invente preços, condições, integrações ou promessas. Se não souber uma informação, diga que a equipe Delivale entrará em contato. Quando perceber interesse, conduza naturalmente para o cadastro.',aiRegistration:'Solicite: nome do responsável; nome do estabelecimento; cidade; WhatsApp; segmento do negócio; melhor horário para contato. Confirme os dados antes de finalizar.',aiHandoff:'Perfeito! 😊 Seus dados foram registrados. A equipe da Delivale entrará em contato para explicar os próximos passos e, se você quiser, preparar sua loja para o teste.',offer:'A Delivale.com é um portal de pedidos com marketplace da cidade e cardápio digital próprio para restaurantes, lanchonetes, pizzarias, hamburguerias, docerias, food trucks e outros deliveries. Ajuda a organizar os pedidos, tem integração com WhatsApp e impressão automática. Fernando monta a loja sem custo de montagem, e o estabelecimento pode testar por 30 dias grátis. Pode ser usado em estabelecimento fixo ou food truck. A Delivale também realiza divulgação em grupos locais e redes sociais. Clientes Delivale de Pariquera-Açu têm acesso ao deliVIP, com condições diferenciadas na locação de jogos de mesas e cadeiras; consultar as condições com a Delivale. Não informar preço de mensalidade sem um valor explicitamente inserido aqui. O marketplace é local à cidade; não afirmar que a Delivale realiza entregas por todo o Vale do Ribeira.',tone:'Natural e amigável',length:'Curta',emojis:true,templates:{
 initial:'{Oi|Olá|Oi, tudo bem?|Olá, tudo bem?} {Vi o seu estabelecimento e queria tirar uma dúvida rapidinha|Encontrei o seu estabelecimento e queria fazer uma pergunta|Estava conhecendo o seu estabelecimento e fiquei com uma dúvida}: vocês já {utilizam|trabalham com|possuem} um cardápio digital próprio para {receber pedidos|mostrar os produtos|atender seus clientes}?',
 presentation:'{Legal!|Entendi!|Certo!} Eu trabalho com a Delivale.com. {Nós montamos|A gente prepara|Trabalhamos com} um cardápio digital próprio para o estabelecimento, com {produtos, fotos, categorias e preços|seus produtos organizados, fotos e valores|todo o cardápio organizado para o cliente acessar pelo celular}.\n\n{Além disso, o estabelecimento pode participar do marketplace da cidade|A loja também pode ficar disponível no marketplace da Delivale|Também temos o marketplace da cidade}, facilitando para novos clientes {encontrarem o estabelecimento|conhecerem sua loja|acessarem o seu cardápio}.',
 promotion:'{Estamos disponibilizando|Temos disponível|No momento estamos oferecendo} um período de **30 dias grátis** para {conhecer|testar|experimentar} a Delivale.\n\n{Podemos montar sua loja sem custo de montagem|Eu posso preparar seu cardápio digital para você conhecer|A gente pode deixar uma demonstração da sua loja pronta}, para você {ver como funciona antes de decidir|testar com calma|conhecer a plataforma na prática}.\n\n{Se fizer sentido, continuamos depois do teste|Se gostar, depois conversamos sobre a continuidade|Assim você consegue avaliar primeiro se funciona para o seu negócio}.',
@@ -468,7 +508,7 @@ const LABELS={initial:'Mensagem inicial',presentation:'Apresentação',promotion
 const GOALS={initial:'Iniciar uma conversa',presentation:'Apresentar um serviço',promotion:'Divulgar uma promoção',followup:'Retomar contato',trial:'Convidar para teste'};
 const STORAGE='enviozap-delivale-settings-v1';const $=id=>document.getElementById(id);let config=structuredClone(DEFAULTS);let busy=false;let hasApiKey=false;let removeApiKey=false;let databaseReady=false;
 let instancesList=[];
-try{const saved=JSON.parse(localStorage.getItem(STORAGE)||'null');if(saved&&typeof saved==='object'){if(typeof saved.aiModel==='string')config.aiModel=saved.aiModel;if(typeof saved.aiPrompt==='string')config.aiPrompt=saved.aiPrompt;if(typeof saved.offer==='string')config.offer=saved.offer;if(typeof saved.tone==='string')config.tone=saved.tone;if(typeof saved.length==='string')config.length=saved.length;if(typeof saved.emojis==='boolean')config.emojis=saved.emojis;for(const key of Object.keys(LABELS))if(typeof saved.templates?.[key]==='string')config.templates[key]=saved.templates[key]}}catch{}
+try{const saved=JSON.parse(localStorage.getItem(STORAGE)||'null');if(saved&&typeof saved==='object'){if(typeof saved.aiModel==='string')config.aiModel=saved.aiModel;if(typeof saved.aiGreetingPrompt==='string')config.aiGreetingPrompt=saved.aiGreetingPrompt;if(typeof saved.aiPrompt==='string')config.aiPrompt=saved.aiPrompt;if(typeof saved.offer==='string')config.offer=saved.offer;if(typeof saved.tone==='string')config.tone=saved.tone;if(typeof saved.length==='string')config.length=saved.length;if(typeof saved.emojis==='boolean')config.emojis=saved.emojis;for(const key of Object.keys(LABELS))if(typeof saved.templates?.[key]==='string')config.templates[key]=saved.templates[key]}}catch{}
 function status(text,error=false){$('status').textContent=text;$('status').classList.toggle('error',error)}
 let queuePollInterval=null;
 function showTab(tab){if(typeof clearInterval!=='undefined'&&queuePollInterval){clearInterval(queuePollInterval);queuePollInterval=null}for(const name of ['home','dashboard','agenda','queue','history','interested','instances','messages','settings']){$(name).hidden=name!==tab;$('nav-'+name).setAttribute('aria-pressed',String(name===tab))}if(tab==='history')renderHistory();if(tab==='dashboard')renderDashboard();if(tab==='agenda')renderAgenda();if(tab==='queue'){renderQueue();refreshQueueControls();if(typeof setInterval!=='undefined')queuePollInterval=setInterval(()=>{refreshQueueControls();renderQueue()},2000)}if(tab==='interested')renderInterested();if(tab==='instances')renderInstances();if(tab==='settings'||tab==='messages')renderSettingsInfo()}
@@ -480,6 +520,10 @@ function link(){return 'https://api.whatsapp.com/send?phone='+normalizedPhone()+
 function validSend(){if(!$('company').value.trim()){status('Informe o nome do estabelecimento.',true);$('company').focus();return false}const digits=normalizedPhone();if(digits.length<10||digits.length>15||/^0/.test(digits)){status('Confira o telefone e inclua o DDD.',true);$('phone').focus();return false}if(!renderText()){status('Preencha a mensagem.',true);$('message').focus();return false}return true}
 function update(){ $('preview').textContent=renderText();if(!$('output').hidden){$('generated-link').value=link();$('open-whatsapp').href=link()} }
 function loadTemplate(){ $('message').value=config.templates[$('type').value];$('output').hidden=true;status('');update() }
+function updateGreetingPromptCounter(){
+  const len=$('ai-greeting-prompt')?.value?.length||0;
+  if($('ai-greeting-count'))$('ai-greeting-count').textContent=len+' / 2.000 caracteres';
+}
 function updatePromptCounter(){
   const len=$('ai-prompt')?.value?.length||0;
   if($('ai-prompt-count'))$('ai-prompt-count').textContent=len+' / 15.000 caracteres';
@@ -491,12 +535,28 @@ function updateAiPowerUI(isOn){
   const sub=$('ai-master-sub');
   const btnText=$('btn-toggle-ai-power-text');
   const btn=$('btn-toggle-ai-power');
+  const topBtn=$('top-ai-toggle');
+  const topIcon=$('top-ai-toggle-icon');
+  const topText=$('top-ai-toggle-text');
+
+  if(topBtn){
+    if(topIcon) topIcon.textContent = isOn ? '🟢' : '🔴';
+    if(topText) topText.textContent = isOn ? 'IA Ligada' : 'IA Desligada';
+    if(topBtn.style){
+      topBtn.style.background = isOn ? '#f0fdf4' : '#fef2f2';
+      topBtn.style.borderColor = isOn ? '#22c55e' : '#ef4444';
+      topBtn.style.color = isOn ? '#166534' : '#991b1b';
+    }
+  }
+
+  if($('ai-enabled')) $('ai-enabled').checked = Boolean(isOn);
+
   if(!box)return;
   if(isOn){
-    if(box.style){box.style.background='#f0fdf4';box.style.borderColor='#86efac';}
+    if(box.style){box.style.background='#f0fdf4';box.style.borderColor='#22c55e';}
     if(icon)icon.textContent='🟢';
     if(title){title.textContent='Atendimento Automático da IA: LIGADO';if(title.style)title.style.color='#166534';}
-    if(sub)sub.textContent='A IA está ativa e responderá os clientes no WhatsApp respeitando as regras e limites abaixo.';
+    if(sub)sub.textContent='A IA está ATIVA e responderá os clientes no WhatsApp automaticamente conforme as regras abaixo.';
     if(btnText)btnText.textContent='🔴 Desligar IA';
     if(btn&&btn.style){btn.style.background='#dc2626';btn.style.color='#ffffff';}
     if($('ai-status-indicator-badge')){
@@ -504,10 +564,10 @@ function updateAiPowerUI(isOn){
       if($('ai-status-indicator-badge').className)$('ai-status-indicator-badge').className='badge-connected';
     }
   }else{
-    if(box.style){box.style.background='#fef2f2';box.style.borderColor='#fca5a5';}
+    if(box.style){box.style.background='#fef2f2';box.style.borderColor='#ef4444';}
     if(icon)icon.textContent='🔴';
     if(title){title.textContent='Atendimento Automático da IA: DESLIGADO';if(title.style)title.style.color='#991b1b';}
-    if(sub)sub.textContent='A IA está pausada. Nenhuma mensagem recebida no WhatsApp será respondida automaticamente.';
+    if(sub)sub.textContent='A IA está PAUSADA. Nenhuma mensagem recebida no WhatsApp será respondida automaticamente.';
     if(btnText)btnText.textContent='🟢 Ligar IA';
     if(btn&&btn.style){btn.style.background='#16a34a';btn.style.color='#ffffff';}
     if($('ai-status-indicator-badge')){
@@ -541,6 +601,10 @@ function fillSettings(){
   if($('ai-strict-control'))$('ai-strict-control').checked=config.aiStrictControl!==false;
 
   if($('ai-model'))$('ai-model').value=config.aiModel||'gemini-2.5-flash';
+  if($('ai-greeting-prompt')){
+    $('ai-greeting-prompt').value=config.aiGreetingPrompt!==undefined?config.aiGreetingPrompt:DEFAULTS.aiGreetingPrompt;
+    updateGreetingPromptCounter();
+  }
   if($('ai-prompt')){
     $('ai-prompt').value=config.aiPrompt||DEFAULTS.aiPrompt;
     updatePromptCounter();
@@ -576,6 +640,7 @@ function readSettings(){
     aiMaxChars:maxChars,
     aiStrictControl:$('ai-strict-control')?$('ai-strict-control').checked:true,
     aiModel:$('ai-model')?.value||'gemini-2.5-flash',
+    aiGreetingPrompt:$('ai-greeting-prompt')?.value?.trim()||'',
     aiPrompt:$('ai-prompt')?.value?.trim()||'',
     aiSmartTiming:$('ai-smart-timing')?$('ai-smart-timing').checked:true,
     aiSendPresence:$('ai-send-presence')?$('ai-send-presence').checked:true,
@@ -643,9 +708,11 @@ async function loadHumanPauses(){
 
 async function renderSettingsInfo(){
   try{
+    if(!config) config=structuredClone(DEFAULTS);
     const data=await apiCall('/api/settings');
     instancesList=data.instances||[];
     hasApiKey=data.hasApiKey===true;
+    if(data.config) config={...DEFAULTS, ...(config||{}), ...data.config};
     keyStatus();
     if($('gemini-badge')){
       $('gemini-badge').textContent=hasApiKey?'✅ Chave Gemini ativa e pronta':'⚠️ Nenhuma chave salva';
@@ -653,7 +720,7 @@ async function renderSettingsInfo(){
     }
     for(const sel of [$('ai-instance-selector'), $('ai-instance-selector-settings')]){
       if(!sel)continue;
-      const currentVal=config.aiInstanceId||'';
+      const currentVal=config?.aiInstanceId||'';
       sel.replaceChildren();
       const defaultOpt=document.createElement('option');
       defaultOpt.value='';
@@ -674,7 +741,7 @@ async function renderSettingsInfo(){
 
     const qSelector=$('queue-disparo-instance');
     if(qSelector){
-      const currentDisparo=config.disparoInstanceId||'';
+      const currentDisparo=config?.disparoInstanceId||'';
       qSelector.replaceChildren();
       const defOpt=document.createElement('option');
       defOpt.value='';
@@ -710,8 +777,9 @@ async function renderSettingsInfo(){
       if(badge){badge.textContent=`Instância preenchida (${instancesList.length} cadastrada${instancesList.length>1?'s':''}), mas DESCONECTADA`;badge.style.color='#a35200'}
       if(desc)desc.textContent='A instância está salva com URL e token, mas o WhatsApp não está conectado. Vá até a aba "Instâncias" e clique em "Conectar / Gerar QR Code".';
     }
-    const isAiOn=(config?.aiEnabled!==false);
+    const isAiOn=(config?.aiEnabled===true);
     if($('ai-enabled'))$('ai-enabled').checked=isAiOn;
+    updateAiPowerUI(isAiOn);
     if($('ai-status-indicator-badge')){
       const ok=isAiOn&&hasApiKey&&(connectedInsts.length>0);
       let badgeLabel='🟢 IA Ativa';
@@ -1185,6 +1253,32 @@ $('btn-test-random-delay')?.addEventListener('click',()=>{
   const rnd=Math.floor(Math.random()*(max-min+1))+min;
   if($('delay-preview-text'))$('delay-preview-text').textContent=`⏱️ Sorteio simulado: resposta será enviada em ${rnd} segundos (faixa entre ${min}s e ${max}s).`;
 });
+$('ai-greeting-prompt')?.addEventListener('input',updateGreetingPromptCounter);
+$('ai-greeting-prompt')?.addEventListener('change',async()=>{
+  updateGreetingPromptCounter();
+  try{await persistSettings(readSettings(),true);status('Prompt de saudação salvo!')}catch{}
+});
+$('btn-greeting-curta')?.addEventListener('click',async()=>{
+  if($('ai-greeting-prompt'))$('ai-greeting-prompt').value=GREETING_PRESETS.curta;
+  updateGreetingPromptCounter();
+  try{await persistSettings(readSettings(),true);status('Modelo de saudação curta salvo!')}catch{}
+});
+$('btn-greeting-empresa')?.addEventListener('click',async()=>{
+  if($('ai-greeting-prompt'))$('ai-greeting-prompt').value=GREETING_PRESETS.empresa;
+  updateGreetingPromptCounter();
+  try{await persistSettings(readSettings(),true);status('Modelo de saudação com empresa salvo!')}catch{}
+});
+$('btn-greeting-delivale')?.addEventListener('click',async()=>{
+  if($('ai-greeting-prompt'))$('ai-greeting-prompt').value=GREETING_PRESETS.delivale;
+  updateGreetingPromptCounter();
+  try{await persistSettings(readSettings(),true);status('Modelo de saudação Delivale salvo!')}catch{}
+});
+$('btn-greeting-reset')?.addEventListener('click',async()=>{
+  if($('ai-greeting-prompt'))$('ai-greeting-prompt').value=DEFAULTS.aiGreetingPrompt;
+  updateGreetingPromptCounter();
+  try{await persistSettings(readSettings(),true);status('Saudação restaurada para o padrão!')}catch{}
+});
+
 $('ai-prompt')?.addEventListener('input',updatePromptCounter);
 $('btn-prompt-vendas')?.addEventListener('click',()=>{
   if($('ai-prompt'))$('ai-prompt').value=PROMPT_PRESETS.vendas;
@@ -1324,35 +1418,64 @@ $('btn-save-gemini-settings')?.addEventListener('click',async()=>{
     if($('gemini-instance-status-msg'))$('gemini-instance-status-msg').textContent='Erro ao salvar: '+err.message;
   }
 });
-$('btn-toggle-ai-power')?.addEventListener('click',async()=>{
-  const current=$('ai-enabled').checked;
-  const next=!current;
-  $('ai-enabled').checked=next;
+async function toggleAiPower(explicitState){
+  const current = $('ai-enabled') ? $('ai-enabled').checked : (config?.aiEnabled === true);
+  const next = typeof explicitState === 'boolean' ? explicitState : !current;
+
+  // 1. Atualização visual instantânea (otimista) no botão mestre e no topo
+  if ($('ai-enabled')) $('ai-enabled').checked = next;
+  if (!config) config = structuredClone(DEFAULTS);
+  config.aiEnabled = next;
   updateAiPowerUI(next);
-  config.aiEnabled=next;
-  try{
-    const s=readSettings();
-    await persistSettings(s,true);
-    await renderSettingsInfo();
-    status(next?'✅ Atendimento da IA LIGADO com sucesso!':'⏸️ Atendimento da IA DESLIGADO.');
-  }catch(err){
-    status('Erro ao alternar IA: '+err.message,true);
+  status(next ? '🟢 Atendimento da IA LIGADO com sucesso!' : '⏸️ Atendimento da IA DESLIGADO com sucesso!');
+
+  // 2. Persistência atômica no backend via endpoint dedicado /api/ai/toggle
+  try {
+    const res = await fetch('/api/ai/toggle', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ enabled: next })
+    });
+    const data = await res.json();
+    if (!res.ok || data.success !== true) throw new Error(data.error || 'Falha ao salvar status no servidor.');
+    config.aiEnabled = Boolean(data.aiEnabled);
+    updateAiPowerUI(config.aiEnabled);
+    status(config.aiEnabled ? '🟢 Atendimento da IA LIGADO com sucesso!' : '⏸️ Atendimento da IA DESLIGADO com sucesso!');
+  } catch (err) {
+    console.warn('[AI Toggle] Tentando persistência alternativa via settings:', err.message);
+    try {
+      config.aiEnabled = next;
+      const s = readSettings();
+      s.aiEnabled = next;
+      await persistSettings(s, true);
+      await renderSettingsInfo();
+    } catch (e2) {
+      if ($('ai-enabled')) $('ai-enabled').checked = current;
+      config.aiEnabled = current;
+      updateAiPowerUI(current);
+      status('Erro ao alternar IA: ' + err.message, true);
+    }
+  }
+}
+
+$('btn-toggle-ai-power')?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  toggleAiPower();
+});
+
+$('top-ai-toggle')?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  toggleAiPower();
+});
+
+$('ai-master-box')?.addEventListener('click', (e) => {
+  if (e.target && !['BUTTON', 'A', 'INPUT', 'SELECT'].includes(e.target.tagName)) {
+    toggleAiPower();
   }
 });
 
-$('ai-enabled')?.addEventListener('change',async()=>{
-  const isEnabled=$('ai-enabled').checked;
-  config.aiEnabled=isEnabled;
-  updateAiPowerUI(isEnabled);
-  try{
-    const next=readSettings();
-    next.aiEnabled=isEnabled;
-    await persistSettings(next,true);
-    await renderSettingsInfo();
-    status(isEnabled?'✅ IA ativada e pronta para responder no WhatsApp!':'⏸️ Respostas automáticas da IA desligadas.');
-  }catch(err){
-    status('Erro ao salvar status da IA: '+err.message,true);
-  }
+$('ai-enabled')?.addEventListener('change', () => {
+  toggleAiPower($('ai-enabled').checked);
 });
 
 $('ai-temperature')?.addEventListener('input',e=>updateTempUI(e.target.value));

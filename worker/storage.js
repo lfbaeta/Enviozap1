@@ -8,7 +8,7 @@ async function encryptSecret(secret,env){const iv=crypto.getRandomValues(new Uin
 async function decryptSecret(cipher,env){const [iv,data]=cipher.split('.');return new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:fromBase64(iv)},await encryptionKey(env),fromBase64(data)))}
 async function configuredApiKey(env){const row=await savedSettings(env);return row?.key_cipher?decryptSecret(row.key_cipher,env):env.GEMINI_API_KEY||''}
 const TEMPLATE_KEYS=['initial','presentation','promotion','followup','trial'];
-function validConfig(config){return config&&typeof config.aiEnabled==='boolean'&&typeof config.aiInstructions==='string'&&config.aiInstructions.length<=8000&&typeof config.aiRegistration==='string'&&config.aiRegistration.length<=4000&&typeof config.aiHandoff==='string'&&config.aiHandoff.length<=3000&&(config.aiPrompt===undefined||typeof config.aiPrompt==='string')&&(config.aiModel===undefined||typeof config.aiModel==='string')&&(config.aiMinDelay===undefined||typeof config.aiMinDelay==='number')&&(config.aiMaxDelay===undefined||typeof config.aiMaxDelay==='number')&&(config.aiInstanceId===undefined||typeof config.aiInstanceId==='string'||config.aiInstanceId===null)&&(config.disparoInstanceId===undefined||typeof config.disparoInstanceId==='string'||config.disparoInstanceId===null)&&(config.aiSmartTiming===undefined||typeof config.aiSmartTiming==='boolean')&&(config.aiHumanDetection===undefined||typeof config.aiHumanDetection==='boolean')&&(config.aiHumanPauseMinutes===undefined||typeof config.aiHumanPauseMinutes==='number')&&(config.aiSendPresence===undefined||typeof config.aiSendPresence==='boolean')&&(config.aiTemperature===undefined||typeof config.aiTemperature==='number')&&(config.aiMaxChars===undefined||typeof config.aiMaxChars==='number')&&(config.aiStrictControl===undefined||typeof config.aiStrictControl==='boolean')&&typeof config.offer==='string'&&config.offer.trim()&&config.offer.length<=4000&&typeof config.tone==='string'&&config.tone.length<=100&&typeof config.length==='string'&&config.length.length<=50&&typeof config.emojis==='boolean'&&TEMPLATE_KEYS.every(k=>typeof config.templates?.[k]==='string'&&config.templates[k].length<=10000)}
+function validConfig(config){return config&&typeof config.aiEnabled==='boolean'&&typeof config.aiInstructions==='string'&&config.aiInstructions.length<=8000&&typeof config.aiRegistration==='string'&&config.aiRegistration.length<=4000&&typeof config.aiHandoff==='string'&&config.aiHandoff.length<=3000&&(config.aiGreetingPrompt===undefined||typeof config.aiGreetingPrompt==='string')&&(config.aiPrompt===undefined||typeof config.aiPrompt==='string')&&(config.aiModel===undefined||typeof config.aiModel==='string')&&(config.aiMinDelay===undefined||typeof config.aiMinDelay==='number')&&(config.aiMaxDelay===undefined||typeof config.aiMaxDelay==='number')&&(config.aiInstanceId===undefined||typeof config.aiInstanceId==='string'||config.aiInstanceId===null)&&(config.disparoInstanceId===undefined||typeof config.disparoInstanceId==='string'||config.disparoInstanceId===null)&&(config.aiSmartTiming===undefined||typeof config.aiSmartTiming==='boolean')&&(config.aiHumanDetection===undefined||typeof config.aiHumanDetection==='boolean')&&(config.aiHumanPauseMinutes===undefined||typeof config.aiHumanPauseMinutes==='number')&&(config.aiSendPresence===undefined||typeof config.aiSendPresence==='boolean')&&(config.aiTemperature===undefined||typeof config.aiTemperature==='number')&&(config.aiMaxChars===undefined||typeof config.aiMaxChars==='number')&&(config.aiStrictControl===undefined||typeof config.aiStrictControl==='boolean')&&typeof config.offer==='string'&&config.offer.trim()&&config.offer.length<=4000&&typeof config.tone==='string'&&config.tone.length<=100&&typeof config.length==='string'&&config.length.length<=50&&typeof config.emojis==='boolean'&&TEMPLATE_KEYS.every(k=>typeof config.templates?.[k]==='string'&&config.templates[k].length<=10000)}
 async function requestData(request,max=75000){const raw=await request.text();if(raw.length>max)throw new Error('INPUT_TOO_LARGE');return JSON.parse(raw)}
 function cleanPhone(v){let d=String(v||'').replace(/\D/g,'');if(d.startsWith('0')&&(d.length===11||d.length===12))d=d.slice(1);if(d.length===10||d.length===11)d='55'+d;return d}
 function cleanText(v,max=200){return String(v||'').trim().slice(0,max)}
@@ -40,6 +40,15 @@ function generateSmartDelivaleReply(userText,history=[],systemPrompt='',cfg={},c
     return `Que bom que você já tem estrutura! A Delivale é o complemento ideal: ela não substitui os clientes que já chegam pelo iFood, mas impede que você pague comissões abusivas para os clientes fiéis da sua cidade. Você direciona seu WhatsApp/Instagram para a Delivale com **0% de comissão** e economiza todo mês!\n\nPodemos liberar o teste de 30 dias sem custo para você comparar na prática?`;
   }
   if(text.startsWith('oi')||text.startsWith('olá')||text.startsWith('ola')||text.startsWith('bom dia')||text.startsWith('boa tarde')||text.startsWith('boa noite')||text==='opa'){
+    const customGreeting = (cfg.aiGreetingPrompt || '').trim();
+    if(customGreeting){
+      let saudacaoPeriodo = text.includes('bom dia') ? 'Bom dia' : (text.includes('boa tarde') ? 'Boa tarde' : (text.includes('boa noite') ? 'Boa noite' : 'Tudo bem?'));
+      return customGreeting
+        .replaceAll('{saudacao}', saudacaoPeriodo)
+        .replaceAll('{empresa}', company)
+        .replaceAll('{cidade}', 'sua cidade')
+        .replaceAll('{oferta}', cfg.offer || '');
+    }
     return `Olá! Tudo bem? Prazer em falar com você! Sou a assistente virtual da Delivale.com. Vi o ${company} e queria saber: vocês já utilizam um cardápio digital próprio para facilitar o atendimento aos clientes no WhatsApp?`;
   }
   return `Com certeza! Na Delivale nosso objetivo é facilitar o atendimento do ${company} e aumentar suas vendas no delivery com cardápio digital próprio e 30 dias de teste gratuito.\n\nGostaria de ver uma demonstração preparada para o seu estabelecimento?`;
@@ -248,6 +257,15 @@ async function handleStorage(request,env,url){
    let cipher=row?.key_cipher||null;if(data.removeApiKey===true)cipher=null;else if(data.apiKey){const key=normalizeApiKey(data.apiKey);if(!key||key.length>512)return json({error:'Confira a chave Gemini inserida.'},400);cipher=await encryptSecret(key,env)}
    const operation=data.initializeOnly?'INSERT OR IGNORE INTO settings (id,config_json,key_cipher,updated_at) VALUES (?,?,?,?)':'INSERT INTO settings (id,config_json,key_cipher,updated_at) VALUES (?,?,?,?) ON CONFLICT(id) DO UPDATE SET config_json=excluded.config_json,key_cipher=excluded.key_cipher,updated_at=excluded.updated_at';
    await statement(env,operation,1,JSON.stringify(data.config),cipher,new Date().toISOString()).run();const updated=await savedSettings(env);return json({config:JSON.parse(updated.config_json),hasApiKey:!!(updated.key_cipher||env.GEMINI_API_KEY)})
+  }
+  if(url.pathname==='/api/ai/toggle'&&(request.method==='POST'||request.method==='PUT')){
+    const body=await requestData(request,5000);
+    const row=await savedSettings(env);
+    if(!row)return json({error:'Configurações não encontradas.'},404);
+    const cfg=JSON.parse(row.config_json);
+    cfg.aiEnabled = typeof body.enabled==='boolean' ? body.enabled : !cfg.aiEnabled;
+    await statement(env,'UPDATE settings SET config_json=?,updated_at=? WHERE id=1',JSON.stringify(cfg),new Date().toISOString()).run();
+    return json({success:true,aiEnabled:cfg.aiEnabled});
   }
   if(url.pathname==='/api/ai/test'&&request.method==='POST'){
    const data=await requestData(request,25000);
