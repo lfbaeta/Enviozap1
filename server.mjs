@@ -236,6 +236,11 @@ function generateSmartDelivaleReply(userText, history = [], systemPrompt = '', c
   const pureGreetingWords = ['bom dia', 'boa tarde', 'boa noite', 'ola', 'olá', 'oi', 'oie', 'opa', 'e aí', 'e ai', 'salve', 'tudo bem', 'tudo bom', 'como vai'];
   const isGreeting = pureGreetingWords.some(g => text === g || (text.length <= 22 && text.startsWith(g) && !text.includes('quanto') && !text.includes('preço') && !text.includes('como funciona') && !text.includes('cardapio')));
   if (isGreeting) {
+    // Não reiniciar a apresentação quando a conversa já recebeu resposta da IA.
+    // O histórico inclui a mensagem atual; verificar apenas respostas anteriores do modelo.
+    if (history.some(item => item.role === 'model')) {
+      return 'Estou por aqui! 😊 Pode me dizer sua dúvida sobre a Delivale que eu te explico.';
+    }
     let saudacaoPeriodo = 'Tudo bem?';
     if (text.includes('bom dia')) saudacaoPeriodo = 'Bom dia';
     else if (text.includes('boa tarde')) saudacaoPeriodo = 'Boa tarde';
@@ -683,7 +688,12 @@ Oferta cadastrada:
 ${cfg.offer || 'Cardápio digital próprio, integração com WhatsApp, 30 dias grátis de teste.'}`;
         }
 
-        systemPrompt += `\n\nCONTROLE ESTRITO DE RESPOSTA E TAMANHO MÁXIMO:
+        const hasPreviousAiReply = historyRows.some(item => item.role === 'model');
+        systemPrompt += `\n\nCONTINUIDADE DA CONVERSA:
+- ${hasPreviousAiReply ? 'Você já cumprimentou este cliente. NÃO envie outra saudação, boas-vindas ou apresentação inicial.' : 'Cumprimente brevemente somente se for o início da conversa.'}
+- Responda à pergunta atual e mantenha o contexto das mensagens anteriores.
+- Perguntas como "Como funciona?", "E o preço?" ou "Me explica" exigem explicação concreta, nunca apenas saudação.
+- Não encerre o atendimento sem necessidade.\n\nCONTROLE ESTRITO DE RESPOSTA E TAMANHO MÁXIMO:
 1. Responda em no MÁXIMO ${maxChars} caracteres.
 2. Responda APENAS ao que o cliente perguntou de forma direta, concisa e educada. Não despeje a apresentação inteira.
 3. Se o cliente tiver uma dúvida específica, responda estritamente aquela dúvida com 1 a 2 frases curtas.
