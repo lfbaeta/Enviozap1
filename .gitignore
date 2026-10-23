@@ -4,3 +4,7 @@ node_modules/
 !.env.example
 *.log
 .sites-runtime/
+data.db
+*.db
+*.db-journal
+dist/

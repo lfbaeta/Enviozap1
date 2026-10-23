@@ -6,6 +6,11 @@ import { exec } from 'node:child_process';
 import { promisify } from 'node:util';
 import { processQueueTick, decryptSecret } from './queue-runner.mjs';
 
+import * as XLSX from 'xlsx';
+globalThis.XLSX = XLSX;
+import { migrateExistingContacts, normalizePhone } from './lib/contacts-utils.mjs';
+
+
 const execAsync = promisify(exec);
 
 // 1. Conexão SQLite e Execução de Migrações
@@ -32,6 +37,7 @@ function runMigrations(db) {
 }
 
 runMigrations(sqlite);
+migrateExistingContacts(sqlite);
 
 // Garante colunas de regras nas instâncias se não existirem
 try {
@@ -1037,12 +1043,12 @@ export async function processFollowupTick(db, env) {
   }
 }
 
-// Loop contínuo do Agendador de Follow-up com IA (a cada 3 segundos)
+// Loop contínuo do Agendador de Follow-up com IA (a cada 15 segundos)
 setInterval(() => {
   processFollowupTick(sqlite, localEnv).catch(err => {
     console.error('[Follow-up Interval Error]', err);
   });
-}, 3000);
+}, 15000);
 
 // Processador de mensagens e eventos recebidos no WhatsApp via IA e Webhooks
 async function handleIncomingWhatsAppMessage(payload, db, env, reqOrigin = '') {
@@ -1207,7 +1213,20 @@ async function handleIncomingWhatsAppMessage(payload, db, env, reqOrigin = '') {
         try { apiKey = await decryptSecret(settingsRow.key_cipher, env); } catch {}
       }
 
-      const contact = db.prepare("SELECT * FROM contacts WHERE phone = ? OR phone = ?").get(phoneDigits, '55' + phoneDigits);
+      const normPhone = normalizePhone(phoneDigits);
+      const phoneE164 = normPhone.valid ? normPhone.phone_e164 : (phoneDigits.startsWith('55') ? '+' + phoneDigits : '+55' + phoneDigits);
+      let contact = db.prepare("SELECT * FROM contacts WHERE (phone_e164 = ? OR phone = ? OR phone = ?) AND deleted_at IS NULL").get(phoneE164, phoneDigits, '55' + phoneDigits);
+      if (!contact) {
+        const newId = crypto.randomUUID();
+        const autoName = String(data.pushName || 'Contato WhatsApp').trim().slice(0, 150);
+        try {
+          db.prepare(`
+            INSERT OR IGNORE INTO contacts(id, company, phone, phone_e164, phone_raw, city, source, status, interested, created_at, updated_at)
+            VALUES (?, ?, ?, ?, ?, 'WhatsApp', 'whatsapp', 'AGENDA', 0, datetime('now'), datetime('now'))
+          `).run(newId, autoName, phoneDigits, phoneE164, phoneDigits);
+          contact = db.prepare("SELECT * FROM contacts WHERE id = ?").get(newId);
+        } catch {}
+      }
       const companyName = contact?.company || data.pushName || 'Cliente';
       const nowIso = new Date().toISOString();
 
@@ -1636,7 +1655,9 @@ ${cfg.offer || 'Cardápio digital próprio, integração com WhatsApp, 30 dias g
       });
 
       const sentIso = new Date().toISOString();
-      if (!sendResp.ok) {
+      if (sendResp.ok) {
+        scheduleAfterAiReply(db, instance.name, phoneDigits + '@s.whatsapp.net', phoneDigits);
+      } else {
         console.error('[AI Auto-Reply] Evolution recusou o envio:', sendResp.status);
         continue;
       }
@@ -2398,9 +2419,9 @@ const server = createServer(async (req, res) => {
   let body = '';
   for await (const chunk of req) {
    body += chunk.toString();
-   if (body.length > 250000) {
+   if (body.length > 15000000) {
     res.writeHead(413, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ error: 'Reduza o tamanho das informações.' }));
+    res.end(JSON.stringify({ error: 'O arquivo enviado excede o limite máximo de 15MB.' }));
     return;
    }
   }

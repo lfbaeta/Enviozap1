@@ -6,7 +6,19 @@
 <style>
 :root{font-family:Arial,sans-serif;color:#173a30;background:#eef4f0;font-synthesis:none}*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0}header,main{max-width:1280px;margin:auto;padding:24px}header{display:flex;align-items:center;justify-content:space-between;gap:16px}header strong{font-size:22px}header small{display:block;font-size:14px;color:#62766c;margin-top:6px}nav{display:flex;gap:8px}button,a.action{font:inherit;font-size:16px;cursor:pointer;border-radius:10px;padding:13px 18px;border:1px solid #cbdad1;background:white;color:#174b38;text-decoration:none;text-align:center}button.primary,a.primary{background:#11634c;color:white;border-color:#11634c}button:disabled{opacity:.6;cursor:wait}nav button[aria-pressed=true]{background:#11634c;color:white}button:focus-visible,a:focus-visible{outline:3px solid #90c5ab;outline-offset:3px}.card{background:white;border:1px solid #d3e0d8;border-radius:18px;padding:26px;margin-bottom:20px}h1{font-size:28px;margin:0 0 22px}h2{font-size:21px;margin:0 0 18px}p{font-size:16px;line-height:1.6}.help{font-size:14px;color:#62766c;margin:8px 0 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{margin-bottom:18px}label{display:block;font-size:14px;font-weight:700;margin-bottom:9px}input,textarea,select{font:inherit;font-size:16px;width:100%;padding:13px 14px;color:#173a30;border:1px solid #bccfc3;border-radius:9px;background:#fcfdfc}textarea{resize:vertical;line-height:1.6;min-height:160px}input:focus,select:focus,textarea:focus{outline:3px solid #d7ebdf;border-color:#11634c}.message-box{min-height:220px}.actions{display:flex;gap:10px;flex-wrap:wrap}.actions>*{flex:1}.status{min-height:24px;margin:14px 0 0;font-size:14px;line-height:1.5;color:#406958}.error{color:#a32626}.preview{white-space:pre-wrap;overflow-wrap:anywhere;background:#e7f4eb;border-radius:12px;padding:18px;line-height:1.6;font-size:16px}.output{margin-top:20px;border-top:1px solid #e1e9e3;padding-top:20px}.output input{margin-bottom:12px}.check{display:flex;align-items:center;gap:10px;font-weight:400}.check input{width:auto}.key-row{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap}.key-row input{flex:1 1 260px}.key-row input{min-width:0}.key-row button{flex-shrink:0;font-size:14px}.template{margin-bottom:22px}.template textarea{min-height:150px}.settings-note{margin:0 0 20px}.settings-actions{margin-top:24px}@media(max-width:600px){header{align-items:flex-start;padding:20px 16px}main{padding:0 16px 24px}.card{padding:20px}.grid{grid-template-columns:1fr;gap:0}h1{font-size:25px}nav button{font-size:14px;padding:10px}.actions{flex-direction:column}.key-row{flex-wrap:wrap}.key-row button{width:100%}}
 .table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:13px 10px;border-bottom:1px solid #d3e0d8;vertical-align:top}th{font-weight:700}td button{font-size:14px;padding:8px 10px}.history-status{margin-top:8px}.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}.metric{background:white;border:1px solid #d3e0d8;border-radius:14px;padding:18px}.metric b{display:block;font-size:28px;margin-top:7px}.interested-row{background:#e7f6ec}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:end}.toolbar .field{flex:1 1 180px}.compact{min-width:90px}@media(max-width:800px){.cards{grid-template-columns:1fr 1fr}}header{flex-wrap:wrap}nav{flex-wrap:wrap}
-.btn-aligned-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.btn-aligned-row button,.btn-aligned-row a.action{height:42px;padding:0 16px;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:14px;border-radius:9px;white-space:nowrap;box-sizing:border-box}.preset-btn{height:36px;padding:0 12px;font-size:13px;border-radius:8px;background:#f0f7f3;border:1px solid #c2ded0;color:#174b38;display:inline-flex;align-items:center;gap:5px;cursor:pointer}.preset-btn:hover{background:#e1f0e7;border-color:#9dc9b2}.status-box{padding:14px 16px;border-radius:12px;border:1px solid #d3e0d8;background:#fff;margin-bottom:14px}.badge-connected{background:#e1f6e8;color:#0d6338;border:1px solid #a8e0bc;padding:3px 9px;border-radius:12px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:5px}.badge-disconnected{background:#fff4e5;color:#a35200;border:1px solid #ffd499;padding:3px 9px;border-radius:12px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:5px}.badge-empty{background:#feebeb;color:#a81c1c;border:1px solid #f8c2c2;padding:3px 9px;border-radius:12px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:5px}.chat-bubble-user{align-self:flex-end;background:#d9fdd3;color:#111b21;padding:8px 12px;border-radius:10px 10px 0 10px;max-width:85%;font-size:13px;line-height:1.45;box-shadow:0 1px 2px rgba(0,0,0,0.08);word-break:break-word}.chat-bubble-ai{align-self:flex-start;background:#ffffff;color:#111b21;padding:8px 12px;border-radius:10px 10px 10px 0;max-width:85%;font-size:13px;line-height:1.45;box-shadow:0 1px 2px rgba(0,0,0,0.08);word-break:break-word}</style>
+.btn-aligned-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.btn-aligned-row button,.btn-aligned-row a.action{height:42px;padding:0 16px;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:14px;border-radius:9px;white-space:nowrap;box-sizing:border-box}.preset-btn{height:36px;padding:0 12px;font-size:13px;border-radius:8px;background:#f0f7f3;border:1px solid #c2ded0;color:#174b38;display:inline-flex;align-items:center;gap:5px;cursor:pointer}.preset-btn:hover{background:#e1f0e7;border-color:#9dc9b2}.status-box{padding:14px 16px;border-radius:12px;border:1px solid #d3e0d8;background:#fff;margin-bottom:14px}.badge-connected{background:#e1f6e8;color:#0d6338;border:1px solid #a8e0bc;padding:3px 9px;border-radius:12px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:5px}.badge-disconnected{background:#fff4e5;color:#a35200;border:1px solid #ffd499;padding:3px 9px;border-radius:12px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:5px}.badge-empty{background:#feebeb;color:#a81c1c;border:1px solid #f8c2c2;padding:3px 9px;border-radius:12px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:5px}.chat-bubble-user{align-self:flex-end;background:#d9fdd3;color:#111b21;padding:8px 12px;border-radius:10px 10px 0 10px;max-width:85%;font-size:13px;line-height:1.45;box-shadow:0 1px 2px rgba(0,0,0,0.08);word-break:break-word}.chat-bubble-ai{align-self:flex-start;background:#ffffff;color:#111b21;padding:8px 12px;border-radius:10px 10px 10px 0;max-width:85%;font-size:13px;line-height:1.45;box-shadow:0 1px 2px rgba(0,0,0,0.08);word-break:break-word}
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.55);display:flex;align-items:center;justify-content:center;z-index:9999;padding:16px;}
+.modal-card{background:#fff;border-radius:16px;max-width:760px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 12px 30px rgba(0,0,0,0.25);padding:24px;position:relative;box-sizing:border-box;}
+.cat-tag{display:inline-flex;align-items:center;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:700;color:white;margin:1px 3px 1px 0;text-shadow:0 1px 1px rgba(0,0,0,0.2);}
+.subnav-btn{transition:all 0.15s ease;}
+.subnav-active{background:#11634c!important;color:white!important;font-weight:700!important;}
+.drop-zone{border:2px dashed #a7d0bc;background:#f7faf8;border-radius:12px;padding:24px;text-align:center;cursor:pointer;transition:background 0.2s;}
+.drop-zone:hover{background:#eef6f2;border-color:#11634c;}
+.step-bar{display:flex;justify-content:space-between;margin-bottom:20px;border-bottom:1px solid #e2ece6;padding-bottom:12px;}
+.step-item{display:flex;align-items:center;gap:6px;font-size:13px;color:#788c82;font-weight:600;}
+.step-item.active{color:#11634c;font-weight:800;}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#e2ece6;color:#556b60;font-size:12px;}
+.step-item.active .step-num{background:#11634c;color:white;}</style>
 <script src="/vendor/xlsx.full.min.js"></script>
 </head>
 <body>
@@ -33,7 +45,301 @@
 <div class="card"><h2>Prévia da mensagem</h2><div id="preview" class="preview" aria-live="polite"></div><p class="help">O envio é confirmado por você dentro do WhatsApp.</p></div>
 </section>
 <section id="dashboard" hidden><div class="cards"><div class="metric">Agenda<b id="m-agenda">0</b></div><div class="metric">A enviar<b id="m-queued">0</b></div><div class="metric">Enviados<b id="m-sent">0</b></div><div class="metric">Interessados<b id="m-interested">0</b></div><div class="metric">Erros<b id="m-errors">0</b></div></div></section>
-<section id="agenda" hidden><div class="card"><h1>Agenda</h1><div class="toolbar" style="flex-wrap:wrap;gap:10px;"><div class="field"><label for="import-city">Cidade (opcional)</label><input id="import-city" placeholder="Opcional — usa a coluna da planilha se existir"></div><div class="field"><label for="import-file">Planilha Excel (.xlsx, .xls) ou CSV</label><input id="import-file" type="file" accept=".xlsx,.xls,.csv,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel"></div><button type="button" id="import-contacts" class="primary" style="height:44px;margin-top:auto;">📥 Importar contatos</button></div><p class="help">Suporta arquivos Excel (.xlsx, .xls) e CSV com colunas: <strong>Cidade, Estabelecimento, Categoria, Telefone / WhatsApp, Endereço, Delivery</strong>. Telefones duplicados são acusados e tratados automaticamente.</p><hr><div class="toolbar" style="align-items:flex-end;flex-wrap:wrap;gap:10px;"><div class="field"><label>Filtrar Cidade</label><select id="agenda-city"><option value="">Todas</option></select></div><div class="field"><label>Buscar</label><input id="agenda-search" placeholder="Estabelecimento, WhatsApp, cidade ou categoria"></div><div class="field compact"><label>Qtd Enviar</label><input id="queue-quantity" type="number" min="1" max="500" value="20"></div><button id="add-queue" class="primary" type="button" style="height:44px;margin-top:auto;">Adicionar à fila de envio</button><button id="toggle-duplicates" type="button" style="height:44px;margin-top:auto;font-size:13px;display:inline-flex;align-items:center;gap:6px;" title="Alternar para ver somente contatos com telefones duplicados">⚠️ Duplicados (<span id="dup-badge">0</span>)</button></div><p id="agenda-status" class="status"></p><div class="table-wrap"><table><thead><tr><th><input type="checkbox" id="agenda-select-all" aria-label="Selecionar todos"></th><th>Estabelecimento</th><th>WhatsApp</th><th>Cidade</th><th>Categoria / Info</th><th>Status</th><th>Ações</th></tr></thead><tbody id="agenda-rows"></tbody></table></div></div></section>
+<section id="agenda" hidden>
+  <div class="card" style="padding:22px;">
+    <!-- Sub-navigation Header for Agenda -->
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px;border-bottom:1px solid #d3e0d8;padding-bottom:14px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <h1 style="margin:0;font-size:24px;">Agenda CRM</h1>
+        <span id="agenda-total-counter" style="background:#e0ede5;color:#11634c;font-size:12px;font-weight:700;padding:3px 10px;border-radius:12px;">0 contatos</span>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        <button type="button" id="subnav-agenda-contacts" class="preset-btn subnav-btn subnav-active">👥 Contatos</button>
+        <button type="button" id="subnav-agenda-cities" class="preset-btn subnav-btn">🏙️ Cidades</button>
+        <button type="button" id="subnav-agenda-categories" class="preset-btn subnav-btn">🏷️ Categorias</button>
+        <button type="button" id="subnav-agenda-batches" class="preset-btn subnav-btn">📥 Importações</button>
+        <button type="button" id="subnav-agenda-trash" class="preset-btn subnav-btn">🗑️ Lixeira (<span id="trash-badge">0</span>)</button>
+      </div>
+    </div>
+
+    <!-- SUB-VIEW 1: CONTATOS -->
+    <div id="agenda-view-contacts">
+      <!-- Quick Action & Import Row -->
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;background:#f8fbf9;border:1px solid #dbe8e0;border-radius:12px;padding:12px 16px;">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <button type="button" id="btn-open-create-contact" class="primary" style="height:38px;padding:0 14px;font-size:13px;display:inline-flex;align-items:center;gap:6px;">
+            <span>➕</span> Novo Contato
+          </button>
+          <button type="button" id="btn-open-import-wizard" style="height:38px;padding:0 14px;font-size:13px;background:#eef6f1;color:#11634c;border:1px solid #b7dcce;display:inline-flex;align-items:center;gap:6px;border-radius:10px;">
+            <span>📥</span> Importar Planilha (4 Passos)
+          </button>
+        </div>
+        <!-- Legacy import hook elements kept intact for compatibility -->
+        <div style="display:none;">
+          <input id="import-city">
+          <input id="import-file" type="file" accept=".xlsx,.xls,.csv,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel">
+          <button type="button" id="import-contacts">Importar</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+          <button id="toggle-duplicates" type="button" class="preset-btn" style="height:38px;font-size:12px;display:inline-flex;align-items:center;gap:6px;" title="Alternar para ver somente contatos com telefones repetidos">
+            ⚠️ Duplicados (<span id="dup-badge">0</span>)
+          </button>
+          <div style="display:inline-flex;align-items:center;gap:6px;">
+            <label for="queue-quantity" style="font-size:12px;font-weight:700;margin:0;">Qtd:</label>
+            <input id="queue-quantity" type="number" min="1" max="500" value="20" style="width:68px;height:38px;padding:4px 8px;font-size:13px;">
+          </div>
+          <button id="add-queue" class="primary" type="button" style="height:38px;padding:0 14px;font-size:13px;">
+            🚀 Adicionar à fila
+          </button>
+        </div>
+      </div>
+
+      <!-- Filters Grid -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(170px, 1fr));gap:10px;margin-bottom:14px;">
+        <div>
+          <label style="font-size:12px;margin-bottom:4px;font-weight:700;">Buscar</label>
+          <input id="agenda-search" placeholder="Empresa, WhatsApp, e-mail, notas..." style="height:38px;font-size:13px;">
+        </div>
+        <div>
+          <label style="font-size:12px;margin-bottom:4px;font-weight:700;">Cidade</label>
+          <select id="agenda-city" style="height:38px;font-size:13px;">
+            <option value="">Todas as Cidades</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:12px;margin-bottom:4px;font-weight:700;">Categoria</label>
+          <select id="agenda-category-filter" style="height:38px;font-size:13px;">
+            <option value="">Todas as Categorias</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:12px;margin-bottom:4px;font-weight:700;">Status</label>
+          <select id="agenda-status-filter" style="height:38px;font-size:13px;">
+            <option value="">Todos os Status</option>
+            <option value="AGENDA">AGENDA (Disponível)</option>
+            <option value="QUEUED">A Enviar (Fila)</option>
+            <option value="SENT">Enviado</option>
+            <option value="INTERESTED">Interessado</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:12px;margin-bottom:4px;font-weight:700;">Origem</label>
+          <select id="agenda-source-filter" style="height:38px;font-size:13px;">
+            <option value="">Todas as Origens</option>
+            <option value="import">Importação</option>
+            <option value="manual">Manual</option>
+            <option value="whatsapp">WhatsApp (Auto-criado)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Bulk Selection Bar -->
+      <div id="agenda-bulk-bar" style="display:none;background:#f0fdf4;border:1px solid #86efac;border-radius:10px;padding:10px 16px;margin-bottom:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <strong style="color:#166534;font-size:13px;">
+            <span id="agenda-selected-count">0</span> selecionado(s) nesta página
+          </strong>
+          <button type="button" id="btn-select-filtered" class="preset-btn" style="height:28px;font-size:11px;background:#dcfce7;color:#166534;border-color:#86efac;">
+            Selecionar todos os <span id="agenda-filtered-total">0</span> do filtro
+          </button>
+          <button type="button" id="btn-clear-selection" class="preset-btn" style="height:28px;font-size:11px;">
+            Limpar seleção
+          </button>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+          <button type="button" id="btn-bulk-category" class="preset-btn" style="height:30px;font-size:12px;">🏷️ Categoria</button>
+          <button type="button" id="btn-bulk-city" class="preset-btn" style="height:30px;font-size:12px;">🏙️ Cidade</button>
+          <button type="button" id="btn-bulk-status" class="preset-btn" style="height:30px;font-size:12px;">🔄 Status</button>
+          <button type="button" id="btn-bulk-queue" class="preset-btn" style="height:30px;font-size:12px;background:#eef6f1;color:#11634c;">🚀 Enviar Fila</button>
+          <button type="button" id="btn-bulk-delete" class="preset-btn" style="height:30px;font-size:12px;color:#991b1b;background:#fee2e2;border-color:#fca5a5;">🗑️ Lixeira</button>
+        </div>
+      </div>
+
+      <p id="agenda-status" class="status" style="margin:4px 0 10px;font-size:13px;"></p>
+
+      <!-- Contacts Table -->
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:34px;"><input type="checkbox" id="agenda-select-all" aria-label="Selecionar todos"></th>
+              <th>Estabelecimento / Responsável</th>
+              <th>WhatsApp</th>
+              <th>Cidade</th>
+              <th>Categorias</th>
+              <th>Origem</th>
+              <th>Status</th>
+              <th style="text-align:right;">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="agenda-rows"></tbody>
+        </table>
+      </div>
+
+      <!-- Pagination Footer -->
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid #e1ebe5;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#577265;">
+          <span>Por página:</span>
+          <select id="agenda-per-page" style="width:auto;height:32px;padding:2px 8px;font-size:12px;">
+            <option value="25">25</option>
+            <option value="50" selected>50</option>
+            <option value="100">100</option>
+            <option value="200">200</option>
+          </select>
+          <span id="agenda-pagination-info">Página 1 de 1</span>
+        </div>
+        <div style="display:flex;gap:6px;">
+          <button type="button" id="agenda-prev-page" class="preset-btn" style="height:32px;padding:0 12px;font-size:12px;">◀ Anterior</button>
+          <button type="button" id="agenda-next-page" class="preset-btn" style="height:32px;padding:0 12px;font-size:12px;">Próxima ▶</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUB-VIEW 2: CIDADES -->
+    <div id="agenda-view-cities" hidden>
+      <div style="background:#f8fbf9;border:1px solid #dbe8e0;border-radius:12px;padding:16px;margin-bottom:16px;">
+        <h3 style="margin:0 0 10px 0;font-size:15px;color:#11634c;">➕ Cadastrar Nova Cidade</h3>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;">
+          <div style="flex:1 1 200px;">
+            <label style="font-size:12px;margin-bottom:4px;">Nome da Cidade</label>
+            <input id="new-city-name" placeholder="Ex: Registro, Pariquera-Açu, Santos..." style="height:38px;font-size:13px;">
+          </div>
+          <div style="width:100px;">
+            <label style="font-size:12px;margin-bottom:4px;">Estado (UF)</label>
+            <input id="new-city-state" value="SP" maxlength="2" style="height:38px;font-size:13px;text-transform:uppercase;">
+          </div>
+          <button type="button" id="btn-create-city" class="primary" style="height:38px;padding:0 16px;font-size:13px;">
+            Salvar Cidade
+          </button>
+        </div>
+        <p id="cities-status" class="status" style="margin:8px 0 0;font-size:12px;"></p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome da Cidade</th>
+              <th>UF</th>
+              <th>Identificador (Slug)</th>
+              <th>Contatos Vinculados</th>
+              <th style="text-align:right;">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="cities-rows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SUB-VIEW 3: CATEGORIAS -->
+    <div id="agenda-view-categories" hidden>
+      <div style="background:#f8fbf9;border:1px solid #dbe8e0;border-radius:12px;padding:16px;margin-bottom:16px;">
+        <h3 style="margin:0 0 10px 0;font-size:15px;color:#11634c;">➕ Cadastrar Nova Categoria</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));gap:10px;align-items:flex-end;">
+          <div>
+            <label style="font-size:12px;margin-bottom:4px;">Nome da Categoria</label>
+            <input id="new-cat-name" placeholder="Ex: Pizzaria, Hamburgueria..." style="height:38px;font-size:13px;">
+          </div>
+          <div style="max-width:130px;">
+            <label style="font-size:12px;margin-bottom:4px;">Cor do Badge</label>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <input id="new-cat-color" type="color" value="#16a34a" style="height:38px;width:48px;padding:2px;cursor:pointer;">
+              <span id="new-cat-color-hex" style="font-family:monospace;font-size:12px;">#16a34a</span>
+            </div>
+          </div>
+          <div style="flex:2 1 200px;">
+            <label style="font-size:12px;margin-bottom:4px;">Descrição (opcional)</label>
+            <input id="new-cat-desc" placeholder="Breve descrição da categoria" style="height:38px;font-size:13px;">
+          </div>
+          <div>
+            <button type="button" id="btn-create-cat" class="primary" style="height:38px;width:100%;font-size:13px;">
+              Salvar Categoria
+            </button>
+          </div>
+        </div>
+        <p id="categories-status" class="status" style="margin:8px 0 0;font-size:12px;"></p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Categoria</th>
+              <th>Slug</th>
+              <th>Descrição</th>
+              <th>Contatos Vinculados</th>
+              <th style="text-align:right;">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="categories-rows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SUB-VIEW 4: IMPORTAÇÕES (LOTES) -->
+    <div id="agenda-view-batches" hidden>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
+        <h3 style="margin:0;font-size:16px;">Histórico de Lotes Importados</h3>
+        <button type="button" id="btn-batches-new-import" class="primary" style="height:36px;padding:0 14px;font-size:13px;">
+          📥 Nova Importação
+        </button>
+      </div>
+      <p id="batches-status" class="status" style="margin:0 0 10px;font-size:13px;"></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Data/Hora</th>
+              <th>Arquivo</th>
+              <th>Linhas</th>
+              <th>Criados</th>
+              <th>Atualizados</th>
+              <th>Duplicados</th>
+              <th>Inválidos</th>
+              <th style="text-align:right;">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="batches-rows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SUB-VIEW 5: LIXEIRA -->
+    <div id="agenda-view-trash" hidden>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px 16px;">
+        <div>
+          <strong style="color:#991b1b;font-size:14px;">🗑️ Lixeira de Contatos</strong>
+          <p class="help" style="margin:2px 0 0;color:#b91c1c;font-size:12px;">Contatos excluídos podem ser restaurados ou eliminados definitivamente.</p>
+        </div>
+        <div style="display:flex;gap:6px;">
+          <button type="button" id="btn-restore-all-trash" class="preset-btn" style="height:34px;font-size:12px;background:#dcfce7;color:#166534;border-color:#86efac;">
+            ♻️ Restaurar Selecionados
+          </button>
+          <button type="button" id="btn-purge-trash" class="preset-btn" style="height:34px;font-size:12px;color:#991b1b;background:#fee2e2;border-color:#fca5a5;">
+            ❌ Excluir Definitivo Selecionados
+          </button>
+        </div>
+      </div>
+      <p id="trash-status" class="status" style="margin:0 0 10px;font-size:13px;"></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:34px;"><input type="checkbox" id="trash-select-all" aria-label="Selecionar todos"></th>
+              <th>Estabelecimento</th>
+              <th>WhatsApp</th>
+              <th>Cidade</th>
+              <th>Excluído Em</th>
+              <th style="text-align:right;">Ações</th>
+            </tr>
+          </thead>
+          <tbody id="trash-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
 <section id="queue" hidden><div class="card">
 <div class="toolbar" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #e1ebe5;">
   <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
@@ -601,6 +907,314 @@
     </div>
   </div>
 </section>
+
+<!-- MODAL 1: NOVO / EDITAR CONTATO -->
+<div id="modal-contact" class="modal-overlay" hidden>
+  <div class="modal-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #e2ece6;padding-bottom:12px;">
+      <h2 id="contact-modal-title" style="margin:0;font-size:20px;color:#11634c;">➕ Novo Contato</h2>
+      <button type="button" id="btn-close-contact-modal" class="preset-btn" style="height:32px;padding:0 10px;font-size:16px;">✕</button>
+    </div>
+
+    <!-- Duplicate Phone Warning & Merge Banner -->
+    <div id="contact-phone-warning" style="display:none;background:#fef3c7;border:1px solid #f59e0b;border-radius:10px;padding:12px 14px;margin-bottom:16px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+        <div>
+          <strong style="color:#92400e;font-size:13px;">⚠️ Telefone já cadastrado em outro contato:</strong>
+          <span id="contact-phone-warning-text" style="display:block;font-size:12px;color:#78350f;"></span>
+        </div>
+        <button type="button" id="btn-merge-duplicate-contact" class="preset-btn" style="background:#f59e0b;color:white;border-color:#d97706;font-size:12px;font-weight:700;">
+          🔀 Mesclar com este Contato
+        </button>
+      </div>
+    </div>
+
+    <form id="contact-form" onsubmit="return false;">
+      <input type="hidden" id="contact-form-id">
+      <div class="grid">
+        <div class="field">
+          <label for="contact-form-company">Nome do Estabelecimento *</label>
+          <input id="contact-form-company" required placeholder="Ex: Pizzaria Sabor da Casa" style="height:40px;">
+        </div>
+        <div class="field">
+          <label for="contact-form-phone">WhatsApp com DDD *</label>
+          <input id="contact-form-phone" required placeholder="(13) 99999-9999" style="height:40px;">
+          <small id="contact-form-phone-hint" style="display:block;margin-top:4px;font-size:11px;color:#62766c;">Formato: (DD) 9XXXX-XXXX ou +55DDDNÚMERO</small>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="contact-form-responsible">Responsável / Proprietário</label>
+          <input id="contact-form-responsible" placeholder="Ex: Carlos Oliveira" style="height:40px;">
+        </div>
+        <div class="field">
+          <label for="contact-form-city">Cidade</label>
+          <select id="contact-form-city" style="height:40px;">
+            <option value="">Selecione ou deixe sem cidade</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Categories Multi-select -->
+      <div class="field">
+        <label>Categorias do Estabelecimento</label>
+        <div id="contact-form-categories-wrap" style="display:flex;flex-wrap:wrap;gap:8px;background:#f9fafb;border:1px solid #d1d5db;border-radius:10px;padding:12px;max-height:130px;overflow-y:auto;">
+          <!-- Dynamically filled with category checkboxes -->
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="contact-form-email">E-mail</label>
+          <input id="contact-form-email" type="email" placeholder="contato@empresa.com" style="height:40px;">
+        </div>
+        <div class="field">
+          <label for="contact-form-instagram">Instagram</label>
+          <input id="contact-form-instagram" placeholder="@perfil_empresa" style="height:40px;">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="contact-form-address">Endereço Completo</label>
+        <input id="contact-form-address" placeholder="Rua, Número, Bairro, CEP" style="height:40px;">
+      </div>
+
+      <div class="field">
+        <label for="contact-form-notes">Observações / Detalhes</label>
+        <textarea id="contact-form-notes" rows="2" style="min-height:70px;" placeholder="Informações adicionais sobre o estabelecimento..."></textarea>
+      </div>
+
+      <!-- Timeline / Events Wrap in Edit Mode -->
+      <div id="contact-timeline-wrap" style="display:none;background:#f3f8f5;border:1px solid #cce2d6;border-radius:10px;padding:12px;margin-bottom:16px;">
+        <strong style="font-size:12px;color:#11634c;">📜 Histórico de Eventos do Contato</strong>
+        <div id="contact-timeline-list" style="max-height:120px;overflow-y:auto;margin-top:6px;display:flex;flex-direction:column;gap:4px;font-size:12px;color:#475569;">
+          <!-- Dynamic events -->
+        </div>
+      </div>
+
+      <div class="actions" style="margin-top:16px;">
+        <button type="button" id="btn-save-contact" class="primary" style="height:42px;">Salvar Contato</button>
+        <button type="button" id="btn-cancel-contact" style="height:42px;">Cancelar</button>
+      </div>
+      <p id="contact-form-status" class="status" style="margin:8px 0 0;font-size:13px;"></p>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL 2: WIZARD DE IMPORTAÇÃO (4 PASSOS) -->
+<div id="modal-import" class="modal-overlay" hidden>
+  <div class="modal-card" style="max-width:820px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;border-bottom:1px solid #e2ece6;padding-bottom:12px;">
+      <h2 style="margin:0;font-size:20px;color:#11634c;">📥 Importação de Planilha Estruturada</h2>
+      <button type="button" id="btn-close-import-wizard" class="preset-btn" style="height:32px;padding:0 10px;font-size:16px;">✕</button>
+    </div>
+
+    <!-- Step Bar -->
+    <div class="step-bar">
+      <div id="step-nav-1" class="step-item active"><span class="step-num">1</span> <span>Arquivo</span></div>
+      <div id="step-nav-2" class="step-item"><span class="step-num">2</span> <span>Mapeamento</span></div>
+      <div id="step-nav-3" class="step-item"><span class="step-num">3</span> <span>Prévia & Regras</span></div>
+      <div id="step-nav-4" class="step-item"><span class="step-num">4</span> <span>Resultado</span></div>
+    </div>
+
+    <!-- PASSO 1: UPLOAD -->
+    <div id="import-step-1">
+      <div id="import-dropzone" class="drop-zone" style="margin-bottom:16px;">
+        <div style="font-size:36px;margin-bottom:8px;">📊</div>
+        <strong style="font-size:16px;color:#11634c;display:block;margin-bottom:4px;">Arraste e solte sua planilha Excel ou CSV aqui</strong>
+        <span style="font-size:13px;color:#62766c;">Suporta formatos .xlsx, .xls e .csv (até 15MB)</span>
+        <div style="margin-top:14px;">
+          <label for="import-wizard-file" class="preset-btn" style="background:#11634c;color:white;cursor:pointer;padding:8px 18px;font-size:13px;border-radius:8px;">
+            Selecionar arquivo no computador
+          </label>
+          <input id="import-wizard-file" type="file" accept=".xlsx,.xls,.csv,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" style="display:none;">
+        </div>
+        <p id="import-selected-filename" style="margin:10px 0 0;font-size:13px;font-weight:700;color:#166534;"></p>
+      </div>
+
+      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:12px 14px;font-size:13px;color:#166534;margin-bottom:16px;">
+        💡 <strong>Reconhecimento Inteligente:</strong> O sistema detecta colunas com qualquer variação de nome (ex: "Empresa", "Estabelecimento", "Razão Social", "WhatsApp", "Fone", "Cidade", "Categoria", "Nicho", "Endereço").
+      </div>
+
+      <div class="actions">
+        <button type="button" id="btn-step1-next" class="primary" style="height:42px;" disabled>Avançar para Mapeamento ➔</button>
+      </div>
+      <p id="import-step1-status" class="status"></p>
+    </div>
+
+    <!-- PASSO 2: MAPEAMENTO DE COLUNAS -->
+    <div id="import-step-2" hidden>
+      <p class="help" style="margin-top:0;margin-bottom:12px;">Confirme ou ajuste a correspondência das colunas da sua planilha com os campos da Agenda:</p>
+      <div id="import-column-mapping-grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:12px;margin-bottom:18px;">
+        <!-- Filled dynamically with select dropdowns -->
+      </div>
+      <div class="actions">
+        <button type="button" id="btn-step2-prev" class="preset-btn" style="height:42px;">◀ Voltar</button>
+        <button type="button" id="btn-step2-next" class="primary" style="height:42px;">Avançar para Prévia ➔</button>
+      </div>
+      <p id="import-step2-status" class="status"></p>
+    </div>
+
+    <!-- PASSO 3: PRÉVIA & REGRAS -->
+    <div id="import-step-3" hidden>
+      <!-- Stats Cards -->
+      <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:10px;margin-bottom:16px;">
+        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px;text-align:center;">
+          <small style="color:#64748b;font-size:11px;font-weight:700;">TOTAL DE LINHAS</small>
+          <b id="import-stat-total" style="display:block;font-size:22px;color:#1e293b;margin-top:2px;">0</b>
+        </div>
+        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:12px;text-align:center;">
+          <small style="color:#166534;font-size:11px;font-weight:700;">VÁLIDOS (E.164)</small>
+          <b id="import-stat-valid" style="display:block;font-size:22px;color:#15803d;margin-top:2px;">0</b>
+        </div>
+        <div style="background:#fefce8;border:1px solid #fef08a;border-radius:10px;padding:12px;text-align:center;">
+          <small style="color:#854d0e;font-size:11px;font-weight:700;">DUPLICADOS</small>
+          <b id="import-stat-dups" style="display:block;font-size:22px;color:#a16207;margin-top:2px;">0</b>
+        </div>
+        <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px;text-align:center;">
+          <small style="color:#991b1b;font-size:11px;font-weight:700;">INVÁLIDOS</small>
+          <b id="import-stat-invalid" style="display:block;font-size:22px;color:#dc2626;margin-top:2px;">0</b>
+        </div>
+      </div>
+
+      <!-- Table Preview of first 6 items -->
+      <div style="margin-bottom:16px;">
+        <strong style="font-size:13px;display:block;margin-bottom:6px;">Prévia das primeiras linhas analisadas:</strong>
+        <div class="table-wrap" style="max-height:180px;overflow-y:auto;border:1px solid #d3e0d8;border-radius:8px;">
+          <table>
+            <thead>
+              <tr><th>Linha</th><th>Estabelecimento</th><th>WhatsApp (Normalizado)</th><th>Cidade</th><th>Categoria</th><th>Status</th></tr>
+            </thead>
+            <tbody id="import-preview-rows"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Configuração de Importação -->
+      <div style="background:#f8fbf9;border:1px solid #cce2d6;border-radius:12px;padding:14px;margin-bottom:18px;">
+        <strong style="font-size:13px;color:#11634c;display:block;margin-bottom:10px;">⚙️ Regras para dados faltantes e duplicados:</strong>
+        <div class="grid" style="gap:12px;margin-bottom:10px;">
+          <div>
+            <label style="font-size:12px;margin-bottom:4px;">Cidade Padrão (se vazia na linha)</label>
+            <select id="import-default-city" style="height:38px;font-size:13px;">
+              <option value="">Não definir cidade padrão</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:12px;margin-bottom:4px;">Tratamento de Telefones Já Cadastrados</label>
+            <select id="import-duplicate-policy" style="height:38px;font-size:13px;">
+              <option value="skip">Ignorar duplicados (não alterar existente)</option>
+              <option value="update">Atualizar existente com os dados novos da planilha</option>
+              <option value="create_anyway">Criar mesmo assim com sufixo (duplicado)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;">
+          <label class="check" style="margin:0;">
+            <input id="import-auto-cities" type="checkbox" checked>
+            <span>Cadastrar novas cidades automaticamente</span>
+          </label>
+          <label class="check" style="margin:0;">
+            <input id="import-auto-categories" type="checkbox" checked>
+            <span>Cadastrar novas categorias automaticamente</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="btn-step3-prev" class="preset-btn" style="height:42px;">◀ Voltar</button>
+        <button type="button" id="btn-step3-commit" class="primary" style="height:42px;">🚀 Confirmar e Importar Planilha</button>
+      </div>
+      <p id="import-step3-status" class="status"></p>
+    </div>
+
+    <!-- PASSO 4: RESULTADO -->
+    <div id="import-step-4" hidden>
+      <div style="text-align:center;padding:16px 0;">
+        <div style="font-size:42px;margin-bottom:8px;">🎉</div>
+        <h3 style="margin:0 0 8px 0;font-size:18px;color:#11634c;">Importação Concluída com Sucesso!</h3>
+        <p id="import-result-summary" style="font-size:14px;color:#475569;max-width:540px;margin:0 auto 16px;line-height:1.5;"></p>
+      </div>
+
+      <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+        <button type="button" id="btn-download-error-csv" class="preset-btn" style="height:40px;font-size:13px;">
+          📥 Baixar Relatório de Erros / Rejeitados (CSV)
+        </button>
+        <button type="button" id="btn-undo-import-batch" class="preset-btn" style="height:40px;font-size:13px;color:#991b1b;background:#fee2e2;border-color:#fca5a5;">
+          ↩️ Desfazer esta Importação (Remover Contatos)
+        </button>
+      </div>
+
+      <div class="actions" style="margin-top:20px;">
+        <button type="button" id="btn-step4-finish" class="primary" style="height:42px;">Concluir e Ver Agenda</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 3: AÇÕES EM MASSA (BULK) -->
+<div id="modal-bulk" class="modal-overlay" hidden>
+  <div class="modal-card" style="max-width:520px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;border-bottom:1px solid #e2ece6;padding-bottom:10px;">
+      <h2 id="bulk-modal-title" style="margin:0;font-size:18px;color:#11634c;">Ação em Massa</h2>
+      <button type="button" id="btn-close-bulk-modal" class="preset-btn" style="height:30px;padding:0 8px;">✕</button>
+    </div>
+    <p id="bulk-modal-desc" class="help" style="margin-top:0;margin-bottom:14px;"></p>
+
+    <!-- Field for Category -->
+    <div id="bulk-cat-wrap" class="field" hidden>
+      <label for="bulk-cat-select">Selecione a Categoria</label>
+      <select id="bulk-cat-select" style="height:40px;"></select>
+    </div>
+
+    <!-- Field for City -->
+    <div id="bulk-city-wrap" class="field" hidden>
+      <label for="bulk-city-select">Selecione a Cidade</label>
+      <select id="bulk-city-select" style="height:40px;"></select>
+    </div>
+
+    <!-- Field for Status -->
+    <div id="bulk-status-wrap" class="field" hidden>
+      <label for="bulk-status-select">Selecione o Novo Status</label>
+      <select id="bulk-status-select" style="height:40px;">
+        <option value="AGENDA">AGENDA (Disponível)</option>
+        <option value="QUEUED">A Enviar (Fila)</option>
+        <option value="SENT">Enviado</option>
+        <option value="INTERESTED">Interessado</option>
+      </select>
+    </div>
+
+    <div class="actions" style="margin-top:16px;">
+      <button type="button" id="btn-confirm-bulk" class="primary" style="height:42px;">Aplicar a Todos</button>
+      <button type="button" id="btn-cancel-bulk" style="height:42px;">Cancelar</button>
+    </div>
+    <p id="bulk-status-msg" class="status"></p>
+  </div>
+</div>
+
+<!-- MODAL 4: MESCLAR CIDADES / CATEGORIAS -->
+<div id="modal-merge" class="modal-overlay" hidden>
+  <div class="modal-card" style="max-width:520px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;border-bottom:1px solid #e2ece6;padding-bottom:10px;">
+      <h2 id="merge-modal-title" style="margin:0;font-size:18px;color:#11634c;">🔀 Mesclar Registros</h2>
+      <button type="button" id="btn-close-merge-modal" class="preset-btn" style="height:30px;padding:0 8px;">✕</button>
+    </div>
+    <p id="merge-modal-desc" class="help" style="margin-top:0;margin-bottom:14px;"></p>
+
+    <div class="field">
+      <label id="merge-target-label" for="merge-target-select">Mesclar para o destino:</label>
+      <select id="merge-target-select" style="height:40px;"></select>
+    </div>
+
+    <div class="actions" style="margin-top:16px;">
+      <button type="button" id="btn-confirm-merge" class="primary" style="height:42px;">Confirmar Mesclagem</button>
+      <button type="button" id="btn-cancel-merge" style="height:42px;">Cancelar</button>
+    </div>
+    <p id="merge-status-msg" class="status"></p>
+  </div>
+</div>
 </main>
 <script>
 const PROMPT_PRESETS={
@@ -1046,93 +1660,271 @@ async function parseSpreadsheet(file,defaultCity){
   }
   return contacts.filter(x=>x.company&&x.phone);
 }
-$('import-contacts').addEventListener('click',async()=>{
-  const city=$('import-city').value.trim(),file=$('import-file').files[0];
-  if(!file){$('agenda-status').textContent='Selecione uma planilha Excel (.xlsx, .xls) ou arquivo CSV.';return}
-  $('agenda-status').textContent='Lendo e analisando a planilha…';
-  try{
-    const contacts=await parseSpreadsheet(file,city);
-    if(!contacts.length){$('agenda-status').textContent='Nenhum contato encontrado. Verifique se o arquivo possui colunas com Estabelecimento e WhatsApp/Telefone.';return}
-    const r=await apiCall('/api/contacts/import',{method:'POST',body:JSON.stringify({city,contacts})});
-    let msg=`${r.imported} contato(s) adicionado(s) à Agenda.`;
-    if(r.duplicates>0)msg+=` ⚠️ ${r.duplicates} telefone(s) duplicado(s) identificado(s) e ignorado(s).`;
-    if(r.skipped>r.duplicates)msg+=` (${r.skipped-r.duplicates} registros inválidos ignorados).`;
-    $('agenda-status').textContent=msg;
-    $('import-file').value='';
-    await renderAgenda();
-    await renderDashboard();
-  }catch(e){$('agenda-status').textContent=e.message}
+let currentAgendaSubtab='contacts';
+let agendaPage=1;
+let agendaLimit=50;
+let agendaSelectedIds=new Set();
+let agendaFilterTotal=0;
+let agendaAllFilterSelected=false;
+let allCitiesCache=[];
+let allCategoriesCache=[];
+let currentEditingContactId=null;
+let duplicateFoundContact=null;
+let currentImportFile=null;
+let currentImportBase64=null;
+let currentImportPreviewData=null;
+let currentImportBatchId=null;
+let currentMergeType=null;
+let currentMergeSourceId=null;
+let currentBulkActionType=null;
+
+function formatPhoneDisplay(num){
+  if(!num)return '';
+  const digits=String(num).replace(/\D/g,'');
+  if(digits.length===13&&digits.startsWith('55')){
+    return `+55 (${digits.slice(2,4)}) ${digits.slice(4,9)}-${digits.slice(9)}`;
+  }
+  if(digits.length===12&&digits.startsWith('55')){
+    return `+55 (${digits.slice(2,4)}) ${digits.slice(4,8)}-${digits.slice(8)}`;
+  }
+  if(digits.length===11){
+    return `(${digits.slice(0,2)}) ${digits.slice(2,7)}-${digits.slice(7)}`;
+  }
+  return num;
+}
+
+function showAgendaSubtab(tab){
+  currentAgendaSubtab=tab;
+  for(const name of ['contacts','cities','categories','batches','trash']){
+    const el=$('agenda-view-'+name);
+    if(el) el.hidden=(name!==tab);
+    const btn=$('subnav-agenda-'+name);
+    if(btn){
+      if(name===tab) btn.classList.add('subnav-active');
+      else btn.classList.remove('subnav-active');
+    }
+  }
+  if(tab==='contacts') renderAgenda();
+  else if(tab==='cities') renderCitiesTab();
+  else if(tab==='categories') renderCategoriesTab();
+  else if(tab==='batches') renderBatchesTab();
+  else if(tab==='trash') renderTrashTab();
+}
+
+for(const name of ['contacts','cities','categories','batches','trash']){
+  $('subnav-agenda-'+name)?.addEventListener('click',()=>showAgendaSubtab(name));
+}
+
+function updateBulkBarUI(){
+  const bar=$('agenda-bulk-bar');
+  if(!bar)return;
+  const count=agendaAllFilterSelected?agendaFilterTotal:agendaSelectedIds.size;
+  if(count>0){
+    bar.style.display='flex';
+    if($('agenda-selected-count')) $('agenda-selected-count').textContent=agendaAllFilterSelected?agendaFilterTotal:agendaSelectedIds.size;
+    if($('agenda-filtered-total')) $('agenda-filtered-total').textContent=agendaFilterTotal;
+  }else{
+    bar.style.display='none';
+  }
+}
+
+$('btn-select-filtered')?.addEventListener('click',()=>{
+  agendaAllFilterSelected=true;
+  document.querySelectorAll('.agenda-pick').forEach(cb=>cb.checked=true);
+  updateBulkBarUI();
 });
+
+$('btn-clear-selection')?.addEventListener('click',()=>{
+  agendaAllFilterSelected=false;
+  agendaSelectedIds.clear();
+  document.querySelectorAll('.agenda-pick').forEach(cb=>cb.checked=false);
+  if($('agenda-select-all')) $('agenda-select-all').checked=false;
+  updateBulkBarUI();
+});
+
+async function renderTrashBadge(){
+  try{
+    const d=await apiCall('/api/contacts?trash=1&limit=1');
+    if($('trash-badge')) $('trash-badge').textContent=d.total||0;
+  }catch{}
+}
+
 async function renderAgenda(){
+  if(currentAgendaSubtab!=='contacts'&&currentAgendaSubtab) return;
   try{
     const params=new URLSearchParams();
-    params.set('status','AGENDA');
-    if($('agenda-city').value)params.set('city',$('agenda-city').value);
-    if($('agenda-search').value.trim())params.set('q',$('agenda-search').value.trim());
+    params.set('page',String(agendaPage));
+    params.set('limit',String(agendaLimit));
+    const statusVal=$('agenda-status-filter')?.value||'';
+    if(statusVal) params.set('status',statusVal);
+    const cityVal=$('agenda-city')?.value||'';
+    if(cityVal) params.set('city',cityVal);
+    const catVal=$('agenda-category-filter')?.value||'';
+    if(catVal) params.set('category_id',catVal);
+    const srcVal=$('agenda-source-filter')?.value||'';
+    if(srcVal) params.set('source',srcVal);
+    const qVal=$('agenda-search')?.value?.trim()||'';
+    if(qVal) params.set('q',qVal);
+
     const d=await apiCall('/api/contacts?'+params);
-    const selected=$('agenda-city').value;
-    $('agenda-city').innerHTML='<option value="">Todas</option>'+d.cities.map(x=>'<option></option>').join('');
-    [...$('agenda-city').options].slice(1).forEach((o,i)=>{o.value=d.cities[i];o.textContent=d.cities[i]});
-    $('agenda-city').value=selected;
-    if($('dup-badge'))$('dup-badge').textContent=d.duplicateCount||0;
+    allCitiesCache=d.cities_list||[];
+    allCategoriesCache=d.categories||[];
+    agendaFilterTotal=d.total||0;
+
+    if($('agenda-city')&&d.cities){
+      const curSelected=$('agenda-city').value;
+      $('agenda-city').innerHTML='<option value="">Todas as Cidades</option>'+d.cities.map(x=>`<option value="${x}">${x}</option>`).join('');
+      $('agenda-city').value=curSelected;
+    }
+
+    if($('agenda-category-filter')&&d.categories){
+      const curCatSelected=$('agenda-category-filter').value;
+      $('agenda-category-filter').innerHTML='<option value="">Todas as Categorias</option>'+d.categories.map(c=>`<option value="${c.id}">${c.name}</option>`).join('');
+      $('agenda-category-filter').value=curCatSelected;
+    }
+
+    if($('dup-badge')) $('dup-badge').textContent=d.duplicateCount||0;
+    if($('agenda-total-counter')) $('agenda-total-counter').textContent=(d.total||0)+' contatos';
+    if($('agenda-filtered-total')) $('agenda-filtered-total').textContent=d.total||0;
+
     let list=d.contacts||[];
-    if(showingOnlyDuplicates)list=list.filter(x=>x.phone_count>1);
+    if(showingOnlyDuplicates) list=list.filter(x=>x.phone_count>1);
+
     const rows=$('agenda-rows');
+    if(!rows) return;
     rows.replaceChildren();
+
     for(const x of list){
       const tr=document.createElement('tr');
-      if(x.interested)tr.className='interested-row';
-      if(x.phone_count>1)tr.style.background='#fffbf0';
+      if(x.interested) tr.className='interested-row';
+      if(x.phone_count>1) tr.style.background='#fffbf0';
+
       const pick=document.createElement('td');
       const cb=document.createElement('input');
-      cb.type='checkbox';cb.className='agenda-pick';cb.value=x.id;cb.disabled=x.status!=='AGENDA';
+      cb.type='checkbox';cb.className='agenda-pick';cb.value=x.id;
+      if(agendaSelectedIds.has(String(x.id))||agendaAllFilterSelected) cb.checked=true;
+      cb.addEventListener('change',()=>{
+        if(cb.checked) agendaSelectedIds.add(String(x.id));
+        else{ agendaSelectedIds.delete(String(x.id)); agendaAllFilterSelected=false; }
+        updateBulkBarUI();
+      });
       pick.append(cb);tr.append(pick);
+
       const tdComp=document.createElement('td');
-      tdComp.innerHTML='<strong>'+(x.company||'')+'</strong>';
+      const compWrap=document.createElement('div');
+      const compTitle=document.createElement('strong');
+      compTitle.textContent=x.company||'—';
+      compWrap.append(compTitle);
+      if(x.responsible){
+        const respSpan=document.createElement('small');
+        respSpan.style='display:block;color:#62766c;font-size:11px;margin-top:2px;';
+        respSpan.textContent='Resp: '+x.responsible;
+        compWrap.append(respSpan);
+      }
+      tdComp.append(compWrap);
       tr.append(tdComp);
+
       const tdPhone=document.createElement('td');
       tdPhone.style.whiteSpace='nowrap';
-      tdPhone.textContent=x.phone||'';
+      const phoneFormatted=formatPhoneDisplay(x.phone_e164||x.phone);
+      tdPhone.textContent=phoneFormatted||'';
+      if(x.phone_raw&&x.phone_raw!==x.phone_e164){
+        tdPhone.title='Original: '+x.phone_raw;
+      }
       if(x.phone_count>1){
         const badge=document.createElement('span');
         badge.style='background:#fee2e2;color:#991b1b;border:1px solid #fecaca;font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:6px;display:inline-block;';
         badge.title='Telefone repetido em '+x.phone_count+' cadastros!';
-        badge.textContent='⚠️ Duplicado ('+x.phone_count+')';
+        badge.textContent='⚠️ ('+x.phone_count+')';
         tdPhone.append(badge);
       }
       tr.append(tdPhone);
+
       const tdCity=document.createElement('td');
-      tdCity.textContent=x.city||'';
+      if(x.city){
+        const cityBadge=document.createElement('span');
+        cityBadge.textContent=x.city;
+        tdCity.append(cityBadge);
+      }else{
+        const noCity=document.createElement('span');
+        noCity.style='color:#94a3b8;font-style:italic;font-size:12px;';
+        noCity.textContent='Sem cidade';
+        tdCity.append(noCity);
+      }
       tr.append(tdCity);
-      const tdNotes=document.createElement('td');
-      tdNotes.style='font-size:12px;color:#556b60;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;';
-      tdNotes.title=x.notes||x.responsible||'';
-      tdNotes.textContent=x.notes||x.responsible||'—';
-      tr.append(tdNotes);
+
+      const tdCats=document.createElement('td');
+      if(x.categories&&x.categories.length>0){
+        for(const c of x.categories){
+          const catTag=document.createElement('span');
+          catTag.className='cat-tag';
+          catTag.style.background=c.color||'#16a34a';
+          catTag.textContent=c.name;
+          tdCats.append(catTag);
+        }
+      }else{
+        const noCat=document.createElement('span');
+        noCat.style='color:#94a3b8;font-style:italic;font-size:12px;';
+        noCat.textContent='Sem categoria';
+        tdCats.append(noCat);
+      }
+      tr.append(tdCats);
+
+      const tdSrc=document.createElement('td');
+      const srcMap={import:'Planilha',manual:'Manual',whatsapp:'WhatsApp'};
+      const srcBadge=document.createElement('span');
+      srcBadge.style='font-size:11px;background:#f1f5f9;color:#475569;padding:2px 6px;border-radius:6px;';
+      srcBadge.textContent=srcMap[x.source]||x.source||'import';
+      tdSrc.append(srcBadge);
+      tr.append(tdSrc);
+
       const tdStatus=document.createElement('td');
-      tdStatus.textContent=x.status||'';
+      const stMap={AGENDA:'Disponível',QUEUED:'A Enviar',SENT:'Enviado',INTERESTED:'Interessado'};
+      tdStatus.textContent=stMap[x.status]||x.status;
       tr.append(tdStatus);
-      const a=document.createElement('td');
-      const edit=document.createElement('button');
-      edit.style='padding:5px 9px;font-size:12px;';
-      edit.textContent='Editar';
-      edit.onclick=async()=>{
-        const company=prompt('Estabelecimento',x.company);if(company===null)return;
-        const phone=prompt('WhatsApp',x.phone);if(phone===null)return;
-        const city=prompt('Cidade',x.city);if(city===null)return;
+
+      const tdActions=document.createElement('td');
+      tdActions.style='text-align:right;white-space:nowrap;';
+      const btnEdit=document.createElement('button');
+      btnEdit.className='preset-btn';
+      btnEdit.style='padding:3px 8px;font-size:12px;height:28px;margin-right:4px;';
+      btnEdit.textContent='✏️ Editar';
+      btnEdit.onclick=()=>openEditContactModal(x.id);
+      tdActions.append(btnEdit);
+
+      const btnDel=document.createElement('button');
+      btnDel.className='preset-btn';
+      btnDel.style='padding:3px 8px;font-size:12px;height:28px;color:#991b1b;';
+      btnDel.textContent='🗑️';
+      btnDel.title='Mover para lixeira';
+      btnDel.onclick=async()=>{
+        if(!confirm(`Mover "${x.company}" para a lixeira?`)) return;
         try{
-          await apiCall('/api/contacts/'+encodeURIComponent(x.id),{method:'PATCH',body:JSON.stringify({company,phone,city,responsible:x.responsible||'',notes:x.notes||''})});
+          await apiCall('/api/contacts/'+encodeURIComponent(x.id),{method:'DELETE'});
           renderAgenda();
-        }catch(e){alert(e.message)}
+          renderTrashBadge();
+        }catch(err){alert(err.message)}
       };
-      a.append(edit);tr.append(a);
+      tdActions.append(btnDel);
+
+      tr.append(tdActions);
       rows.append(tr);
     }
-    if(showingOnlyDuplicates){
-      $('agenda-status').textContent=`Exibindo ${list.length} contato(s) com telefone duplicado.`;
+
+    const totalPages=Math.max(1,Math.ceil((d.total||0)/agendaLimit));
+    if($('agenda-pagination-info')){
+      $('agenda-pagination-info').textContent=`Página ${agendaPage} de ${totalPages} (${d.total||0} no total)`;
     }
-  }catch(e){$('agenda-status').textContent=e.message}
+    if($('agenda-prev-page')) $('agenda-prev-page').disabled=(agendaPage<=1);
+    if($('agenda-next-page')) $('agenda-next-page').disabled=(agendaPage>=totalPages);
+
+    updateBulkBarUI();
+    renderTrashBadge();
+  }catch(e){
+    if($('agenda-status')) $('agenda-status').textContent=e.message;
+  }
 }
+
 $('toggle-duplicates')?.addEventListener('click',()=>{
   showingOnlyDuplicates=!showingOnlyDuplicates;
   const btn=$('toggle-duplicates');
@@ -1145,9 +1937,1071 @@ $('toggle-duplicates')?.addEventListener('click',()=>{
   }
   renderAgenda();
 });
-$('agenda-city').addEventListener('change',renderAgenda);$('agenda-search').addEventListener('input',()=>{clearTimeout(window.agendaTimer);window.agendaTimer=setTimeout(renderAgenda,250)});
-$('add-queue').addEventListener('click',async()=>{try{const contactIds=[...document.querySelectorAll('.agenda-pick:checked')].map(x=>x.value);const quantity=Math.max(1,Number($('queue-quantity')?.value)||20);const type=$('queue-message-type')?.value||'initial';const mode=$('queue-message-mode')?.value||'STANDARD';const payload=contactIds.length>0?{contactIds,type,mode}:{quantity,city:$('agenda-city')?.value||'',q:$('agenda-search')?.value.trim()||'',type,mode};const r=await apiCall('/api/queue',{method:'POST',body:JSON.stringify(payload)});$('agenda-status').textContent=r.added+' contato(s) adicionado(s) à fila com mensagens preparadas.';await renderAgenda();await renderDashboard();await renderQueue()}catch(e){$('agenda-status').textContent=e.message}});
-$('agenda-select-all').addEventListener('change',e=>document.querySelectorAll('.agenda-pick:not(:disabled)').forEach(x=>x.checked=e.target.checked));
+
+$('agenda-city')?.addEventListener('change',()=>{agendaPage=1;renderAgenda();});
+$('agenda-category-filter')?.addEventListener('change',()=>{agendaPage=1;renderAgenda();});
+$('agenda-status-filter')?.addEventListener('change',()=>{agendaPage=1;renderAgenda();});
+$('agenda-source-filter')?.addEventListener('change',()=>{agendaPage=1;renderAgenda();});
+$('agenda-per-page')?.addEventListener('change',e=>{agendaLimit=Number(e.target.value)||50;agendaPage=1;renderAgenda();});
+$('agenda-prev-page')?.addEventListener('click',()=>{if(agendaPage>1){agendaPage--;renderAgenda();}});
+$('agenda-next-page')?.addEventListener('click',()=>{agendaPage++;renderAgenda();});
+$('agenda-search')?.addEventListener('input',()=>{agendaPage=1;clearTimeout(window.agendaTimer);window.agendaTimer=setTimeout(renderAgenda,250);});
+$('agenda-select-all')?.addEventListener('change',e=>{
+  document.querySelectorAll('.agenda-pick').forEach(x=>{
+    x.checked=e.target.checked;
+    if(e.target.checked) agendaSelectedIds.add(x.value);
+    else agendaSelectedIds.delete(x.value);
+  });
+  updateBulkBarUI();
+});
+
+// Legacy import button compatibility
+$('import-contacts')?.addEventListener('click',()=>$('btn-open-import-wizard')?.click());
+
+// Add to Queue
+$('add-queue')?.addEventListener('click',async()=>{
+  try{
+    const contactIds=[...agendaSelectedIds];
+    const quantity=Math.max(1,Number($('queue-quantity')?.value)||20);
+    const type=$('queue-message-type')?.value||'initial';
+    const mode=$('queue-message-mode')?.value||'STANDARD';
+    const payload=contactIds.length>0
+      ?{contactIds,type,mode}
+      :agendaAllFilterSelected
+        ?{filter:{status:$('agenda-status-filter')?.value||'',city_id:$('agenda-city')?.value||'',category_id:$('agenda-category-filter')?.value||'',q:$('agenda-search')?.value?.trim()||''},type,mode}
+        :{quantity,city:$('agenda-city')?.value||'',q:$('agenda-search')?.value?.trim()||'',type,mode};
+    const r=await apiCall('/api/queue',{method:'POST',body:JSON.stringify(payload)});
+    if($('agenda-status')) $('agenda-status').textContent=r.added+' contato(s) adicionado(s) à fila com mensagens preparadas.';
+    agendaSelectedIds.clear();
+    agendaAllFilterSelected=false;
+    await renderAgenda();
+    await renderDashboard();
+    await renderQueue();
+  }catch(e){
+    if($('agenda-status')) $('agenda-status').textContent=e.message;
+  }
+});
+
+// ========================
+// CONTATO: MODAL NOVO / EDITAR & MESCLAR
+// ========================
+function populateContactCategoryCheckboxes(selectedIds=[]){
+  const wrap=$('contact-form-categories-wrap');
+  if(!wrap) return;
+  wrap.replaceChildren();
+  for(const c of allCategoriesCache){
+    const lbl=document.createElement('label');
+    lbl.className='check';
+    lbl.style='font-size:12px;background:white;border:1px solid #d1d5db;border-radius:8px;padding:4px 8px;cursor:pointer;';
+    const cb=document.createElement('input');
+    cb.type='checkbox';cb.className='contact-cat-cb';cb.value=c.id;
+    if(selectedIds.includes(c.id)||selectedIds.includes(String(c.id))) cb.checked=true;
+    const badge=document.createElement('span');
+    badge.className='cat-tag';
+    badge.style.background=c.color||'#16a34a';
+    badge.textContent=c.name;
+    lbl.append(cb,badge);
+    wrap.append(lbl);
+  }
+}
+
+function populateContactCitySelect(selectedId=''){
+  const sel=$('contact-form-city');
+  if(!sel) return;
+  sel.replaceChildren();
+  const defOpt=document.createElement('option');
+  defOpt.value='';defOpt.textContent='Selecione ou deixe sem cidade';
+  sel.append(defOpt);
+  for(const c of allCitiesCache){
+    const opt=document.createElement('option');
+    opt.value=c.id;opt.textContent=`${c.name} (${c.state})`;
+    if(String(c.id)===String(selectedId)) opt.selected=true;
+    sel.append(opt);
+  }
+}
+
+function openCreateContactModal(){
+  currentEditingContactId=null;
+  duplicateFoundContact=null;
+  $('contact-modal-title').textContent='➕ Novo Contato';
+  $('contact-form-id').value='';
+  $('contact-form-company').value='';
+  $('contact-form-phone').value='';
+  $('contact-form-responsible').value='';
+  $('contact-form-email').value='';
+  $('contact-form-instagram').value='';
+  $('contact-form-address').value='';
+  $('contact-form-notes').value='';
+  $('contact-form-status').textContent='';
+  $('contact-phone-warning').style.display='none';
+  $('contact-timeline-wrap').style.display='none';
+  populateContactCitySelect('');
+  populateContactCategoryCheckboxes([]);
+  $('modal-contact').hidden=false;
+}
+
+$('btn-open-create-contact')?.addEventListener('click',openCreateContactModal);
+$('btn-close-contact-modal')?.addEventListener('click',()=>{$('modal-contact').hidden=true;});
+$('btn-cancel-contact')?.addEventListener('click',()=>{$('modal-contact').hidden=true;});
+
+async function openEditContactModal(id){
+  currentEditingContactId=id;
+  duplicateFoundContact=null;
+  $('contact-modal-title').textContent='✏️ Editar Contato';
+  $('contact-form-id').value=id;
+  $('contact-form-status').textContent='Carregando dados...';
+  $('contact-phone-warning').style.display='none';
+  $('modal-contact').hidden=false;
+
+  try{
+    const res=await apiCall('/api/contacts/'+encodeURIComponent(id));
+    const c=res.contact;
+    $('contact-form-company').value=c.company||'';
+    $('contact-form-phone').value=c.phone_e164||c.phone||'';
+    $('contact-form-responsible').value=c.responsible||'';
+    $('contact-form-email').value=c.email||'';
+    $('contact-form-instagram').value=c.instagram||'';
+    $('contact-form-address').value=c.address||'';
+    $('contact-form-notes').value=c.notes||'';
+    $('contact-form-status').textContent='';
+
+    populateContactCitySelect(c.city_id);
+    const catIds=(res.categories||[]).map(x=>x.id);
+    populateContactCategoryCheckboxes(catIds);
+
+    // Timeline / Events
+    const tlWrap=$('contact-timeline-wrap');
+    const tlList=$('contact-timeline-list');
+    if(tlWrap&&tlList){
+      const events=res.events||[];
+      if(events.length>0){
+        tlWrap.style.display='block';
+        tlList.replaceChildren();
+        for(const ev of events){
+          const evDiv=document.createElement('div');
+          const dt=ev.created_at?new Date(ev.created_at).toLocaleString('pt-BR'):'';
+          evDiv.textContent=`• [${dt}] ${ev.event}: ${ev.details||''}`;
+          tlList.append(evDiv);
+        }
+      }else{
+        tlWrap.style.display='none';
+      }
+    }
+  }catch(err){
+    $('contact-form-status').textContent='Erro: '+err.message;
+  }
+}
+
+// Live duplicate phone detection on WhatsApp input
+$('contact-form-phone')?.addEventListener('input',async()=>{
+  const val=$('contact-form-phone').value.trim();
+  const digits=val.replace(/\D/g,'');
+  if(digits.length<10){
+    $('contact-phone-warning').style.display='none';
+    duplicateFoundContact=null;
+    return;
+  }
+  try{
+    const d=await apiCall('/api/contacts?q='+encodeURIComponent(digits)+'&limit=5');
+    const matches=(d.contacts||[]).filter(c=>String(c.id)!==String(currentEditingContactId));
+    if(matches.length>0){
+      duplicateFoundContact=matches[0];
+      $('contact-phone-warning').style.display='block';
+      $('contact-phone-warning-text').textContent=`"${duplicateFoundContact.company}" (${duplicateFoundContact.phone})`;
+    }else{
+      $('contact-phone-warning').style.display='none';
+      duplicateFoundContact=null;
+    }
+  }catch{}
+});
+
+// Merge duplicate button in modal
+$('btn-merge-duplicate-contact')?.addEventListener('click',async()=>{
+  if(!duplicateFoundContact||!currentEditingContactId) return;
+  if(!confirm(`Deseja mesclar este contato com "${duplicateFoundContact.company}"? As mensagens e categorias serão unificadas no contato principal.`)) return;
+  try{
+    await apiCall('/api/contacts/'+encodeURIComponent(currentEditingContactId),{
+      method:'PATCH',
+      body:JSON.stringify({merge_with_id:duplicateFoundContact.id})
+    });
+    $('modal-contact').hidden=true;
+    await renderAgenda();
+    alert('Contatos mesclados com sucesso!');
+  }catch(err){alert('Erro ao mesclar: '+err.message);}
+});
+
+// Save contact (Create or Edit)
+$('btn-save-contact')?.addEventListener('click',async()=>{
+  const company=$('contact-form-company')?.value.trim();
+  const phone=$('contact-form-phone')?.value.trim();
+  if(!company){alert('Informe o nome do estabelecimento.');$('contact-form-company')?.focus();return;}
+  if(!phone){alert('Informe o WhatsApp do contato.');$('contact-form-phone')?.focus();return;}
+
+  const selectedCatIds=[...document.querySelectorAll('.contact-cat-cb:checked')].map(cb=>Number(cb.value));
+  const payload={
+    company,
+    phone,
+    responsible:$('contact-form-responsible')?.value.trim()||'',
+    city_id:$('contact-form-city')?.value?Number($('contact-form-city').value):null,
+    category_ids:selectedCatIds,
+    email:$('contact-form-email')?.value.trim()||'',
+    instagram:$('contact-form-instagram')?.value.trim()||'',
+    address:$('contact-form-address')?.value.trim()||'',
+    notes:$('contact-form-notes')?.value.trim()||''
+  };
+
+  $('btn-save-contact').disabled=true;
+  $('contact-form-status').textContent='Salvando contato...';
+
+  try{
+    if(currentEditingContactId){
+      await apiCall('/api/contacts/'+encodeURIComponent(currentEditingContactId),{
+        method:'PATCH',
+        body:JSON.stringify(payload)
+      });
+    }else{
+      await apiCall('/api/contacts',{
+        method:'POST',
+        body:JSON.stringify(payload)
+      });
+    }
+    $('modal-contact').hidden=true;
+    await renderAgenda();
+  }catch(err){
+    $('contact-form-status').textContent='Erro: '+err.message;
+  }finally{
+    $('btn-save-contact').disabled=false;
+  }
+});
+
+// ========================
+// CIDADES: GERENCIADOR
+// ========================
+async function renderCitiesTab(){
+  const rows=$('cities-rows');
+  if(!rows) return;
+  rows.replaceChildren();
+  try{
+    const d=await apiCall('/api/cities');
+    const cities=d.cities||[];
+    allCitiesCache=cities;
+    for(const c of cities){
+      const tr=document.createElement('tr');
+      const tdName=document.createElement('td');
+      tdName.innerHTML=`<strong>${c.name}</strong>`;
+      tr.append(tdName);
+
+      const tdUF=document.createElement('td');
+      tdUF.textContent=c.state||'SP';
+      tr.append(tdUF);
+
+      const tdSlug=document.createElement('td');
+      tdSlug.style='font-family:monospace;font-size:12px;color:#556b60;';
+      tdSlug.textContent=c.slug||'';
+      tr.append(tdSlug);
+
+      const tdCount=document.createElement('td');
+      tdCount.innerHTML=`<span style="background:#e0ede5;color:#11634c;font-size:11px;font-weight:700;padding:2px 7px;border-radius:10px;">${c.contact_count||0} contatos</span>`;
+      tr.append(tdCount);
+
+      const tdActions=document.createElement('td');
+      tdActions.style='text-align:right;white-space:nowrap;';
+
+      const btnEdit=document.createElement('button');
+      btnEdit.className='preset-btn';
+      btnEdit.style='padding:3px 8px;font-size:12px;height:28px;margin-right:4px;';
+      btnEdit.textContent='✏️';
+      btnEdit.title='Editar nome e estado da cidade';
+      btnEdit.onclick=async()=>{
+        const newName=prompt('Novo nome da cidade:',c.name);
+        if(!newName||newName===c.name) return;
+        const newState=prompt('Estado (UF):',c.state||'SP');
+        try{
+          await apiCall('/api/cities/'+encodeURIComponent(c.id),{method:'PATCH',body:JSON.stringify({name:newName,state:newState})});
+          renderCitiesTab();
+        }catch(e){alert(e.message);}
+      };
+      tdActions.append(btnEdit);
+
+      const btnMerge=document.createElement('button');
+      btnMerge.className='preset-btn';
+      btnMerge.style='padding:3px 8px;font-size:12px;height:28px;margin-right:4px;';
+      btnMerge.textContent='🔀';
+      btnMerge.title='Mesclar com outra cidade';
+      btnMerge.onclick=()=>openMergeModal('city',c);
+      tdActions.append(btnMerge);
+
+      const btnDel=document.createElement('button');
+      btnDel.className='preset-btn';
+      btnDel.style='padding:3px 8px;font-size:12px;height:28px;color:#991b1b;';
+      btnDel.textContent='🗑️';
+      btnDel.title='Excluir cidade';
+      btnDel.onclick=async()=>{
+        if(!confirm(`Excluir a cidade "${c.name}"? Os contatos vinculados ficarão sem cidade associada.`)) return;
+        try{
+          await apiCall('/api/cities/'+encodeURIComponent(c.id),{method:'DELETE'});
+          renderCitiesTab();
+        }catch(e){alert(e.message);}
+      };
+      tdActions.append(btnDel);
+
+      tr.append(tdActions);
+      rows.append(tr);
+    }
+  }catch(err){
+    if($('cities-status')) $('cities-status').textContent=err.message;
+  }
+}
+
+$('btn-create-city')?.addEventListener('click',async()=>{
+  const name=$('new-city-name')?.value.trim();
+  const state=$('new-city-state')?.value.trim()||'SP';
+  if(!name){alert('Informe o nome da cidade.');$('new-city-name')?.focus();return;}
+  try{
+    await apiCall('/api/cities',{method:'POST',body:JSON.stringify({name,state})});
+    $('new-city-name').value='';
+    if($('cities-status')) $('cities-status').textContent='Cidade cadastrada com sucesso!';
+    setTimeout(()=>{$('cities-status').textContent='';},3000);
+    await renderCitiesTab();
+  }catch(err){alert('Erro: '+err.message);}
+});
+
+// ========================
+// CATEGORIAS: GERENCIADOR
+// ========================
+$('new-cat-color')?.addEventListener('input',e=>{
+  if($('new-cat-color-hex')) $('new-cat-color-hex').textContent=e.target.value;
+});
+
+async function renderCategoriesTab(){
+  const rows=$('categories-rows');
+  if(!rows) return;
+  rows.replaceChildren();
+  try{
+    const d=await apiCall('/api/categories');
+    const cats=d.categories||[];
+    allCategoriesCache=cats;
+    for(const c of cats){
+      const tr=document.createElement('tr');
+      const tdName=document.createElement('td');
+      const tag=document.createElement('span');
+      tag.className='cat-tag';
+      tag.style.background=c.color||'#16a34a';
+      tag.textContent=c.name;
+      tdName.append(tag);
+      tr.append(tdName);
+
+      const tdSlug=document.createElement('td');
+      tdSlug.style='font-family:monospace;font-size:12px;color:#556b60;';
+      tdSlug.textContent=c.slug||'';
+      tr.append(tdSlug);
+
+      const tdDesc=document.createElement('td');
+      tdDesc.style='font-size:12px;color:#62766c;';
+      tdDesc.textContent=c.description||'—';
+      tr.append(tdDesc);
+
+      const tdCount=document.createElement('td');
+      tdCount.innerHTML=`<span style="background:#e0ede5;color:#11634c;font-size:11px;font-weight:700;padding:2px 7px;border-radius:10px;">${c.contact_count||0} contatos</span>`;
+      tr.append(tdCount);
+
+      const tdActions=document.createElement('td');
+      tdActions.style='text-align:right;white-space:nowrap;';
+
+      const btnEdit=document.createElement('button');
+      btnEdit.className='preset-btn';
+      btnEdit.style='padding:3px 8px;font-size:12px;height:28px;margin-right:4px;';
+      btnEdit.textContent='✏️';
+      btnEdit.title='Editar categoria';
+      btnEdit.onclick=async()=>{
+        const newName=prompt('Novo nome da categoria:',c.name);
+        if(!newName) return;
+        const newColor=prompt('Cor (Hex):',c.color||'#16a34a');
+        try{
+          await apiCall('/api/categories/'+encodeURIComponent(c.id),{method:'PATCH',body:JSON.stringify({name:newName,color:newColor})});
+          renderCategoriesTab();
+        }catch(e){alert(e.message);}
+      };
+      tdActions.append(btnEdit);
+
+      const btnMerge=document.createElement('button');
+      btnMerge.className='preset-btn';
+      btnMerge.style='padding:3px 8px;font-size:12px;height:28px;margin-right:4px;';
+      btnMerge.textContent='🔀';
+      btnMerge.title='Mesclar com outra categoria';
+      btnMerge.onclick=()=>openMergeModal('category',c);
+      tdActions.append(btnMerge);
+
+      const btnDel=document.createElement('button');
+      btnDel.className='preset-btn';
+      btnDel.style='padding:3px 8px;font-size:12px;height:28px;color:#991b1b;';
+      btnDel.textContent='🗑️';
+      btnDel.title='Excluir categoria';
+      btnDel.onclick=async()=>{
+        if(!confirm(`Excluir a categoria "${c.name}"?`)) return;
+        try{
+          await apiCall('/api/categories/'+encodeURIComponent(c.id),{method:'DELETE'});
+          renderCategoriesTab();
+        }catch(e){alert(e.message);}
+      };
+      tdActions.append(btnDel);
+
+      tr.append(tdActions);
+      rows.append(tr);
+    }
+  }catch(err){
+    if($('categories-status')) $('categories-status').textContent=err.message;
+  }
+}
+
+$('btn-create-cat')?.addEventListener('click',async()=>{
+  const name=$('new-cat-name')?.value.trim();
+  const color=$('new-cat-color')?.value||'#16a34a';
+  const description=$('new-cat-desc')?.value.trim()||'';
+  if(!name){alert('Informe o nome da categoria.');$('new-cat-name')?.focus();return;}
+  try{
+    await apiCall('/api/categories',{method:'POST',body:JSON.stringify({name,color,description})});
+    $('new-cat-name').value='';
+    $('new-cat-desc').value='';
+    if($('categories-status')) $('categories-status').textContent='Categoria cadastrada com sucesso!';
+    setTimeout(()=>{$('categories-status').textContent='';},3000);
+    await renderCategoriesTab();
+  }catch(err){alert('Erro: '+err.message);}
+});
+
+// ========================
+// MESCLAGEM MODAL (CIDADES / CATEGORIAS)
+// ========================
+function openMergeModal(type,item){
+  currentMergeType=type;
+  currentMergeSourceId=item.id;
+  const isCity=(type==='city');
+  $('merge-modal-title').textContent=isCity?`🔀 Mesclar Cidade: ${item.name}`:`🔀 Mesclar Categoria: ${item.name}`;
+  $('merge-modal-desc').textContent=`Todos os contatos vinculados a "${item.name}" serão transferidos para o destino abaixo, e "${item.name}" será removido(a).`;
+  $('merge-target-label').textContent=isCity?'Cidade de destino:':'Categoria de destino:';
+
+  const sel=$('merge-target-select');
+  sel.replaceChildren();
+  const list=isCity?allCitiesCache:allCategoriesCache;
+  for(const x of list){
+    if(String(x.id)===String(item.id)) continue;
+    const opt=document.createElement('option');
+    opt.value=x.id;opt.textContent=x.name+(isCity?` (${x.state})`:'');
+    sel.append(opt);
+  }
+  $('modal-merge').hidden=false;
+}
+
+$('btn-close-merge-modal')?.addEventListener('click',()=>{$('modal-merge').hidden=true;});
+$('btn-cancel-merge')?.addEventListener('click',()=>{$('modal-merge').hidden=true;});
+
+$('btn-confirm-merge')?.addEventListener('click',async()=>{
+  const targetId=$('merge-target-select')?.value;
+  if(!targetId||!currentMergeSourceId) return;
+  const isCity=(currentMergeType==='city');
+  const endpoint=isCity?'/api/cities/merge':'/api/categories/merge';
+  $('btn-confirm-merge').disabled=true;
+  $('merge-status-msg').textContent='Mesclando registros...';
+  try{
+    await apiCall(endpoint,{method:'POST',body:JSON.stringify({source_id:currentMergeSourceId,target_id:Number(targetId)})});
+    $('modal-merge').hidden=true;
+    if(isCity) await renderCitiesTab();
+    else await renderCategoriesTab();
+    await renderAgenda();
+    alert('Mesclagem concluída com sucesso!');
+  }catch(err){
+    $('merge-status-msg').textContent='Erro: '+err.message;
+  }finally{
+    $('btn-confirm-merge').disabled=false;
+  }
+});
+
+// ========================
+// IMPORTAÇÃO EM 4 PASSOS (WIZARD)
+// ========================
+function resetImportWizard(){
+  currentImportFile=null;
+  currentImportBase64=null;
+  currentImportPreviewData=null;
+  currentImportBatchId=null;
+  $('import-wizard-file').value='';
+  $('import-selected-filename').textContent='';
+  $('btn-step1-next').disabled=true;
+  $('import-step1-status').textContent='';
+  $('import-step2-status').textContent='';
+  $('import-step3-status').textContent='';
+
+  $('import-step-1').hidden=false;
+  $('import-step-2').hidden=true;
+  $('import-step-3').hidden=true;
+  $('import-step-4').hidden=true;
+
+  for(let i=1;i<=4;i++){
+    const nav=$('step-nav-'+i);
+    if(nav) nav.classList.toggle('active',i===1);
+  }
+}
+
+$('btn-open-import-wizard')?.addEventListener('click',()=>{
+  resetImportWizard();
+  $('modal-import').hidden=false;
+});
+$('btn-batches-new-import')?.addEventListener('click',()=>{
+  resetImportWizard();
+  $('modal-import').hidden=false;
+});
+$('btn-close-import-wizard')?.addEventListener('click',()=>{$('modal-import').hidden=true;});
+
+async function handleFileSelected(file){
+  if(!file) return;
+  currentImportFile=file;
+  $('import-selected-filename').textContent=`Arquivo selecionado: ${file.name} (${(file.size/1024).toFixed(1)} KB)`;
+  $('import-step1-status').textContent='Lendo arquivo...';
+
+  const reader=new FileReader();
+  reader.onload=()=>{
+    const res=reader.result;
+    currentImportBase64=res.includes(',')?res.split(',')[1]:res;
+    $('btn-step1-next').disabled=false;
+    $('import-step1-status').textContent='Pronto! Clique em Avançar.';
+  };
+  reader.readAsDataURL(file);
+}
+
+$('import-wizard-file')?.addEventListener('change',e=>handleFileSelected(e.target.files[0]));
+
+// Drag & drop
+const dropzone=$('import-dropzone');
+if(dropzone){
+  dropzone.addEventListener('dragover',e=>{e.preventDefault();dropzone.style.borderColor='#11634c';dropzone.style.background='#eef6f2';});
+  dropzone.addEventListener('dragleave',()=>{dropzone.style.borderColor='#a7d0bc';dropzone.style.background='#f7faf8';});
+  dropzone.addEventListener('drop',e=>{
+    e.preventDefault();
+    dropzone.style.borderColor='#a7d0bc';dropzone.style.background='#f7faf8';
+    if(e.dataTransfer.files&&e.dataTransfer.files[0]) handleFileSelected(e.dataTransfer.files[0]);
+  });
+}
+
+// Step 1 -> Step 2
+$('btn-step1-next')?.addEventListener('click',async()=>{
+  if(!currentImportBase64) return;
+  $('btn-step1-next').disabled=true;
+  $('import-step1-status').textContent='Analisando estrutura de colunas e dados...';
+
+  try{
+    const res=await apiCall('/api/import/preview',{
+      method:'POST',
+      body:JSON.stringify({base64:currentImportBase64,filename:currentImportFile.name})
+    });
+    currentImportPreviewData=res;
+
+    // Build column mapping form
+    const grid=$('import-column-mapping-grid');
+    grid.replaceChildren();
+    const columns=res.columns||[];
+    const mapping=res.column_mapping||{};
+    const targetFields=[
+      {key:'company',label:'Estabelecimento / Empresa *',req:true},
+      {key:'phone',label:'WhatsApp / Telefone *',req:true},
+      {key:'city',label:'Cidade',req:false},
+      {key:'category',label:'Categoria / Nicho',req:false},
+      {key:'responsible',label:'Responsável',req:false},
+      {key:'address',label:'Endereço',req:false},
+      {key:'delivery',label:'Delivery',req:false},
+      {key:'notes',label:'Observações',req:false}
+    ];
+
+    for(const f of targetFields){
+      const wrap=document.createElement('div');
+      const lbl=document.createElement('label');
+      lbl.style='font-size:12px;font-weight:700;margin-bottom:4px;';
+      lbl.textContent=f.label;
+      const sel=document.createElement('select');
+      sel.id='map-col-'+f.key;
+      sel.style='height:38px;font-size:13px;';
+      const noneOpt=document.createElement('option');
+      noneOpt.value='';noneOpt.textContent='-- Nenhuma / Ignorar --';
+      sel.append(noneOpt);
+
+      for(const col of columns){
+        const opt=document.createElement('option');
+        opt.value=col;opt.textContent=col;
+        if(mapping[f.key]===col) opt.selected=true;
+        sel.append(opt);
+      }
+      wrap.append(lbl,sel);
+      grid.append(wrap);
+    }
+
+    $('import-step-1').hidden=true;
+    $('import-step-2').hidden=false;
+    $('step-nav-1').classList.remove('active');
+    $('step-nav-2').classList.add('active');
+  }catch(err){
+    $('import-step1-status').textContent='Erro ao processar: '+err.message;
+  }finally{
+    $('btn-step1-next').disabled=false;
+  }
+});
+
+// Step 2 -> Step 1
+$('btn-step2-prev')?.addEventListener('click',()=>{
+  $('import-step-2').hidden=true;
+  $('import-step-1').hidden=false;
+  $('step-nav-2').classList.remove('active');
+  $('step-nav-1').classList.add('active');
+});
+
+// Step 2 -> Step 3
+$('btn-step2-next')?.addEventListener('click',async()=>{
+  const colComp=$('map-col-company')?.value;
+  const colPhone=$('map-col-phone')?.value;
+  if(!colComp||!colPhone){
+    alert('Mapeie pelo menos as colunas de Estabelecimento e WhatsApp.');
+    return;
+  }
+
+  const customMap={
+    company:colComp,
+    phone:colPhone,
+    city:$('map-col-city')?.value||'',
+    category:$('map-col-category')?.value||'',
+    responsible:$('map-col-responsible')?.value||'',
+    address:$('map-col-address')?.value||'',
+    delivery:$('map-col-delivery')?.value||'',
+    notes:$('map-col-notes')?.value||''
+  };
+
+  $('btn-step2-next').disabled=true;
+  $('import-step2-status').textContent='Gerando prévia com mapeamento...';
+
+  try{
+    const res=await apiCall('/api/import/preview',{
+      method:'POST',
+      body:JSON.stringify({base64:currentImportBase64,filename:currentImportFile.name,column_map:customMap})
+    });
+    currentImportPreviewData=res;
+
+    // Fill stats
+    if($('import-stat-total')) $('import-stat-total').textContent=res.total_rows||0;
+    if($('import-stat-valid')) $('import-stat-valid').textContent=res.valid_contacts||0;
+    if($('import-stat-dups')) $('import-stat-dups').textContent=(res.duplicate_in_file||0)+(res.duplicate_in_db||0);
+    if($('import-stat-invalid')) $('import-stat-invalid').textContent=res.invalid_phones||0;
+
+    // Fill preview rows table
+    const tbody=$('import-preview-rows');
+    tbody.replaceChildren();
+    for(const r of (res.preview_rows||[])){
+      const tr=document.createElement('tr');
+      const tdRow=document.createElement('td');tdRow.textContent=r.row_index;tr.append(tdRow);
+      const tdComp=document.createElement('td');tdComp.textContent=r.company||'—';tr.append(tdComp);
+      const tdPhone=document.createElement('td');tdPhone.textContent=r.phone_normalized||r.phone_raw;tr.append(tdPhone);
+      const tdCity=document.createElement('td');tdCity.textContent=r.city||'—';tr.append(tdCity);
+      const tdCat=document.createElement('td');tdCat.textContent=r.category||'—';tr.append(tdCat);
+      const tdStatus=document.createElement('td');
+      if(r.status==='valid'){
+        tdStatus.innerHTML='<span style="color:#16a34a;font-weight:700;">✅ Válido</span>';
+      }else if(r.status==='duplicate_db'){
+        tdStatus.innerHTML='<span style="color:#ca8a04;font-weight:700;">⚠️ Já no banco</span>';
+      }else if(r.status==='duplicate_file'){
+        tdStatus.innerHTML='<span style="color:#ea580c;font-weight:700;">⚠️ Repetido no arquivo</span>';
+      }else{
+        tdStatus.innerHTML=`<span style="color:#dc2626;font-weight:700;">❌ ${r.error||'Inválido'}</span>`;
+      }
+      tr.append(tdStatus);
+      tbody.append(tr);
+    }
+
+    // Populate default city select in step 3
+    const defCitySel=$('import-default-city');
+    defCitySel.replaceChildren();
+    const optNone=document.createElement('option');
+    optNone.value='';optNone.textContent='Não definir cidade padrão';
+    defCitySel.append(optNone);
+    for(const c of allCitiesCache){
+      const opt=document.createElement('option');
+      opt.value=c.id;opt.textContent=`${c.name} (${c.state})`;
+      defCitySel.append(opt);
+    }
+
+    $('import-step-2').hidden=true;
+    $('import-step-3').hidden=false;
+    $('step-nav-2').classList.remove('active');
+    $('step-nav-3').classList.add('active');
+  }catch(err){
+    $('import-step2-status').textContent='Erro: '+err.message;
+  }finally{
+    $('btn-step2-next').disabled=false;
+  }
+});
+
+// Step 3 -> Step 2
+$('btn-step3-prev')?.addEventListener('click',()=>{
+  $('import-step-3').hidden=true;
+  $('import-step-2').hidden=false;
+  $('step-nav-3').classList.remove('active');
+  $('step-nav-2').classList.add('active');
+});
+
+// Step 3 -> Commit (Step 4)
+$('btn-step3-commit')?.addEventListener('click',async()=>{
+  $('btn-step3-commit').disabled=true;
+  $('import-step3-status').textContent='Gravando e normalizando contatos no banco de dados...';
+
+  try{
+    const defCityId=$('import-default-city')?.value?Number($('import-default-city').value):null;
+    const dupPolicy=$('import-duplicate-policy')?.value||'skip';
+    const autoCities=$('import-auto-cities')?.checked!==false;
+    const autoCats=$('import-auto-categories')?.checked!==false;
+    const colMap=currentImportPreviewData?.column_mapping||{};
+
+    const res=await apiCall('/api/import/commit',{
+      method:'POST',
+      body:JSON.stringify({
+        base64:currentImportBase64,
+        filename:currentImportFile.name,
+        default_city_id:defCityId,
+        duplicate_policy:dupPolicy,
+        auto_create_cities:autoCities,
+        auto_create_categories:autoCats,
+        column_map:colMap
+      })
+    });
+
+    currentImportBatchId=res.batch_id;
+    $('import-result-summary').innerHTML=`
+      <strong>${res.created||0}</strong> contatos novos criados com sucesso.<br>
+      <strong>${res.updated||0}</strong> contatos já existentes atualizados.<br>
+      <strong>${res.duplicates||0}</strong> telefones duplicados tratados.<br>
+      <strong>${res.invalid||0}</strong> linhas inválidas ou sem telefone ignoradas.
+    `;
+
+    $('import-step-3').hidden=true;
+    $('import-step-4').hidden=false;
+    $('step-nav-3').classList.remove('active');
+    $('step-nav-4').classList.add('active');
+
+    await renderAgenda();
+    await renderDashboard();
+  }catch(err){
+    $('import-step3-status').textContent='Erro na importação: '+err.message;
+  }finally{
+    $('btn-step3-commit').disabled=false;
+  }
+});
+
+$('btn-download-error-csv')?.addEventListener('click',()=>{
+  if(!currentImportBatchId) return;
+  window.open('/api/import/'+encodeURIComponent(currentImportBatchId)+'/errors/csv','_blank');
+});
+
+$('btn-undo-import-batch')?.addEventListener('click',async()=>{
+  if(!currentImportBatchId) return;
+  if(!confirm('Deseja realmente desfazer esta importação? Todos os contatos importados neste lote que ainda não foram enviados serão removidos.')) return;
+  try{
+    const res=await apiCall('/api/import/'+encodeURIComponent(currentImportBatchId)+'/undo',{method:'POST'});
+    alert(`${res.removed||0} contato(s) removido(s) com sucesso.`);
+    $('modal-import').hidden=true;
+    await renderAgenda();
+    await renderDashboard();
+  }catch(err){alert('Erro ao desfazer: '+err.message);}
+});
+
+$('btn-step4-finish')?.addEventListener('click',()=>{
+  $('modal-import').hidden=true;
+  showAgendaSubtab('contacts');
+});
+
+// ========================
+// LOTES (BATCHES) TAB
+// ========================
+async function renderBatchesTab(){
+  const rows=$('batches-rows');
+  if(!rows) return;
+  rows.replaceChildren();
+  try{
+    const d=await apiCall('/api/import/batches');
+    const batches=d.batches||[];
+    for(const b of batches){
+      const tr=document.createElement('tr');
+      const tdId=document.createElement('td');tdId.textContent='#'+b.id;tr.append(tdId);
+      const tdDate=document.createElement('td');
+      tdDate.textContent=b.created_at?new Date(b.created_at).toLocaleString('pt-BR'):'';
+      tr.append(tdDate);
+      const tdFile=document.createElement('td');tdFile.textContent=b.filename||'—';tr.append(tdFile);
+      const tdTotal=document.createElement('td');tdTotal.textContent=b.total_rows||0;tr.append(tdTotal);
+      const tdCreated=document.createElement('td');tdCreated.innerHTML=`<strong style="color:#16a34a;">${b.created_contacts||0}</strong>`;tr.append(tdCreated);
+      const tdUpdated=document.createElement('td');tdUpdated.textContent=b.updated_contacts||0;tr.append(tdUpdated);
+      const tdDups=document.createElement('td');tdDups.textContent=b.duplicate_phones||0;tr.append(tdDups);
+      const tdInvalid=document.createElement('td');tdInvalid.innerHTML=`<span style="color:#dc2626;">${b.invalid_rows||0}</span>`;tr.append(tdInvalid);
+
+      const tdActions=document.createElement('td');
+      tdActions.style='text-align:right;white-space:nowrap;';
+
+      const btnErr=document.createElement('button');
+      btnErr.className='preset-btn';
+      btnErr.style='padding:3px 8px;font-size:12px;height:28px;margin-right:4px;';
+      btnErr.textContent='📥 Erros CSV';
+      btnErr.title='Baixar planilha com linhas rejeitadas';
+      btnErr.onclick=()=>window.open('/api/import/'+encodeURIComponent(b.id)+'/errors/csv','_blank');
+      tdActions.append(btnErr);
+
+      const btnUndo=document.createElement('button');
+      btnUndo.className='preset-btn';
+      btnUndo.style='padding:3px 8px;font-size:12px;height:28px;color:#991b1b;';
+      btnUndo.textContent='↩️ Desfazer';
+      btnUndo.title='Remover contatos não enviados deste lote';
+      btnUndo.onclick=async()=>{
+        if(!confirm(`Desfazer lote #${b.id} (${b.filename})?`)) return;
+        try{
+          const res=await apiCall('/api/import/'+encodeURIComponent(b.id)+'/undo',{method:'POST'});
+          alert(`${res.removed||0} contato(s) removido(s).`);
+          renderBatchesTab();
+          renderAgenda();
+        }catch(e){alert(e.message);}
+      };
+      tdActions.append(btnUndo);
+
+      tr.append(tdActions);
+      rows.append(tr);
+    }
+  }catch(err){
+    if($('batches-status')) $('batches-status').textContent=err.message;
+  }
+}
+
+// ========================
+// LIXEIRA (TRASH) TAB
+// ========================
+async function renderTrashTab(){
+  const rows=$('trash-rows');
+  if(!rows) return;
+  rows.replaceChildren();
+  try{
+    const d=await apiCall('/api/contacts?trash=1&limit=200');
+    const list=d.contacts||[];
+    if($('trash-badge')) $('trash-badge').textContent=d.total||0;
+    for(const c of list){
+      const tr=document.createElement('tr');
+      const pick=document.createElement('td');
+      const cb=document.createElement('input');
+      cb.type='checkbox';cb.className='trash-pick';cb.value=c.id;
+      pick.append(cb);tr.append(pick);
+
+      const tdComp=document.createElement('td');
+      tdComp.innerHTML=`<strong>${c.company||'—'}</strong>`;
+      tr.append(tdComp);
+
+      const tdPhone=document.createElement('td');
+      tdPhone.textContent=formatPhoneDisplay(c.phone_e164||c.phone);
+      tr.append(tdPhone);
+
+      const tdCity=document.createElement('td');
+      tdCity.textContent=c.city||'—';
+      tr.append(tdCity);
+
+      const tdDelAt=document.createElement('td');
+      tdDelAt.textContent=c.deleted_at?new Date(c.deleted_at).toLocaleString('pt-BR'):'—';
+      tr.append(tdDelAt);
+
+      const tdActions=document.createElement('td');
+      tdActions.style='text-align:right;white-space:nowrap;';
+
+      const btnRestore=document.createElement('button');
+      btnRestore.className='preset-btn';
+      btnRestore.style='padding:3px 8px;font-size:12px;height:28px;margin-right:4px;background:#dcfce7;color:#166534;border-color:#86efac;';
+      btnRestore.textContent='♻️ Restaurar';
+      btnRestore.onclick=async()=>{
+        try{
+          await apiCall('/api/contacts/'+encodeURIComponent(c.id)+'/restore',{method:'POST'});
+          renderTrashTab();
+          renderAgenda();
+        }catch(e){alert(e.message);}
+      };
+      tdActions.append(btnRestore);
+
+      const btnPurge=document.createElement('button');
+      btnPurge.className='preset-btn';
+      btnPurge.style='padding:3px 8px;font-size:12px;height:28px;color:#991b1b;';
+      btnPurge.textContent='❌ Excluir Definitivo';
+      btnPurge.onclick=async()=>{
+        const conf=prompt(`Para apagar definitivamente "${c.company}", digite APAGAR:`);
+        if(conf!=='APAGAR') return;
+        try{
+          await apiCall('/api/contacts/'+encodeURIComponent(c.id)+'?permanent=true',{method:'DELETE'});
+          renderTrashTab();
+        }catch(e){alert(e.message);}
+      };
+      tdActions.append(btnPurge);
+
+      tr.append(tdActions);
+      rows.append(tr);
+    }
+  }catch(err){
+    if($('trash-status')) $('trash-status').textContent=err.message;
+  }
+}
+
+$('trash-select-all')?.addEventListener('change',e=>{
+  document.querySelectorAll('.trash-pick').forEach(cb=>cb.checked=e.target.checked);
+});
+
+$('btn-restore-all-trash')?.addEventListener('click',async()=>{
+  const ids=[...document.querySelectorAll('.trash-pick:checked')].map(cb=>cb.value);
+  if(!ids.length){alert('Selecione os contatos para restaurar.');return;}
+  try{
+    await apiCall('/api/contacts/bulk',{method:'POST',body:JSON.stringify({action:'restore',ids})});
+    renderTrashTab();
+    renderAgenda();
+  }catch(e){alert(e.message);}
+});
+
+$('btn-purge-trash')?.addEventListener('click',async()=>{
+  const ids=[...document.querySelectorAll('.trash-pick:checked')].map(cb=>cb.value);
+  if(!ids.length){alert('Selecione os contatos para excluir definitivamente.');return;}
+  const conf=prompt(`Para apagar definitivamente ${ids.length} contato(s), digite APAGAR:`);
+  if(conf!=='APAGAR') return;
+  try{
+    await apiCall('/api/contacts/bulk',{method:'POST',body:JSON.stringify({action:'permanent_delete',ids})});
+    renderTrashTab();
+  }catch(e){alert(e.message);}
+});
+
+// ========================
+// AÇÕES EM MASSA (BULK)
+// ========================
+function openBulkModal(type){
+  currentBulkActionType=type;
+  $('bulk-cat-wrap').hidden=(type!=='category');
+  $('bulk-city-wrap').hidden=(type!=='city');
+  $('bulk-status-wrap').hidden=(type!=='status');
+
+  const count=agendaAllFilterSelected?agendaFilterTotal:agendaSelectedIds.size;
+  if(type==='category'){
+    $('bulk-modal-title').textContent='🏷️ Atribuir Categoria em Massa';
+    $('bulk-modal-desc').textContent=`Atribuir categoria para ${count} contato(s) selecionado(s).`;
+    const sel=$('bulk-cat-select');
+    sel.replaceChildren();
+    for(const c of allCategoriesCache){
+      const opt=document.createElement('option');
+      opt.value=c.id;opt.textContent=c.name;
+      sel.append(opt);
+    }
+  }else if(type==='city'){
+    $('bulk-modal-title').textContent='🏙️ Alterar Cidade em Massa';
+    $('bulk-modal-desc').textContent=`Mudar cidade de ${count} contato(s) selecionado(s).`;
+    const sel=$('bulk-city-select');
+    sel.replaceChildren();
+    for(const c of allCitiesCache){
+      const opt=document.createElement('option');
+      opt.value=c.id;opt.textContent=`${c.name} (${c.state})`;
+      sel.append(opt);
+    }
+  }else if(type==='status'){
+    $('bulk-modal-title').textContent='🔄 Alterar Status em Massa';
+    $('bulk-modal-desc').textContent=`Mudar status de ${count} contato(s) selecionado(s).`;
+  }
+  $('modal-bulk').hidden=false;
+}
+
+$('btn-close-bulk-modal')?.addEventListener('click',()=>{$('modal-bulk').hidden=true;});
+$('btn-cancel-bulk')?.addEventListener('click',()=>{$('modal-bulk').hidden=true;});
+
+$('btn-bulk-category')?.addEventListener('click',()=>openBulkModal('category'));
+$('btn-bulk-city')?.addEventListener('click',()=>openBulkModal('city'));
+$('btn-bulk-status')?.addEventListener('click',()=>openBulkModal('status'));
+
+$('btn-confirm-bulk')?.addEventListener('click',async()=>{
+  const type=currentBulkActionType;
+  const payload={
+    ids:agendaAllFilterSelected?[]:[...agendaSelectedIds],
+    filter:agendaAllFilterSelected?{
+      status:$('agenda-status-filter')?.value||'',
+      city_id:$('agenda-city')?.value||'',
+      category_id:$('agenda-category-filter')?.value||'',
+      q:$('agenda-search')?.value?.trim()||''
+    }:undefined
+  };
+
+  if(type==='category'){
+    payload.action='add_category';
+    payload.category_id=Number($('bulk-cat-select')?.value);
+  }else if(type==='city'){
+    payload.action='set_city';
+    payload.city_id=Number($('bulk-city-select')?.value);
+  }else if(type==='status'){
+    payload.action='set_status';
+    payload.status=$('bulk-status-select')?.value;
+  }
+
+  $('btn-confirm-bulk').disabled=true;
+  $('bulk-status-msg').textContent='Aplicando alterações...';
+
+  try{
+    const res=await apiCall('/api/contacts/bulk',{method:'POST',body:JSON.stringify(payload)});
+    $('modal-bulk').hidden=true;
+    agendaSelectedIds.clear();
+    agendaAllFilterSelected=false;
+    await renderAgenda();
+    alert(`${res.affected||0} contato(s) atualizado(s) com sucesso!`);
+  }catch(err){
+    $('bulk-status-msg').textContent='Erro: '+err.message;
+  }finally{
+    $('btn-confirm-bulk').disabled=false;
+  }
+});
+
+// Bulk Delete
+$('btn-bulk-delete')?.addEventListener('click',async()=>{
+  const count=agendaAllFilterSelected?agendaFilterTotal:agendaSelectedIds.size;
+  if(!count){alert('Nenhum contato selecionado.');return;}
+  if(!confirm(`Mover ${count} contato(s) para a lixeira?`)) return;
+  try{
+    const payload={
+      action:'delete',
+      ids:agendaAllFilterSelected?[]:[...agendaSelectedIds],
+      filter:agendaAllFilterSelected?{
+        status:$('agenda-status-filter')?.value||'',
+        city_id:$('agenda-city')?.value||'',
+        category_id:$('agenda-category-filter')?.value||'',
+        q:$('agenda-search')?.value?.trim()||''
+      }:undefined
+    };
+    const res=await apiCall('/api/contacts/bulk',{method:'POST',body:JSON.stringify(payload)});
+    agendaSelectedIds.clear();
+    agendaAllFilterSelected=false;
+    await renderAgenda();
+    renderTrashBadge();
+    alert(`${res.affected||0} contato(s) movido(s) para a lixeira.`);
+  }catch(err){alert('Erro: '+err.message);}
+});
+
+// Bulk Enqueue
+$('btn-bulk-queue')?.addEventListener('click',async()=>{
+  const count=agendaAllFilterSelected?agendaFilterTotal:agendaSelectedIds.size;
+  if(!count){alert('Nenhum contato selecionado.');return;}
+  try{
+    const payload={
+      contactIds:agendaAllFilterSelected?[]:[...agendaSelectedIds],
+      filter:agendaAllFilterSelected?{
+        status:$('agenda-status-filter')?.value||'',
+        city_id:$('agenda-city')?.value||'',
+        category_id:$('agenda-category-filter')?.value||'',
+        q:$('agenda-search')?.value?.trim()||''
+      }:undefined,
+      type:$('queue-message-type')?.value||'initial',
+      mode:$('queue-message-mode')?.value||'STANDARD'
+    };
+    const r=await apiCall('/api/queue',{method:'POST',body:JSON.stringify(payload)});
+    agendaSelectedIds.clear();
+    agendaAllFilterSelected=false;
+    alert(`${r.added||0} contato(s) adicionado(s) à fila com mensagens preparadas.`);
+    await renderAgenda();
+    await renderDashboard();
+    await renderQueue();
+  }catch(err){alert('Erro: '+err.message);}
+});
+
 $('prepare-queue').addEventListener('click',async()=>{try{const r=await apiCall('/api/queue/prepare',{method:'POST',body:JSON.stringify({type:$('queue-message-type').value,mode:$('queue-message-mode').value})});$('queue-status').textContent=r.prepared+' mensagem(ns) preparada(s) com '+(r.mode==='AI'?'IA':'modelo padrão')+'.';await renderQueue()}catch(e){$('queue-status').textContent=e.message}});
 let countdownSecs=null;
 function updateCountdownUI(){const cd=$('queue-countdown');if(!cd)return;if(countdownSecs===null){cd.textContent='--:--';return}if(countdownSecs<=0){cd.textContent='00:00';$('queue-substatus').textContent='🚀 Transmitindo próxima mensagem agora…'}else{const m=Math.floor(countdownSecs/60),s=countdownSecs%60;cd.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}}
@@ -1758,6 +3612,7 @@ function updateFollowupRulesCharCount() {
 
 function renderFollowupAttemptsRows() {
   const container = $('followup-attempts-list');
+  console.log('[DEBUG] Rendering attempts. Container:', container, 'Attempts:', currentFollowupAttempts);
   if (!container) return;
   container.replaceChildren();
 
