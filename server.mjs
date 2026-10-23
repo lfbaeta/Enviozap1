@@ -422,9 +422,9 @@ export const DEFAULT_FOLLOWUP_CONFIG = {
   enabled: false,
   maxAttempts: 3,
   attempts: [
-    { attempt: 1, interval: 30, unit: 'minutes' },
-    { attempt: 2, interval: 4, unit: 'hours' },
-    { attempt: 3, interval: 24, unit: 'hours' }
+    { attempt: 1, interval: 1, unit: 'hours', message: 'Passando para saber se ficou tudo certo com as informações sobre a Delivale 😊 Faltou esclarecer alguma coisa? Estamos à disposição!', adaptWithAi: true },
+    { attempt: 2, interval: 1, unit: 'weeks', message: 'Faz uma semana desde nossa conversa sobre a Delivale. Ficou alguma dúvida ou faltou alguma informação para você avaliar? Estamos à disposição para ajudar.', adaptWithAi: true },
+    { attempt: 3, interval: 30, unit: 'days', message: 'Já faz um tempo desde nossa conversa sobre a Delivale. Como estão os pedidos por aí? Se ainda precisar esclarecer alguma coisa sobre a plataforma, estamos à disposição, sem compromisso.', adaptWithAi: true }
   ],
   windowStart: '08:00',
   windowEnd: '20:00',
