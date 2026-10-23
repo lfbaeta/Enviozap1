@@ -53,8 +53,8 @@ function generateSmartDelivaleReply(userText,history=[],systemPrompt='',cfg={},c
   }
   return `Com certeza! Na Delivale nosso objetivo é facilitar o atendimento do ${company} e aumentar suas vendas no delivery com cardápio digital próprio e 30 dias de teste gratuito.\n\nGostaria de ver uma demonstração preparada para o seu estabelecimento?`;
 }
-async function handleStorage(request,env,url){
- const central=url.pathname.startsWith('/api/contacts')||url.pathname.startsWith('/api/queue')||url.pathname==='/api/dashboard'||url.pathname==='/api/send-rules'||url.pathname.startsWith('/api/instances')||url.pathname==='/api/ai/test'||url.pathname==='/api/gemini/test';
+ async function handleStorage(request,env,url){
+  const central=url.pathname.startsWith('/api/contacts')||url.pathname.startsWith('/api/queue')||url.pathname==='/api/dashboard'||url.pathname==='/api/send-rules'||url.pathname.startsWith('/api/instances')||url.pathname==='/api/ai/test'||url.pathname==='/api/gemini/test'||url.pathname.startsWith('/api/followup');
  if(!central&&!['/api/settings','/api/settings/key','/api/history'].includes(url.pathname)&&!url.pathname.startsWith('/api/history/'))return null;
  if(request.method!=='GET'&&request.headers.get('Origin')&&request.headers.get('Origin')!==url.origin){
   try{
@@ -421,6 +421,61 @@ Responda em português do Brasil de forma amigável, clara, empática e objetiva
    await statement(env,'INSERT OR IGNORE INTO sends (id,company,phone,message,type,opened_at,status,confirmed_at) VALUES (?,?,?,?,?,?,?,?)',data.id,data.company,data.phone,data.message,data.type,date,status,status==='sent'?date:null).run();
    await statement(env,"UPDATE contacts SET status='SENT',last_sent_at=? WHERE phone=? OR company=?",date,cleanPhone(data.phone),data.company).run();
    return json({success:true})
+  }
+  if(url.pathname==='/api/followup/config'){
+    const defaultRules="Você faz follow-up pela Delivale quando o cliente parou de responder. Regras: 1) Seja breve (até 3 linhas), educado e natural, sem parecer robô. 2) Não repita saudação nem se apresente de novo. 3) Retome o último assunto da conversa. 4) Tentativa 1: lembre de forma leve e pergunte se ficou alguma dúvida. Tentativa 2: destaque um benefício relevante ao que o cliente perguntou (ex.: cardápio digital, valor fixo sem taxas extras, impressão automática, QR Code na mesa) e ofereça um teste. Tentativa 3: despedida cordial, avisando que ficamos à disposição. 5) Nunca invente preços ou condições; use apenas o que está cadastrado. 6) Se o cliente já recusou ou pediu para parar, não envie. 7) Use no máximo um emoji. 8) Termine com uma pergunta simples.";
+    const defaultConfig={enabled:false,maxAttempts:3,attempts:[{attempt:1,interval:30,unit:'minutes'},{attempt:2,interval:4,unit:'hours'},{attempt:3,interval:24,unit:'hours'}],windowStart:'08:00',windowEnd:'20:00',timeZone:'America/Sao_Paulo',stopOnOptout:true,rulesPrompt:defaultRules};
+    if(request.method==='GET'){
+      const instName=url.searchParams.get('instance')||'';
+      let config=structuredClone(defaultConfig);
+      if(instName){
+        const row=await statement(env,'SELECT config_json FROM instance_followup_configs WHERE instance_name=?',instName).first();
+        if(row&&row.config_json){
+          try{config={...defaultConfig,...JSON.parse(row.config_json)};}catch{}
+        }
+      }
+      const insts=(await statement(env,"SELECT id, name, status, role FROM instances WHERE role != 'DISPARO' ORDER BY name").all()).results||[];
+      return json({config,instances:insts,defaultRules});
+    }
+    if(request.method==='POST'){
+      const data=await requestData(request,50000);
+      if(!data.instance)return json({error:'Instância não informada.'},400);
+      const merged={...defaultConfig,...(data.config||{}),updatedAt:new Date().toISOString()};
+      const now=new Date().toISOString();
+      await statement(env,'INSERT INTO instance_followup_configs(instance_name,config_json,updated_at) VALUES(?,?,?) ON CONFLICT(instance_name) DO UPDATE SET config_json=excluded.config_json,updated_at=excluded.updated_at',data.instance,JSON.stringify(merged),now).run();
+      return json({success:true,instance:data.instance,config:merged});
+    }
+  }
+  if(url.pathname==='/api/followup/list'&&request.method==='GET'){
+    const instName=url.searchParams.get('instance')||'';
+    let sql="SELECT f.*, COALESCE(c.company, f.phone) as company FROM followups f LEFT JOIN contacts c ON (c.phone=f.phone OR c.phone='55'||f.phone)";
+    const params=[];
+    if(instName){sql+=" WHERE f.instance=?";params.push(instName);}
+    sql+=" ORDER BY f.scheduled_at DESC LIMIT 60";
+    const rows=(await statement(env,sql,...params).all()).results||[];
+    return json({followups:rows});
+  }
+  if(url.pathname==='/api/followup/cancel'&&request.method==='POST'){
+    const data=await requestData(request,10000);
+    const now=new Date().toISOString();
+    if(data.id){
+      await statement(env,"UPDATE followups SET status='cancelled', cancel_reason='cancelled_by_user', updated_at=? WHERE id=? AND status='scheduled'",now,data.id).run();
+    }else if(data.instance&&data.remoteJid){
+      await statement(env,"UPDATE followups SET status='cancelled', cancel_reason='cancelled_by_user', updated_at=? WHERE instance=? AND remote_jid=? AND status='scheduled'",now,data.instance,data.remoteJid).run();
+    }
+    return json({success:true});
+  }
+  if(url.pathname==='/api/followup/preview'&&request.method==='POST'){
+    const data=await requestData(request,20000);
+    const testPhone=String(data.phone||'5511999998888').replace(/\D/g,'');
+    const contact=await statement(env,"SELECT company FROM contacts WHERE phone=? OR phone=?",testPhone,'55'+testPhone).first();
+    const company=contact?.company||'Cliente Teste';
+    const sample=Number(data.attemptNumber)===1
+      ?'Passando para ver se conseguiu dar uma olhadinha no cardápio digital ou se ficou alguma dúvida sobre o teste gratuito. 😊'
+      :(Number(data.attemptNumber)===2
+        ?'Com a Delivale seus clientes pedem pelo WhatsApp e você economiza 100% de comissões abusivas. Quer testar sem custo por 30 dias?'
+        :`Ficamos à disposição caso decida modernizar seus pedidos no futuro. Muito sucesso nas vendas do ${company}! 🤝`);
+    return json({success:true,text:sample,attemptNumber:Number(data.attemptNumber)||1,company});
   }
   if(url.pathname.startsWith('/api/history/')&&request.method==='PATCH'){const id=decodeURIComponent(url.pathname.slice('/api/history/'.length));const now=new Date().toISOString();const result=await statement(env,'UPDATE sends SET status = ?,confirmed_at = ? WHERE id = ?','sent',now,id).run();const row=await statement(env,'SELECT company,phone FROM sends WHERE id=?',id).first();if(row)await statement(env,"UPDATE contacts SET status='SENT',last_sent_at=? WHERE phone=? OR company=?",now,cleanPhone(row.phone),row.company).run();return result.meta?.changes?json({success:true}):json({error:'Registro não encontrado.'},404)}
   return json({error:'Método não permitido.'},405)

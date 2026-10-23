@@ -17,7 +17,7 @@
       <span id="top-ai-toggle-icon" style="font-size:16px;">🟢</span>
       <span id="top-ai-toggle-text">IA Ligada</span>
     </button>
-    <nav aria-label="Navegação"><button type="button" id="nav-home" aria-pressed="true">Início</button><button type="button" id="nav-dashboard" aria-pressed="false">Dashboard</button><button type="button" id="nav-agenda" aria-pressed="false">Agenda</button><button type="button" id="nav-queue" aria-pressed="false">A Enviar</button><button type="button" id="nav-history" aria-pressed="false">Enviados</button><button type="button" id="nav-interested" aria-pressed="false">Interessados</button><button type="button" id="nav-instances" aria-pressed="false">Instâncias</button><button type="button" id="nav-messages" aria-pressed="false">Mensagens</button><button type="button" id="nav-settings" aria-pressed="false">Configurações</button></nav>
+    <nav aria-label="Navegação"><button type="button" id="nav-home" aria-pressed="true">Início</button><button type="button" id="nav-dashboard" aria-pressed="false">Dashboard</button><button type="button" id="nav-agenda" aria-pressed="false">Agenda</button><button type="button" id="nav-queue" aria-pressed="false">A Enviar</button><button type="button" id="nav-history" aria-pressed="false">Enviados</button><button type="button" id="nav-interested" aria-pressed="false">Interessados</button><button type="button" id="nav-instances" aria-pressed="false">Instâncias</button><button type="button" id="nav-messages" aria-pressed="false">Mensagens</button><button type="button" id="nav-followup" aria-pressed="false">Follow-up IA</button><button type="button" id="nav-settings" aria-pressed="false">Configurações</button></nav>
   </div>
 </header>
 <main>
@@ -452,6 +452,155 @@
     </div>
   </div>
 </section>
+<section id="followup" hidden>
+  <div class="card">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+      <div>
+        <h1 style="margin:0 0 6px;">Follow-up Automático com IA</h1>
+        <p class="help" style="margin:0;">Quando o cliente parar de responder, a IA retoma o contato respeitando intervalos configuráveis, horários permitidos e regras personalizadas.</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <label for="followup-instance-select" style="margin:0;font-size:13px;font-weight:700;">Instância WhatsApp:</label>
+        <select id="followup-instance-select" style="height:38px;width:auto;min-width:200px;font-size:14px;padding:6px 10px;"></select>
+        <button type="button" id="btn-refresh-followup-instances" class="preset-btn" style="height:38px;">🔄 Atualizar</button>
+      </div>
+    </div>
+
+    <!-- Interruptor Liga/Desliga Follow-up -->
+    <div id="followup-power-box" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;background:#f0fdf4;border:2px solid #22c55e;border-radius:14px;padding:16px 20px;margin-bottom:20px;">
+      <div style="flex:1 1 260px;">
+        <strong id="followup-power-title" style="font-size:16px;color:#166534;display:flex;align-items:center;gap:8px;">
+          <span id="followup-power-icon">🟢</span> Follow-up Automático: LIGADO para esta instância
+        </strong>
+        <p id="followup-power-sub" style="margin:4px 0 0;font-size:13px;color:#374151;">Clientes que pararem de responder após mensagens da IA receberão mensagens automáticas de acompanhamento.</p>
+      </div>
+      <div>
+        <button type="button" id="btn-toggle-followup-power" style="height:42px;padding:0 20px;font-size:14px;font-weight:700;border-radius:10px;cursor:pointer;background:#dc2626;color:white;border:none;">
+          <span id="btn-toggle-followup-power-text">🔴 Desligar Follow-up</span>
+        </button>
+        <input id="followup-enabled" type="checkbox" style="display:none;" checked>
+      </div>
+    </div>
+
+    <!-- Configuração de Tentativas e Janela de Horário -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:18px;margin-bottom:20px;">
+      <!-- Card Tentativas -->
+      <div style="background:#f9fbf9;border:1px solid #d3e2d8;border-radius:14px;padding:18px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+          <h2 style="margin:0;font-size:16px;">⏱️ Sequência de Tentativas</h2>
+          <span style="font-size:12px;color:#577265;">Máx: <strong id="followup-max-attempts-badge">3</strong> tentativas</span>
+        </div>
+        <div class="field" style="margin-bottom:12px;">
+          <label for="followup-max-attempts" style="font-size:13px;">Limite máximo de tentativas sem resposta:</label>
+          <input id="followup-max-attempts" type="number" min="1" max="5" value="3" style="height:38px;">
+          <p class="help">Após a última tentativa sem resposta, a conversa é marcada como "Sem resposta" e a IA encerra definitivamente.</p>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:12px;" id="followup-attempts-list">
+          <!-- Renderizado dinamicamente via JS -->
+        </div>
+      </div>
+
+      <!-- Card Janela de Horário e Proteções -->
+      <div style="background:#f9fbf9;border:1px solid #d3e2d8;border-radius:14px;padding:18px;">
+        <h2 style="margin:0 0 12px;font-size:16px;">🛡️ Janela de Horário & Regras de Parada</h2>
+        <div class="grid" style="margin-bottom:12px;">
+          <div class="field" style="margin-bottom:0;">
+            <label for="followup-window-start" style="font-size:13px;">Início da janela (abertura):</label>
+            <input id="followup-window-start" type="time" value="08:00" style="height:38px;">
+          </div>
+          <div class="field" style="margin-bottom:0;">
+            <label for="followup-window-end" style="font-size:13px;">Fim da janela (fechamento):</label>
+            <input id="followup-window-end" type="time" value="20:00" style="height:38px;">
+          </div>
+        </div>
+        <p class="help" style="margin-top:0;margin-bottom:14px;font-size:12px;">
+          🕒 <strong>Fuso horário: America/Sao_Paulo (Brasília)</strong>. Se o prazo vencer fora da janela (ex.: 21:00), a mensagem é enviada na próxima abertura (08:00).
+        </p>
+
+        <div style="border-top:1px solid #e1ebe5;padding-top:12px;margin-top:12px;">
+          <label class="check" style="font-size:13.5px;font-weight:600;color:#174b38;margin-bottom:8px;">
+            <input id="followup-stop-optout" type="checkbox" checked>
+            Parar follow-up se o cliente disser "não tenho interesse", "pare", "sair", etc.
+          </label>
+          <p class="help" style="margin:0;font-size:12px;">Ao detectar desinteresse ou solicitação de parada, os follow-ups são cancelados e o número não é mais incomodado.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Regras da Mensagem de Follow-up (Prompt para a IA acompanhar) -->
+    <div style="background:#ffffff;border:1px solid #d3e2d8;border-radius:14px;padding:18px;margin-bottom:20px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+        <label for="followup-rules-prompt" style="margin:0;font-size:15px;font-weight:700;color:#0b724f;">
+          📝 Regras da mensagem de follow-up (prompt para a IA acompanhar)
+        </label>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span id="followup-rules-char-count" style="font-size:12px;color:#62766c;">0 caracteres</span>
+          <button type="button" id="btn-restore-followup-rules" class="preset-btn" style="height:30px;font-size:12px;">🔄 Restaurar regras padrão</button>
+        </div>
+      </div>
+      <p class="help" style="margin-top:0;margin-bottom:8px;">
+        A IA receberá o histórico recente deste cliente, o número da tentativa (1, 2, 3), o tempo decorrido e estas diretrizes para montar a mensagem sem repetir saudação.
+      </p>
+      <textarea id="followup-rules-prompt" style="min-height:140px;line-height:1.5;font-size:14px;"></textarea>
+      
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:14px;">
+        <button type="button" id="btn-save-followup-config" class="primary" style="height:44px;padding:0 24px;font-weight:700;">💾 Salvar configurações de follow-up</button>
+        <span id="followup-save-status" class="status" style="margin:0;"></span>
+      </div>
+    </div>
+
+    <!-- Simulador / Teste Interativo de Follow-up com IA -->
+    <div style="background:#f4f8f5;border:1px solid #cbe0d3;border-radius:14px;padding:18px;margin-bottom:20px;">
+      <h2 style="margin:0 0 10px;font-size:16px;">🧪 Simular Mensagem de Follow-up com IA (sem enviar ao WhatsApp)</h2>
+      <p class="help" style="margin-top:0;margin-bottom:12px;">Teste como o Gemini formulará o follow-up para um contato ou número com base no histórico real e nas regras configuradas.</p>
+      <div class="toolbar" style="align-items:flex-end;margin-bottom:12px;">
+        <div class="field" style="margin-bottom:0;flex:1 1 200px;">
+          <label for="followup-preview-phone" style="font-size:13px;">WhatsApp do cliente para teste:</label>
+          <input id="followup-preview-phone" placeholder="Ex.: 13999999999" value="13999999999" style="height:38px;">
+        </div>
+        <div class="field" style="margin-bottom:0;flex:0 0 180px;">
+          <label for="followup-preview-attempt" style="font-size:13px;">Tentativa:</label>
+          <select id="followup-preview-attempt" style="height:38px;">
+            <option value="1">Tentativa 1 (30 min)</option>
+            <option value="2">Tentativa 2 (4 horas)</option>
+            <option value="3">Tentativa 3 (24 horas)</option>
+          </select>
+        </div>
+        <button type="button" id="btn-preview-followup" class="primary" style="height:38px;padding:0 18px;font-size:13.5px;">✨ Gerar prévia com Gemini</button>
+      </div>
+      <div id="followup-preview-output" style="background:#ffffff;border:1px solid #d3e2d8;border-radius:10px;padding:14px;min-height:60px;font-size:14px;white-space:pre-wrap;display:none;"></div>
+    </div>
+
+    <!-- Fila de Follow-ups Agendados e Histórico -->
+    <div style="background:#ffffff;border:1px solid #d3e2d8;border-radius:14px;padding:18px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">
+        <h2 style="margin:0;font-size:16px;">📋 Follow-ups Agendados e Recentes</h2>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <button type="button" id="btn-refresh-followup-list" class="preset-btn" style="height:32px;font-size:12px;">🔄 Atualizar lista</button>
+        </div>
+      </div>
+      <p id="followup-list-empty" style="color:#62766c;font-size:14px;">Nenhum follow-up agendado no momento.</p>
+      <div class="table-wrap" id="followup-table-wrap" hidden>
+        <table>
+          <thead>
+            <tr>
+              <th>Contato / Estabelecimento</th>
+              <th>Telefone</th>
+              <th>Instância</th>
+              <th>Tentativa</th>
+              <th>Agendado Para</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="followup-rows"></tbody>
+        </table>
+      </div>
+      <p id="followup-list-status" class="status" style="margin-top:8px;font-size:12px;"></p>
+    </div>
+  </div>
+</section>
 </main>
 <script>
 const PROMPT_PRESETS={
@@ -511,7 +660,7 @@ let instancesList=[];
 try{const saved=JSON.parse(localStorage.getItem(STORAGE)||'null');if(saved&&typeof saved==='object'){if(typeof saved.aiModel==='string')config.aiModel=saved.aiModel;if(typeof saved.aiGreetingPrompt==='string')config.aiGreetingPrompt=saved.aiGreetingPrompt;if(typeof saved.aiPrompt==='string')config.aiPrompt=saved.aiPrompt;if(typeof saved.offer==='string')config.offer=saved.offer;if(typeof saved.tone==='string')config.tone=saved.tone;if(typeof saved.length==='string')config.length=saved.length;if(typeof saved.emojis==='boolean')config.emojis=saved.emojis;for(const key of Object.keys(LABELS))if(typeof saved.templates?.[key]==='string')config.templates[key]=saved.templates[key]}}catch{}
 function status(text,error=false){$('status').textContent=text;$('status').classList.toggle('error',error)}
 let queuePollInterval=null;
-function showTab(tab){if(typeof clearInterval!=='undefined'&&queuePollInterval){clearInterval(queuePollInterval);queuePollInterval=null}for(const name of ['home','dashboard','agenda','queue','history','interested','instances','messages','settings']){$(name).hidden=name!==tab;$('nav-'+name).setAttribute('aria-pressed',String(name===tab))}if(tab==='history')renderHistory();if(tab==='dashboard')renderDashboard();if(tab==='agenda')renderAgenda();if(tab==='queue'){renderQueue();refreshQueueControls();if(typeof setInterval!=='undefined')queuePollInterval=setInterval(()=>{refreshQueueControls();renderQueue()},2000)}if(tab==='interested')renderInterested();if(tab==='instances')renderInstances();if(tab==='settings'||tab==='messages')renderSettingsInfo()}
+function showTab(tab){if(typeof clearInterval!=='undefined'&&queuePollInterval){clearInterval(queuePollInterval);queuePollInterval=null}for(const name of ['home','dashboard','agenda','queue','history','interested','instances','messages','followup','settings']){if($(name))$(name).hidden=name!==tab;if($('nav-'+name))$('nav-'+name).setAttribute('aria-pressed',String(name===tab))}if(tab==='history')renderHistory();if(tab==='dashboard')renderDashboard();if(tab==='agenda')renderAgenda();if(tab==='queue'){renderQueue();refreshQueueControls();if(typeof setInterval!=='undefined')queuePollInterval=setInterval(()=>{refreshQueueControls();renderQueue()},2000)}if(tab==='interested')renderInterested();if(tab==='instances')renderInstances();if(tab==='settings'||tab==='messages')renderSettingsInfo();if(tab==='followup')renderFollowupTab();}
 function showSettings(active){showTab(active?'settings':'home')}
 function parseSpintax(text){let prev;do{prev=text;text=text.replace(/\{([^{}]+)\}/g,(m,c)=>c.includes('|')?c.split('|')[Math.floor(Math.random()*c.split('|').length)]:m)}while(text!==prev);return text}
 function renderText(){let t=$('message').value.replace(/\{empresa\}/gi,$('company').value.trim()||'seu estabelecimento').replace(/\{telefone\}/gi,$('phone').value.trim());return parseSpintax(t).trim()}
@@ -1562,12 +1711,428 @@ $('nav-instances')?.addEventListener('click',()=>{showTab('instances');renderIns
 $('nav-messages')?.addEventListener('click',()=>{showTab('messages');renderSettingsInfo();});
 $('nav-settings')?.addEventListener('click',()=>{showTab('settings');renderSettingsInfo();});
 
+// ============================================================================
+// CONTROLES DE INTERFACE DO FOLLOW-UP COM IA
+// ============================================================================
+
+const DEFAULT_FOLLOWUP_RULES = `Você faz follow-up pela Delivale quando o cliente parou de responder. Regras: 1) Seja breve (até 3 linhas), educado e natural, sem parecer robô. 2) Não repita saudação nem se apresente de novo. 3) Retome o último assunto da conversa. 4) Tentativa 1: lembre de forma leve e pergunte se ficou alguma dúvida. Tentativa 2: destaque um benefício relevante ao que o cliente perguntou (ex.: cardápio digital, valor fixo sem taxas extras, impressão automática, QR Code na mesa) e ofereça um teste. Tentativa 3: despedida cordial, avisando que ficamos à disposição. 5) Nunca invente preços ou condições; use apenas o que está cadastrado. 6) Se o cliente já recusou ou pediu para parar, não envie. 7) Use no máximo um emoji. 8) Termine com uma pergunta simples.`;
+
+let followupConfigState = null;
+let currentFollowupAttempts = [
+  { attempt: 1, interval: 30, unit: 'minutes' },
+  { attempt: 2, interval: 4, unit: 'hours' },
+  { attempt: 3, interval: 24, unit: 'hours' }
+];
+
+function updateFollowupPowerUI(isOn) {
+  const box = $('followup-power-box');
+  const icon = $('followup-power-icon');
+  const title = $('followup-power-title');
+  const sub = $('followup-power-sub');
+  const btnText = $('btn-toggle-followup-power-text');
+  const btn = $('btn-toggle-followup-power');
+  if ($('followup-enabled')) $('followup-enabled').checked = Boolean(isOn);
+
+  if (!box) return;
+  if (isOn) {
+    if (box.style) { box.style.background = '#f0fdf4'; box.style.borderColor = '#22c55e'; }
+    if (icon) icon.textContent = '🟢';
+    if (title) { title.textContent = 'Follow-up Automático: LIGADO para esta instância'; if (title.style) title.style.color = '#166534'; }
+    if (sub) sub.textContent = 'Clientes que pararem de responder após mensagens da IA receberão mensagens automáticas de acompanhamento.';
+    if (btnText) btnText.textContent = '🔴 Desligar Follow-up';
+    if (btn && btn.style) { btn.style.background = '#dc2626'; btn.style.color = '#ffffff'; }
+  } else {
+    if (box.style) { box.style.background = '#fef2f2'; box.style.borderColor = '#ef4444'; }
+    if (icon) icon.textContent = '🔴';
+    if (title) { title.textContent = 'Follow-up Automático: DESLIGADO para esta instância'; if (title.style) title.style.color = '#991b1b'; }
+    if (sub) sub.textContent = 'Nenhuma mensagem de acompanhamento será agendada ou enviada por esta instância.';
+    if (btnText) btnText.textContent = '🟢 Ligar Follow-up';
+    if (btn && btn.style) { btn.style.background = '#16a34a'; btn.style.color = '#ffffff'; }
+  }
+}
+
+function updateFollowupRulesCharCount() {
+  const len = $('followup-rules-prompt')?.value?.length || 0;
+  if ($('followup-rules-char-count')) $('followup-rules-char-count').textContent = `${len} caracteres`;
+}
+
+function renderFollowupAttemptsRows() {
+  const container = $('followup-attempts-list');
+  if (!container) return;
+  container.replaceChildren();
+
+  const maxAttempts = Math.min(5, Math.max(1, Number($('followup-max-attempts')?.value) || 3));
+  if ($('followup-max-attempts-badge')) $('followup-max-attempts-badge').textContent = String(maxAttempts);
+
+  while (currentFollowupAttempts.length < maxAttempts) {
+    const nextAtt = currentFollowupAttempts.length + 1;
+    currentFollowupAttempts.push({
+      attempt: nextAtt,
+      interval: nextAtt === 2 ? 4 : (nextAtt === 3 ? 24 : (nextAtt * 12)),
+      unit: 'hours'
+    });
+  }
+  if (currentFollowupAttempts.length > maxAttempts) {
+    currentFollowupAttempts = currentFollowupAttempts.slice(0, maxAttempts);
+  }
+
+  currentFollowupAttempts.forEach((item, index) => {
+    const row = document.createElement('div');
+    row.style = 'display:flex;align-items:center;gap:8px;background:#ffffff;border:1px solid #cce0d3;padding:8px 12px;border-radius:8px;flex-wrap:wrap;';
+
+    const label = document.createElement('strong');
+    label.style = 'font-size:13px;min-width:90px;color:#0b724f;';
+    label.textContent = `${item.attempt}ª Tentativa:`;
+
+    const spanAfter = document.createElement('span');
+    spanAfter.style = 'font-size:13px;color:#577265;';
+    spanAfter.textContent = 'após';
+
+    const input = document.createElement('input');
+    input.type = 'number';
+    input.min = '1';
+    input.value = item.interval || 30;
+    input.style = 'width:70px;height:32px;padding:4px 8px;font-size:13px;';
+    input.addEventListener('change', (e) => {
+      item.interval = Math.max(1, Number(e.target.value) || 1);
+    });
+
+    const select = document.createElement('select');
+    select.style = 'width:110px;height:32px;padding:4px 8px;font-size:13px;';
+    const optMin = document.createElement('option');
+    optMin.value = 'minutes';
+    optMin.textContent = 'minuto(s)';
+    const optHours = document.createElement('option');
+    optHours.value = 'hours';
+    optHours.textContent = 'hora(s)';
+    const optDays = document.createElement('option');
+    optDays.value = 'days';
+    optDays.textContent = 'dia(s)';
+    select.append(optMin, optHours, optDays);
+    select.value = item.unit || 'minutes';
+    select.addEventListener('change', (e) => {
+      item.unit = e.target.value;
+    });
+
+    const helpNote = document.createElement('span');
+    helpNote.style = 'font-size:11px;color:#62766c;margin-left:auto;';
+    helpNote.textContent = index === 0 ? '(1º contato após silêncio)' : (index === maxAttempts - 1 ? '(Última tentativa/despedida)' : '(Reforço de benefício)');
+
+    row.append(label, spanAfter, input, select, helpNote);
+    container.append(row);
+  });
+}
+
+async function renderFollowupTab() {
+  const instSelect = $('followup-instance-select');
+  if (!instSelect) return;
+
+  try {
+    const data = await apiCall('/api/followup/config');
+    const instances = data.instances || [];
+    const currentVal = instSelect.value;
+    instSelect.replaceChildren();
+
+    if (instances.length === 0) {
+      const opt = document.createElement('option');
+      opt.value = '';
+      opt.textContent = 'Nenhuma instância WhatsApp encontrada';
+      instSelect.append(opt);
+    } else {
+      for (const inst of instances) {
+        const opt = document.createElement('option');
+        opt.value = inst.name;
+        opt.textContent = `${inst.name} (${inst.status === 'CONNECTED' ? '🟢 Conectada' : '⚪ Desconectada'})`;
+        instSelect.append(opt);
+      }
+      if (currentVal && instances.some(i => i.name === currentVal)) {
+        instSelect.value = currentVal;
+      } else {
+        instSelect.value = instances[0].name;
+      }
+    }
+  } catch (err) {
+    console.warn('Erro ao carregar instâncias de follow-up:', err);
+  }
+
+  await loadFollowupConfigForSelectedInstance();
+  await renderFollowupList();
+}
+
+async function loadFollowupConfigForSelectedInstance() {
+  const instName = $('followup-instance-select')?.value || '';
+  if (!instName) return;
+
+  try {
+    const data = await apiCall(`/api/followup/config?instance=${encodeURIComponent(instName)}`);
+    const cfg = data.config || {};
+    followupConfigState = cfg;
+
+    const isOn = cfg.enabled === true;
+    updateFollowupPowerUI(isOn);
+
+    if ($('followup-max-attempts')) $('followup-max-attempts').value = cfg.maxAttempts || 3;
+    if ($('followup-window-start')) $('followup-window-start').value = cfg.windowStart || '08:00';
+    if ($('followup-window-end')) $('followup-window-end').value = cfg.windowEnd || '20:00';
+    if ($('followup-stop-optout')) $('followup-stop-optout').checked = cfg.stopOnOptout !== false;
+    if ($('followup-rules-prompt')) {
+      $('followup-rules-prompt').value = cfg.rulesPrompt || DEFAULT_FOLLOWUP_RULES;
+      updateFollowupRulesCharCount();
+    }
+
+    if (Array.isArray(cfg.attempts) && cfg.attempts.length > 0) {
+      currentFollowupAttempts = structuredClone(cfg.attempts);
+    } else {
+      currentFollowupAttempts = [
+        { attempt: 1, interval: 30, unit: 'minutes' },
+        { attempt: 2, interval: 4, unit: 'hours' },
+        { attempt: 3, interval: 24, unit: 'hours' }
+      ];
+    }
+    renderFollowupAttemptsRows();
+  } catch (err) {
+    console.error('Erro ao ler configuração de follow-up:', err);
+  }
+}
+
+async function renderFollowupList() {
+  const rows = $('followup-rows');
+  const empty = $('followup-list-empty');
+  const wrap = $('followup-table-wrap');
+  const statusMsg = $('followup-list-status');
+  if (!rows) return;
+
+  const instName = $('followup-instance-select')?.value || '';
+  try {
+    const url = instName ? `/api/followup/list?instance=${encodeURIComponent(instName)}` : '/api/followup/list';
+    const data = await apiCall(url);
+    const list = data.followups || [];
+
+    rows.replaceChildren();
+    if (list.length === 0) {
+      if (empty) empty.hidden = false;
+      if (wrap) wrap.hidden = true;
+      if (statusMsg) statusMsg.textContent = 'Nenhum follow-up registrado no momento.';
+      return;
+    }
+
+    if (empty) empty.hidden = true;
+    if (wrap) wrap.hidden = false;
+
+    for (const item of list) {
+      const tr = document.createElement('tr');
+
+      const tdComp = document.createElement('td');
+      tdComp.innerHTML = `<strong>${item.company || item.phone}</strong>`;
+      tr.append(tdComp);
+
+      const tdPhone = document.createElement('td');
+      tdPhone.style = 'font-family:monospace;font-size:13px;';
+      tdPhone.textContent = item.phone || '';
+      tr.append(tdPhone);
+
+      const tdInst = document.createElement('td');
+      tdInst.textContent = item.instance || '';
+      tr.append(tdInst);
+
+      const tdAtt = document.createElement('td');
+      tdAtt.textContent = `Tentativa ${item.attempt_number}`;
+      tr.append(tdAtt);
+
+      const tdSched = document.createElement('td');
+      tdSched.style = 'font-size:13px;white-space:nowrap;';
+      const schedDate = new Date(item.scheduled_at);
+      tdSched.textContent = isNaN(schedDate) ? item.scheduled_at : schedDate.toLocaleString('pt-BR');
+      tr.append(tdSched);
+
+      const tdStatus = document.createElement('td');
+      let badgeStyle = 'padding:2px 8px;border-radius:10px;font-size:12px;font-weight:700;display:inline-block;';
+      if (item.status === 'scheduled') {
+        tdStatus.innerHTML = `<span style="${badgeStyle}background:#e0f2fe;color:#0369a1;">⏰ Agendado</span>`;
+      } else if (item.status === 'processing') {
+        tdStatus.innerHTML = `<span style="${badgeStyle}background:#fef3c7;color:#b45309;">⚙️ Enviando...</span>`;
+      } else if (item.status === 'sent') {
+        tdStatus.innerHTML = `<span style="${badgeStyle}background:#dcfce7;color:#15803d;">✅ Enviado</span>`;
+      } else if (item.status === 'cancelled') {
+        tdStatus.innerHTML = `<span style="${badgeStyle}background:#f3f4f6;color:#4b5563;" title="${item.cancel_reason || ''}">⏹️ Cancelado (${item.cancel_reason || 'ok'})</span>`;
+      } else if (item.status === 'uncertain') {
+        tdStatus.innerHTML = `<span style="${badgeStyle}background:#fee2e2;color:#b91c1c;" title="${item.error_details || ''}">⚠️ Incerteza</span>`;
+      } else {
+        tdStatus.innerHTML = `<span style="${badgeStyle}background:#fee2e2;color:#b91c1c;">❌ Falhou</span>`;
+      }
+      tr.append(tdStatus);
+
+      const tdAction = document.createElement('td');
+      if (item.status === 'scheduled') {
+        const btnCancel = document.createElement('button');
+        btnCancel.type = 'button';
+        btnCancel.style = 'padding:4px 8px;font-size:12px;background:#fff;border:1px solid #f87171;color:#dc2626;border-radius:6px;cursor:pointer;';
+        btnCancel.textContent = 'Cancelar';
+        btnCancel.addEventListener('click', async () => {
+          btnCancel.disabled = true;
+          try {
+            await apiCall('/api/followup/cancel', {
+              method: 'POST',
+              body: JSON.stringify({ id: item.id })
+            });
+            await renderFollowupList();
+          } catch (e) {
+            alert('Erro ao cancelar: ' + e.message);
+            btnCancel.disabled = false;
+          }
+        });
+        tdAction.append(btnCancel);
+      } else {
+        tdAction.textContent = '-';
+      }
+      tr.append(tdAction);
+
+      rows.append(tr);
+    }
+    if (statusMsg) statusMsg.textContent = `${list.length} registro(s) encontrados.`;
+  } catch (err) {
+    if (statusMsg) statusMsg.textContent = 'Erro ao carregar lista: ' + err.message;
+  }
+}
+
+// Event Listeners do Módulo Follow-up
+$('nav-followup')?.addEventListener('click', () => showTab('followup'));
+
+$('btn-toggle-followup-power')?.addEventListener('click', async () => {
+  const current = $('followup-enabled')?.checked;
+  const next = !current;
+  updateFollowupPowerUI(next);
+  const instName = $('followup-instance-select')?.value;
+  if (instName) {
+    try {
+      const cfg = {
+        enabled: next,
+        maxAttempts: Number($('followup-max-attempts')?.value) || 3,
+        attempts: currentFollowupAttempts,
+        windowStart: $('followup-window-start')?.value || '08:00',
+        windowEnd: $('followup-window-end')?.value || '20:00',
+        stopOnOptout: $('followup-stop-optout')?.checked !== false,
+        rulesPrompt: $('followup-rules-prompt')?.value?.trim() || DEFAULT_FOLLOWUP_RULES
+      };
+      await apiCall('/api/followup/config', {
+        method: 'POST',
+        body: JSON.stringify({ instance: instName, config: cfg })
+      });
+      if ($('followup-save-status')) $('followup-save-status').textContent = next ? 'Follow-up ativado para esta instância.' : 'Follow-up desativado.';
+    } catch (err) {
+      console.warn('Erro ao alternar follow-up:', err);
+    }
+  }
+});
+
+$('followup-instance-select')?.addEventListener('change', async () => {
+  await loadFollowupConfigForSelectedInstance();
+  await renderFollowupList();
+});
+
+$('btn-refresh-followup-instances')?.addEventListener('click', async () => {
+  await renderFollowupTab();
+});
+
+$('followup-max-attempts')?.addEventListener('change', () => {
+  renderFollowupAttemptsRows();
+});
+
+$('followup-rules-prompt')?.addEventListener('input', () => {
+  updateFollowupRulesCharCount();
+});
+
+$('btn-restore-followup-rules')?.addEventListener('click', () => {
+  if ($('followup-rules-prompt')) {
+    $('followup-rules-prompt').value = DEFAULT_FOLLOWUP_RULES;
+    updateFollowupRulesCharCount();
+  }
+});
+
+$('btn-save-followup-config')?.addEventListener('click', async () => {
+  const btn = $('btn-save-followup-config');
+  const statusEl = $('followup-save-status');
+  const instName = $('followup-instance-select')?.value;
+  if (!instName) {
+    if (statusEl) { statusEl.textContent = 'Selecione uma instância WhatsApp antes de salvar.'; statusEl.classList.add('error'); }
+    return;
+  }
+
+  if (btn) btn.disabled = true;
+  if (statusEl) { statusEl.textContent = 'Salvando configurações...'; statusEl.classList.remove('error'); }
+
+  try {
+    const configToSave = {
+      enabled: $('followup-enabled')?.checked !== false,
+      maxAttempts: Number($('followup-max-attempts')?.value) || 3,
+      attempts: currentFollowupAttempts,
+      windowStart: $('followup-window-start')?.value || '08:00',
+      windowEnd: $('followup-window-end')?.value || '20:00',
+      stopOnOptout: $('followup-stop-optout')?.checked !== false,
+      rulesPrompt: $('followup-rules-prompt')?.value?.trim() || DEFAULT_FOLLOWUP_RULES
+    };
+
+    await apiCall('/api/followup/config', {
+      method: 'POST',
+      body: JSON.stringify({ instance: instName, config: configToSave })
+    });
+
+    if (statusEl) { statusEl.textContent = 'Configurações de follow-up salvas com sucesso no banco!'; statusEl.classList.remove('error'); }
+    setTimeout(() => { if (statusEl && statusEl.textContent.includes('sucesso')) statusEl.textContent = ''; }, 4000);
+  } catch (err) {
+    if (statusEl) { statusEl.textContent = 'Erro ao salvar: ' + err.message; statusEl.classList.add('error'); }
+  } finally {
+    if (btn) btn.disabled = false;
+  }
+});
+
+$('btn-preview-followup')?.addEventListener('click', async () => {
+  const btn = $('btn-preview-followup');
+  const out = $('followup-preview-output');
+  const phone = $('followup-preview-phone')?.value?.trim() || '5511999998888';
+  const attempt = Number($('followup-preview-attempt')?.value) || 1;
+  const instName = $('followup-instance-select')?.value || 'EnvioZap';
+  const rules = $('followup-rules-prompt')?.value?.trim() || DEFAULT_FOLLOWUP_RULES;
+
+  if (btn) btn.disabled = true;
+  if (out) {
+    out.style.display = 'block';
+    out.textContent = 'Chamando Gemini para gerar follow-up com base no histórico e regras...';
+  }
+
+  try {
+    const res = await apiCall('/api/followup/preview', {
+      method: 'POST',
+      body: JSON.stringify({
+        instance: instName,
+        phone,
+        attemptNumber: attempt,
+        rulesPrompt: rules
+      })
+    });
+
+    if (out) {
+      out.textContent = `💬 Mensagem de Follow-up (Tentativa ${res.attemptNumber}):\n\n"${res.text}"\n\n${res.isSimulation ? 'ℹ️ ' + (res.notice || 'Simulação Delivale') : '🤖 Gerado em tempo real com Gemini'}`;
+    }
+  } catch (err) {
+    if (out) out.textContent = 'Erro ao simular com Gemini: ' + err.message;
+  } finally {
+    if (btn) btn.disabled = false;
+  }
+});
+
+$('btn-refresh-followup-list')?.addEventListener('click', async () => {
+  await renderFollowupList();
+});
+
 if(typeof setInterval!=='undefined'){
   setInterval(()=>{
     if($('instances')&&!$('instances').hidden){
       renderInstances(true);
     }else if(($('settings')&&!$('settings').hidden)||($('messages')&&!$('messages').hidden)){
       renderSettingsInfo();
+    }else if($('followup')&&!$('followup').hidden){
+      renderFollowupList();
     }
   },4000);
 }

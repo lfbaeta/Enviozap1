@@ -10,7 +10,7 @@
     "predev": "node scripts/prepare-worker.mjs",
     "dev": "node --env-file-if-exists=.env server.mjs",
     "check": "node --check server.mjs && node --check worker/api.js",
-    "test": "node scripts/prepare-worker.mjs && node test/storage.test.mjs",
+    "test": "node scripts/prepare-worker.mjs && node test/storage.test.mjs && NODE_ENV=test node test/followup.test.mjs",
     "db:generate": "drizzle-kit generate"
   },
   "version": "1.2.0",
