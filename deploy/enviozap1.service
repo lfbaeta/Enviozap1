@@ -1,0 +1,24 @@
+[Unit]
+Description=Delivale Enviozap1 - WhatsApp e Follow-up 24/7
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=enviozap1
+Group=enviozap1
+WorkingDirectory=/opt/enviozap1
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=ENABLE_GITHUB_AUTO_SYNC=false
+EnvironmentFile=/etc/enviozap1/enviozap1.env
+ExecStartPre=/usr/bin/node scripts/prepare-worker.mjs
+ExecStart=/usr/bin/node server.mjs
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
