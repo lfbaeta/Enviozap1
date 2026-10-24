@@ -246,7 +246,9 @@ await loadWorker();
 
 // Polling contínuo em segundo plano apenas se houver repositório git local
 const SYNC_INTERVAL = Number(process.env.SYNC_INTERVAL_MS) || 5000;
-if (isGitRepo) {
+// Em produção, definir ENABLE_GITHUB_AUTO_SYNC=false para evitar alterações não testadas no serviço ativo.
+const AUTO_SYNC_ENABLED = process.env.ENABLE_GITHUB_AUTO_SYNC !== 'false';
+if (isGitRepo && AUTO_SYNC_ENABLED) {
  setInterval(() => {
   syncWithGitHub().catch(() => {});
  }, SYNC_INTERVAL);
@@ -2505,6 +2507,6 @@ const PORT = Number(process.env.PORT) || 3000;
 const isMainModule = !process.argv[1] || process.argv[1].endsWith('server.mjs') || process.argv[1].endsWith('server.js');
 if (isMainModule && process.env.NODE_ENV !== 'test') {
  server.listen(PORT, '0.0.0.0', () => {
-  console.log(`EnvioZap iniciado na porta ${PORT} com Auto-Sync GitHub ativo a cada ${SYNC_INTERVAL / 1000}s na branch main`);
+  console.log(`EnvioZap iniciado na porta ${PORT}; ${isGitRepo && AUTO_SYNC_ENABLED ? `Auto-Sync GitHub ativo a cada ${SYNC_INTERVAL / 1000}s na branch main` : 'Auto-Sync GitHub desativado'}`);
  });
 }
